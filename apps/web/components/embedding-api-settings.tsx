@@ -401,7 +401,7 @@ export function EmbeddingApiSettings() {
         <p className="max-w-3xl text-sm text-muted-foreground">
           {t(
             "settings.embeddingDescription",
-            "Choose how OpenLoomi creates vectors for knowledge, memory, and semantic search.",
+            "Choose how openrice creates vectors for knowledge, memory, and semantic search.",
           )}
         </p>
       </div>

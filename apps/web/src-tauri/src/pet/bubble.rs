@@ -45,7 +45,7 @@ pub fn build_bubble_window(app: &AppHandle) -> tauri::Result<tauri::WebviewWindo
         WebviewUrl::App("loomi-bubble.html".into()),
     )
     .initialization_script(&constants::api_init_script())
-    .title("Loomi · bubble")
+    .title("openrice · bubble")
     .inner_size(BUBBLE_W, BUBBLE_H)
     .min_inner_size(BUBBLE_W, BUBBLE_H)
     .max_inner_size(BUBBLE_W, BUBBLE_H)

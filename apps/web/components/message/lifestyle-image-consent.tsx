@@ -19,7 +19,7 @@ export function LifestyleImageConsent({
       <div className="space-y-1">
         <p className="font-medium text-foreground">Generate lifestyle image?</p>
         <p className="text-muted-foreground">
-          OpenLoomi will use bounded profile, recent chat, insight, and memory
+          openrice will use bounded profile, recent chat, insight, and memory
           summaries to create one image prompt.
         </p>
       </div>

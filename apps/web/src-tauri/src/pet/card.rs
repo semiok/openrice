@@ -104,7 +104,7 @@ pub fn build_card_window(app: &AppHandle) -> tauri::Result<tauri::WebviewWindow>
         WebviewUrl::App("loomi-card.html".into()),
     )
     .initialization_script(&constants::api_init_script())
-    .title("Loomi · card")
+    .title("openrice · card")
     .inner_size(CARD_W, CARD_H)
     .min_inner_size(CARD_W, CARD_H)
     .max_inner_size(CARD_W, CARD_H)

@@ -1,10 +1,13 @@
 <div align="center">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="apps/web/public/images/logo-text-dark.png">
-  <img src="apps/web/public/images/logo-text.png" alt="OpenLoomi Logo" width="400">
-</picture>
+<img src="apps/web/public/images/logo_web.png" alt="openrice Logo" width="160">
 
-**Open-source AI coworker, built to protect your attention**
+## openrice
+
+**A local-first AI coworker for shared project memory and execution**
+
+This repository is the independent openrice fork maintained at
+[`semiok/openrice`](https://github.com/semiok/openrice). It currently preserves
+OpenLoomi's internal data paths and plugin protocol for migration compatibility.
 
 <p align="center">
 <a href="./README.md">English</a> | <a href="./README-zh.md">简体中文</a> | <a href="./README-ja.md">日本語</a>

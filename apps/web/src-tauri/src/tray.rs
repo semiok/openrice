@@ -17,10 +17,22 @@ use tauri::{
 
 /// Build and register the system tray icon and its menu.
 pub fn build_tray(app: &tauri::AppHandle) -> tauri::Result<()> {
-    let show = MenuItem::with_id(app, "tray-show", "Show openloomi", true, None::<&str>)?;
-    let show_loomi = MenuItem::with_id(app, "tray-show-loomi", "Show Loomi", true, None::<&str>)?;
-    let hide_loomi = MenuItem::with_id(app, "tray-hide-loomi", "Hide Loomi", true, None::<&str>)?;
-    let quit = MenuItem::with_id(app, "tray-quit", "Quit openloomi", true, None::<&str>)?;
+    let show = MenuItem::with_id(app, "tray-show", "Open openrice", true, None::<&str>)?;
+    let show_loomi = MenuItem::with_id(
+        app,
+        "tray-show-loomi",
+        "Show rice companion",
+        true,
+        None::<&str>,
+    )?;
+    let hide_loomi = MenuItem::with_id(
+        app,
+        "tray-hide-loomi",
+        "Hide rice companion",
+        true,
+        None::<&str>,
+    )?;
+    let quit = MenuItem::with_id(app, "tray-quit", "Quit openrice", true, None::<&str>)?;
     let menu = Menu::with_items(app, &[&show, &show_loomi, &hide_loomi, &quit])?;
 
     let icon = app
@@ -30,7 +42,7 @@ pub fn build_tray(app: &tauri::AppHandle) -> tauri::Result<()> {
 
     TrayIconBuilder::with_id("main-tray")
         .icon(icon)
-        .tooltip("openloomi")
+        .tooltip("openrice")
         .menu(&menu)
         .show_menu_on_left_click(false)
         .on_menu_event(|app, event| match event.id().as_ref() {

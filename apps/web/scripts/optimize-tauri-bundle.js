@@ -32,7 +32,7 @@ let appBundle = APP_BUNDLE;
 if (!appBundle) {
   appBundle = path.join(
     webDir,
-    "src-tauri/target/release/bundle/macos/openloomi.app",
+    "src-tauri/target/release/bundle/macos/openrice.app",
   );
 }
 
@@ -298,12 +298,12 @@ if (fs.existsSync(infoPlist)) {
       `/usr/libexec/PlistBuddy -c "Print :CFBundleIdentifier" "${infoPlist}" 2>/dev/null`,
       { encoding: "utf8" },
     ).trim();
-    if (currentId !== "com.openloomi.app") {
+    if (currentId !== "ai.traditionow.openrice") {
       execSync(
-        `/usr/libexec/PlistBuddy -c "Set :CFBundleIdentifier com.openloomi.app" "${infoPlist}"`,
+        `/usr/libexec/PlistBuddy -c "Set :CFBundleIdentifier ai.traditionow.openrice" "${infoPlist}"`,
         { stdio: "pipe" },
       );
-      console.log("  Bundle identifier set to: com.openloomi.app");
+      console.log("  Bundle identifier set to: ai.traditionow.openrice");
     }
   } catch {}
 
@@ -316,7 +316,7 @@ if (fs.existsSync(infoPlist)) {
         shell: true,
       });
       execSync(
-        `codesign --deep --force --sign "${SIGNING_IDENTITY}" --options runtime --timestamp --identifier "com.openloomi.app" --entitlements "${mainEntitlements}" "${mainBinary}"`,
+        `codesign --deep --force --sign "${SIGNING_IDENTITY}" --options runtime --timestamp --identifier "ai.traditionow.openrice" --entitlements "${mainEntitlements}" "${mainBinary}"`,
         { stdio: "pipe" },
       );
       console.log("  Main binary signed");

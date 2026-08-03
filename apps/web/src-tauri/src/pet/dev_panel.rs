@@ -75,7 +75,7 @@ pub fn build_dev_panel_window(app: &AppHandle) -> tauri::Result<Option<tauri::We
     let base =
         WebviewWindowBuilder::new(app, PET_DEV_LABEL, WebviewUrl::App("loomi-dev.html".into()))
             .initialization_script(&constants::api_init_script())
-            .title("Loomi · dev panel")
+            .title("openrice · dev panel")
             .inner_size(DEV_PANEL_W, DEV_PANEL_H)
             .min_inner_size(DEV_PANEL_W, DEV_PANEL_H)
             .max_inner_size(DEV_PANEL_W, DEV_PANEL_H)

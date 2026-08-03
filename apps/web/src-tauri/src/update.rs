@@ -110,24 +110,24 @@ pub(crate) fn get_platform_download_filename(version: &str) -> Option<String> {
     #[cfg(target_os = "macos")]
     {
         return if cfg!(target_arch = "aarch64") {
-            Some(format!("openloomi_{}_macOS_aarch64.dmg", v))
+            Some(format!("openrice_{}_macOS_aarch64.dmg", v))
         } else {
-            Some(format!("openloomi_{}_macOS_amd64.dmg", v))
+            Some(format!("openrice_{}_macOS_amd64.dmg", v))
         };
     }
 
     #[cfg(target_os = "linux")]
     {
         return if cfg!(target_arch = "aarch64") {
-            Some(format!("openloomi_{}_linux_aarch64.deb", v))
+            Some(format!("openrice_{}_linux_aarch64.deb", v))
         } else {
-            Some(format!("openloomi_{}_linux_amd64.deb", v))
+            Some(format!("openrice_{}_linux_amd64.deb", v))
         };
     }
 
     #[cfg(target_os = "windows")]
     {
-        return Some(format!("openloomi_{}_windows_amd64.exe", v));
+        return Some(format!("openrice_{}_windows_amd64.exe", v));
     }
 
     #[allow(unreachable_code)]
@@ -468,7 +468,7 @@ fn get_app_relaunch_path() -> Option<String> {
 
     #[cfg(target_os = "macos")]
     {
-        // exe path: .../openloomi.app/Contents/MacOS/openloomi
+        // exe path: .../openrice.app/Contents/MacOS/openloomi
         // Need to go up 3 levels to reach .app bundle itself, so open command can correctly launch the app
         return exe
             .parent()
@@ -510,7 +510,7 @@ pub async fn do_check_for_update() -> Result<UpdateCheckResult, String> {
     let current_version = env!("CARGO_PKG_VERSION");
 
     let client = reqwest::Client::builder()
-        .user_agent("openloomi-App")
+        .user_agent("openrice-App")
         .build()
         .map_err(|e| format!("Failed to create HTTP client: {}", e))?;
 
@@ -631,7 +631,7 @@ async fn download_update_asset_for_cli(result: &UpdateCheckResult) -> Result<Pat
 
 async fn fetch_latest_release(client: &reqwest::Client) -> Result<Option<GithubRelease>, String> {
     let mut req = client
-        .get("https://api.github.com/repos/melandlabs/openloomi/releases/latest")
+        .get("https://api.github.com/repos/semiok/openrice/releases/latest")
         .header("Accept", "application/vnd.github+json");
     if let Ok(token) = std::env::var("GITHUB_TOKEN") {
         if !token.is_empty() {
@@ -1186,7 +1186,7 @@ mod tests {
     fn get_platform_download_filename_uses_windows_asset() {
         let result = get_platform_download_filename("v1.0.0").unwrap();
         assert!(
-            result.contains("openloomi_1.0.0_windows_amd64.exe"),
+            result.contains("openrice_1.0.0_windows_amd64.exe"),
             "got: {}",
             result
         );
@@ -1197,9 +1197,9 @@ mod tests {
     fn get_platform_download_filename_uses_macos_asset() {
         let result = get_platform_download_filename("v1.0.0").unwrap();
         if cfg!(target_arch = "aarch64") {
-            assert!(result.contains("openloomi_1.0.0_macOS_aarch64.dmg"));
+            assert!(result.contains("openrice_1.0.0_macOS_aarch64.dmg"));
         } else {
-            assert!(result.contains("openloomi_1.0.0_macOS_amd64.dmg"));
+            assert!(result.contains("openrice_1.0.0_macOS_amd64.dmg"));
         }
     }
 
@@ -1208,9 +1208,9 @@ mod tests {
     fn get_platform_download_filename_uses_linux_asset() {
         let result = get_platform_download_filename("v1.0.0").unwrap();
         if cfg!(target_arch = "aarch64") {
-            assert!(result.contains("openloomi_1.0.0_linux_aarch64.deb"));
+            assert!(result.contains("openrice_1.0.0_linux_aarch64.deb"));
         } else {
-            assert!(result.contains("openloomi_1.0.0_linux_amd64.deb"));
+            assert!(result.contains("openrice_1.0.0_linux_amd64.deb"));
         }
     }
 
@@ -1327,10 +1327,10 @@ mod tests {
         use serde_json::json;
         let payload = json!({
             "tag_name": "v1.5.0",
-            "html_url": "https://github.com/melandlabs/openloomi/releases/tag/v1.5.0",
+            "html_url": "https://github.com/semiok/openrice/releases/tag/v1.5.0",
             "assets": [{
-                "name": "openloomi_1.5.0_macOS_aarch64.dmg",
-                "browser_download_url": "https://github.com/melandlabs/openloomi/releases/download/v1.5.0/openloomi_1.5.0_macOS_aarch64.dmg",
+                "name": "openrice_1.5.0_macOS_aarch64.dmg",
+                "browser_download_url": "https://github.com/semiok/openrice/releases/download/v1.5.0/openrice_1.5.0_macOS_aarch64.dmg",
                 "size": 12_345_678_u64,
             }],
         });
@@ -1352,7 +1352,7 @@ mod tests {
         use serde_json::json;
         let payload = json!({
             "tag_name": "v1.5.0",
-            "html_url": "https://github.com/melandlabs/openloomi/releases/tag/v1.5.0",
+            "html_url": "https://github.com/semiok/openrice/releases/tag/v1.5.0",
             "assets": [],
         });
         let release: GithubRelease = serde_json::from_value(payload).expect("valid");

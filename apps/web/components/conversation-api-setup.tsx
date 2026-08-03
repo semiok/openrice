@@ -78,7 +78,7 @@ export function ConversationApiSetup({
         <p className="mt-2 max-w-lg text-sm leading-6 text-muted-foreground">
           {t(
             "settings.aiSetupDescription",
-            "OpenLoomi needs an Anthropic-compatible provider before it can start a conversation. Your credentials are stored securely and can be changed later.",
+            "openrice needs an Anthropic-compatible provider before it can start a conversation. Your credentials are stored securely and can be changed later.",
           )}
         </p>
 

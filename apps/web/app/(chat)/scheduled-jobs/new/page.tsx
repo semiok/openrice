@@ -380,7 +380,7 @@ export default function ScheduledJobCreatePage() {
         <p className="text-sm">
           {t(
             "agent.panels.scheduledJobsPanel.tauriOnly",
-            "Scheduled jobs are only available in the openloomi desktop app.",
+            "Scheduled jobs are only available in the openrice desktop app.",
           )}
         </p>
       </div>

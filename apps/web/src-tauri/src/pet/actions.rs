@@ -172,11 +172,11 @@ pub fn resolve_action_prompt(
 
 pub fn build_agent_prompt(action: &PetContextActionPrompt) -> String {
     format!(
-        "The user selected this Loomi Pet action:\n\n\
+        "The user selected this openrice action:\n\n\
 Action: {}\n\
 Action id: {}\n\n\
 Task:\n{}\n\n\
-Use the available OpenLoomi agent runtime, skills, MCP servers, connectors, local APIs, or CLI helpers as appropriate. Ask for confirmation before privacy-sensitive or destructive actions.",
+Use the available openrice agent runtime, skills, MCP servers, connectors, local APIs, or CLI helpers as appropriate. Ask for confirmation before privacy-sensitive or destructive actions.",
         action.label, action.action_id, action.prompt
     )
 }
@@ -345,10 +345,10 @@ mod tests {
         };
 
         let prompt = build_agent_prompt(&action);
-        assert!(prompt.contains("The user selected this Loomi Pet action"));
+        assert!(prompt.contains("The user selected this openrice action"));
         assert!(prompt.contains("Summarize workspace"));
         assert!(prompt.contains("Identify goals, blockers, and next safe steps."));
-        assert!(prompt.contains("OpenLoomi agent runtime"));
+        assert!(prompt.contains("openrice agent runtime"));
         assert!(prompt.contains("Ask for confirmation"));
     }
 
