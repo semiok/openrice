@@ -1,8 +1,8 @@
 [package]
 name = "openloomi"
 version = "0.8.8"
-description = "openloomi AI Assistant - Your Personal Productivity Tool"
-authors = ["OpenLoomi Team"]
+description = "OpenRice AI Assistant - Your Personal Productivity Tool"
+authors = ["OpenRice Team"]
 edition = "2021"
 autobins = false
 default-run = "openloomi"

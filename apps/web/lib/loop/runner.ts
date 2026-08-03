@@ -198,7 +198,7 @@ function buildPrompt(decision: LoopDecision, mode: "dry" | "run"): string {
   const verb = mode === "dry" ? "Simulate executing" : "Execute";
   const parts: string[] = [];
   parts.push(
-    `${verb} this OpenLoomi Loop decision and produce a concrete, plain-text summary of what you did (or would do).`,
+    `${verb} this OpenRice Loop decision and produce a concrete, plain-text summary of what you did (or would do).`,
     "",
     "Decision:",
     JSON.stringify(

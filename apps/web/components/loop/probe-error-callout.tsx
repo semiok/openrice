@@ -134,7 +134,7 @@ export function ProbeErrorCallout({
   const handleSignInViaAgent = useCallback(() => {
     const prompt = t(
       "connectors.probeKindSignInPrompt",
-      "Please help the user fix the Composio CLI auth so the Loop probe can run. The fastest path is `composio login --no-wait` in the terminal, but if they prefer, also mention that they can (a) run `claude auth login` to authenticate the Claude runtime directly, or (b) open OpenLoomi's API Settings (/?page=ai-api-settings) to add an Anthropic-compatible provider. Then retry the probe.",
+      "Please help the user fix the Composio CLI auth so the Loop probe can run. The fastest path is `composio login --no-wait` in the terminal, but if they prefer, also mention that they can (a) run `claude auth login` to authenticate the Claude runtime directly, or (b) open OpenRice's API Settings (/?page=ai-api-settings) to add an Anthropic-compatible provider. Then retry the probe.",
     );
     const bridge = (
       globalThis as { __petChatBridgeSend?: (text: string) => void }
@@ -146,7 +146,7 @@ export function ProbeErrorCallout({
     router.push(`/?page=chat&send=${encodeURIComponent(prompt)}`);
   }, [router, t]);
 
-  // One-click deep-link to OpenLoomi's API Settings. The "missing-api-key"
+  // One-click deep-link to OpenRice's API Settings. The "missing-api-key"
   // reason flag is what the settings page already uses to render the
   // "Required for chat" notice, so the user lands on the screen that's
   // actually relevant. Same `MISSING_API_KEY_REASON` constant used by

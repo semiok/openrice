@@ -149,7 +149,7 @@ export function MessengerAuthForm({
             id="messenger-page-name"
             value={pageName}
             onChange={(e) => setPageName(e.target.value)}
-            placeholder="openloomi Page"
+            placeholder="OpenRice Page"
           />
         </div>
         <div className="space-y-2">

@@ -261,7 +261,7 @@ export function buildBriefPrompt(
         )}`
       : "";
 
-  return `You are writing the morning brief for the user's OpenLoomi Loop — a single, agentic narrative summary of what's waiting for them today. You have tool use — use it to ground the narrative in real past context BEFORE composing.
+  return `You are writing the morning brief for the user's OpenRice Loop — a single, agentic narrative summary of what's waiting for them today. You have tool use — use it to ground the narrative in real past context BEFORE composing.
 
 # Inputs
 

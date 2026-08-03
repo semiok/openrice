@@ -1,14 +1,17 @@
 <div align="center">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="apps/web/public/images/logo-text-dark.png">
-  <img src="apps/web/public/images/logo-text.png" alt="OpenLoomi Logo" width="400">
-</picture>
+<img src="apps/web/public/images/logo_web.png" alt="OpenRice Logo" width="160">
+
+## OpenRice
 
 <p align="center">
 <a href="./README.md">English</a> | <a href="./README-zh.md">简体中文</a> | <a href="./README-ja.md">日本語</a>
 </p>
 
 **一个守护你注意力的开源AI工作伙伴**
+
+这是由 [`semiok/openrice`](https://github.com/semiok/openrice) 独立维护的
+OpenRice 分支。为兼容既有安装，内部仍保留上游 OpenLoomi 的数据目录、
+插件 ID 和命令协议。
 
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-4B4B4B?logo=linux&logoColor=white)](https://openloomi.ai)
 [![License](https://img.shields.io/badge/License-Apache%202.0-F8D52A?logo=apache)](https://www.apache.org/licenses/LICENSE-2.0)
@@ -20,7 +23,7 @@
 
 <div align="center">
 
-⭐ **如果觉得 OpenLoomi 有用，欢迎在 GitHub 上给我们点个 star！** 这能帮助更多人发现这个项目，也是我们持续开发的动力。🙏
+⭐ **如果觉得 OpenRice 有用，欢迎在 GitHub 上给我们点个 star！** 这能帮助更多人发现这个项目，也是我们持续开发的动力。🙏
 
 [![GitHub Repo stars](https://img.shields.io/github/stars/melandlabs/openloomi?style=social&label=Star)](https://github.com/melandlabs/openloomi)
 
@@ -28,13 +31,13 @@
 
 ---
 
-## 什么是 OpenLoomi？
+## 什么是 OpenRice？
 
-你的工作分散在不同应用里。OpenLoomi 连接这些工具，并在你授权后理解你屏幕上正在进行的工作。它把协作关系、项目进展和过往决策串联成持续更新的工作上下文，再从纷繁变化中挑出真正需要你判断或行动的事，让你能只专注于真正重要的事。
+你的工作分散在不同应用里。OpenRice 连接这些工具，并在你授权后理解你屏幕上正在进行的工作。它把协作关系、项目进展和过往决策串联成持续更新的工作上下文，再从纷繁变化中挑出真正需要你判断或行动的事，让你能只专注于真正重要的事。
 这就是你的 Attention Agent（注意力代理）。
 
 <p align="center">
-  <img src="screenshots/app/main-with-loomi.gif" alt="OpenLoomi 主窗口与 Loomi" width="100%">
+  <img src="screenshots/app/main-with-loomi.gif" alt="OpenRice 主窗口与 Loomi" width="100%">
 </p>
 
 ## 它能做什么？
@@ -57,7 +60,7 @@
 | 🔌  | **[平台连接器](https://openloomi.ai/docs/connectors)**                    | **[自动获取](https://openloomi.ai/docs/what-is-openloomi#a-complete-intelligence-loop-from-perception-to-action)** 后台同步循环主动拉取代码提交、工单、邮件和文档并存入图谱。**[消息应用](https://openloomi.ai/docs/messaging-apps)** — Telegram、WhatsApp、iMessage、QQ、飞书/Feishu — 让您直接在现有对话中与 AI 聊天。 |
 | ⏰  | **[主动任务](https://openloomi.ai/docs/automation)**                      | 定时自动执行重复工作——每日摘要、每周报告、提醒——在桌面端按计划运行。                                                                                                                                                                                                                                                     |
 | 🖥️  | **[安全便捷](https://openloomi.ai/docs/privacy-security)**                | Windows、macOS、Linux 原生桌面应用 — **开箱即用**，安装几分钟就能开始工作，不需要折腾配置；本地优先存储，AES-256 加密，数据不离开你的设备，访问日志可审计                                                                                                                                                                |
-| 🧩  | **[任意 Agent 集成](https://openloomi.ai/docs/reference/agent-runtimes)** | OpenLoomi 的上下文、记忆、连接器、注意力代理与 Loop 工作引擎都以开源 [技能](https://openloomi.ai/docs/skills) 和[插件](https://openloomi.ai/docs/plugins) 形式交付。可以直接用 OpenLoomi Desktop, 也可以接入现有 Agent — Claude、Codex、OpenCode、Hermes 或 OpenClaw                                                     |
+| 🧩  | **[任意 Agent 集成](https://openloomi.ai/docs/reference/agent-runtimes)** | OpenRice 的上下文、记忆、连接器、注意力代理与 Loop 工作引擎都以开源 [技能](https://openloomi.ai/docs/skills) 和[插件](https://openloomi.ai/docs/plugins) 形式交付。可以直接用 OpenRice Desktop, 也可以接入现有 Agent — Claude、Codex、OpenCode、Hermes 或 OpenClaw                                                       |
 
 ## 快速开始
 
@@ -80,12 +83,12 @@
 
 **作为 Agent 插件使用**（面向 Claude Code / Codex 用户）：
 
-OpenLoomi 提供了官方 marketplace 插件，可以把现有的 agent 接入本地 OpenLoomi runtime。插件本身很薄——所有副作用都打到你的本地桌面应用——所以你照常用你的 agent。
+OpenRice 提供了官方 marketplace 插件，可以把现有的 agent 接入本地 OpenRice runtime。插件本身很薄——所有副作用都打到你的本地桌面应用——所以你照常用你的 agent。
 
-| Agent       | 安装                                                                                      | 首次启动                          |
-| ----------- | ----------------------------------------------------------------------------------------- | --------------------------------- |
-| Claude Code | `/plugin marketplace add melandlabs/plugins`<br>`/plugin install openloomi`               | `/openloomi:setup`                |
-| Codex CLI   | `codex plugin marketplace add melandlabs/plugins && codex plugin add openloomi@openloomi` | `@OpenLoomi Run first-use setup.` |
+| Agent       | 安装                                                                                      | 首次启动                         |
+| ----------- | ----------------------------------------------------------------------------------------- | -------------------------------- |
+| Claude Code | `/plugin marketplace add melandlabs/plugins`<br>`/plugin install openloomi`               | `/openloomi:setup`               |
+| Codex CLI   | `codex plugin marketplace add melandlabs/plugins && codex plugin add openloomi@openloomi` | `@OpenRice Run first-use setup.` |
 
 精简版公共 marketplace 仓库是 [`melandlabs/plugins`](https://github.com/melandlabs/plugins)，只拉取插件本身需要的文件。完整文档见插件文档：[`plugins/claude`](https://openloomi.ai/docs/plugins/claude) · [`plugins/codex`](https://openloomi.ai/docs/plugins/codex)。
 
@@ -103,9 +106,9 @@ pnpm tauri:dev
 
 ## 它有何不同
 
-**OpenLoomi 是开源且中立的。** 它不会把你锁定在某一家厂商的 Agent 上，而是可以与任意 Agent Runtime 集成——Claude Code、Codex、OpenCode、Hermes、OpenClaw——并为它们带来一个共享的跨 Agent 层：常驻桌面的**注意力代理**、**全局上下文记忆**、**平台连接器**和**主动式任务**。无论你运行哪个 Agent，OpenLoomi 都替你守着门、记住真正重要的事，并只把值得你花时间的决策呈现出来——让你把注意力留给工作本身，而不是追着工作跑。
+**OpenRice 是开源且中立的。** 它不会把你锁定在某一家厂商的 Agent 上，而是可以与任意 Agent Runtime 集成——Claude Code、Codex、OpenCode、Hermes、OpenClaw——并为它们带来一个共享的跨 Agent 层：常驻桌面的**注意力代理**、**全局上下文记忆**、**平台连接器**和**主动式任务**。无论你运行哪个 Agent，OpenRice 都替你守着门、记住真正重要的事，并只把值得你花时间的决策呈现出来——让你把注意力留给工作本身，而不是追着工作跑。
 
-| 与…相比                | OpenLoomi 的优势                                                                   |
+| 与…相比                | OpenRice 的优势                                                                    |
 | ---------------------- | ---------------------------------------------------------------------------------- |
 | Claude Cowork 类 Agent | 开源的、本地优先的 AI 伙伴与工作空间，支持来源证据和审批                           |
 | Codex / Claude Code    | 超出仓库的工作空间上下文：人、产品决策、发布背景、问题和待跟进事项                 |

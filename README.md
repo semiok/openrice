@@ -1,13 +1,13 @@
 <div align="center">
-<img src="apps/web/public/images/logo_web.png" alt="openrice Logo" width="160">
+<img src="apps/web/public/images/logo_web.png" alt="OpenRice Logo" width="160">
 
-## openrice
+## OpenRice
 
 **A local-first AI coworker for shared project memory and execution**
 
-This repository is the independent openrice fork maintained at
+This repository is the independent OpenRice fork maintained at
 [`semiok/openrice`](https://github.com/semiok/openrice). It currently preserves
-OpenLoomi's internal data paths and plugin protocol for migration compatibility.
+upstream OpenLoomi data paths and plugin protocol for migration compatibility.
 
 <p align="center">
 <a href="./README.md">English</a> | <a href="./README-zh.md">简体中文</a> | <a href="./README-ja.md">日本語</a>
@@ -23,7 +23,7 @@ OpenLoomi's internal data paths and plugin protocol for migration compatibility.
 
 <div align="center">
 
-⭐ **If you find OpenLoomi useful, please consider giving us a star on GitHub!** It helps more people discover the project and motivates us to keep building. 🙏
+⭐ **If you find OpenRice useful, please consider giving us a star on GitHub!** It helps more people discover the project and motivates us to keep building. 🙏
 
 [![GitHub Repo stars](https://img.shields.io/github/stars/melandlabs/openloomi?style=social&label=Star)](https://github.com/melandlabs/openloomi)
 
@@ -31,14 +31,14 @@ OpenLoomi's internal data paths and plugin protocol for migration compatibility.
 
 ---
 
-## What is OpenLoomi?
+## What is OpenRice?
 
-Your work is scattered across apps. OpenLoomi connects the tools you use and, with your permission, understands what’s on your screen. It brings together the context behind your people, projects, and decisions, then surfaces only what needs your decision or action.
+Your work is scattered across apps. OpenRice connects the tools you use and, with your permission, understands what’s on your screen. It brings together the context behind your people, projects, and decisions, then surfaces only what needs your decision or action.
 
 **Focus on what matters. This is your Attention Agent.**
 
 <p align="center">
-  <img src="screenshots/app/main-with-loomi.gif" alt="OpenLoomi main window with Loomi" width="100%">
+  <img src="screenshots/app/main-with-loomi.gif" alt="OpenRice main window with Loomi" width="100%">
 </p>
 
 ## What is it for?
@@ -61,7 +61,7 @@ An always-on desktop **attention agent** — the friendly desk companion Loomi �
 | 🔌  | **[Platform Connectors](https://openloomi.ai/docs/connectors)**                 | **[Auto-fetch](https://openloomi.ai/docs/what-is-openloomi#a-complete-intelligence-loop-from-perception-to-action)** background sync loop pulls commits, issues, emails, and docs proactively into your context graph. **[Messaging apps](https://openloomi.ai/docs/messaging-apps)** — Telegram, WhatsApp, iMessage, QQ, Lark/Feishu — let you chat with AI directly inside your existing conversations. |
 | ⏰  | **[Proactive Tasks](https://openloomi.ai/docs/automation)**                     | Schedule recurring work — daily digests, weekly reports, reminders — that run automatically on your desktop.                                                                                                                                                                                                                                                                                              |
 | 🖥️  | **[Security & Ease of Use](https://openloomi.ai/docs/privacy-security)**        | Native app for Windows, macOS, Linux Desktop Apps — **works out of the box**, minutes to set up, no configuration wrestling; local-first storage, AES-256 encryption, no data leaves your machine, auditable access logs                                                                                                                                                                                  |
-| 🧩  | **[Any Agent Integration](https://openloomi.ai/docs/reference/agent-runtimes)** | OpenLoomi's context, memory, connectors, attention agent, and Loop engine are all delivered as open-source [Skills](https://openloomi.ai/docs/skills) and [Plugins](https://openloomi.ai/docs/plugins). Use OpenLoomi Desktop directly, or plug into your existing Agent — Claude, Codex, OpenCode, Hermes, or OpenClaw.                                                                                  |
+| 🧩  | **[Any Agent Integration](https://openloomi.ai/docs/reference/agent-runtimes)** | OpenRice's context, memory, connectors, attention agent, and Loop engine are all delivered as open-source [Skills](https://openloomi.ai/docs/skills) and [Plugins](https://openloomi.ai/docs/plugins). Use OpenRice Desktop directly, or plug into your existing Agent — Claude, Codex, OpenCode, Hermes, or OpenClaw.                                                                                    |
 
 ## Quick Start
 
@@ -84,18 +84,18 @@ Full documentation: [openloomi.ai/docs](https://openloomi.ai/docs)
 
 **Use as an Agent plugin** (for Claude Code / Codex users):
 
-OpenLoomi ships official marketplace plugins that turn your existing agent into a front-end for the local OpenLoomi runtime.
+OpenRice ships official marketplace plugins that turn your existing agent into a front-end for the local OpenRice runtime.
 
-| Agent       | Install                                                                                   | First-run setup                   |
-| ----------- | ----------------------------------------------------------------------------------------- | --------------------------------- |
-| Claude Code | `/plugin marketplace add melandlabs/plugins`<br>`/plugin install openloomi`               | `/openloomi:setup`                |
-| Codex CLI   | `codex plugin marketplace add melandlabs/plugins && codex plugin add openloomi@openloomi` | `@OpenLoomi Run first-use setup.` |
+| Agent       | Install                                                                                   | First-run setup                  |
+| ----------- | ----------------------------------------------------------------------------------------- | -------------------------------- |
+| Claude Code | `/plugin marketplace add melandlabs/plugins`<br>`/plugin install openloomi`               | `/openloomi:setup`               |
+| Codex CLI   | `codex plugin marketplace add melandlabs/plugins && codex plugin add openloomi@openloomi` | `@OpenRice Run first-use setup.` |
 
 The slim public marketplace lives at [`melandlabs/plugins`](https://github.com/melandlabs/plugins) so adding it only fetches the plugin payloads. See the plugin docs for full reference: [`plugins/claude`](https://openloomi.ai/docs/plugins/claude) · [`plugins/codex`](https://openloomi.ai/docs/plugins/codex).
 
 **Use in skill-only agent runtimes**:
 
-Install the OpenLoomi skill set directly from this repository:
+Install the OpenRice skill set directly from this repository:
 
 ```bash
 npx skills add https://github.com/melandlabs/openloomi/tree/main/skills \
@@ -104,8 +104,8 @@ npx skills add https://github.com/melandlabs/openloomi/tree/main/skills \
 ```
 
 Start with the `openloomi` or `openloomi-setup` skill. The first setup pass
-checks whether OpenLoomi Desktop is installed, whether the local API is
-reachable, and whether a local session token is available. If OpenLoomi
+checks whether OpenRice Desktop is installed, whether the local API is
+reachable, and whether a local session token is available. If OpenRice
 Desktop is missing, the skill points the user to the official Getting Started
 guide and release downloads before continuing.
 
@@ -123,9 +123,9 @@ Requires Node.js 22+, pnpm 9+, Rust 1.75+, and on Windows: Visual Studio Build T
 
 ## Why It Is Different
 
-**OpenLoomi is open-source and neutral.** Instead of locking you into a single vendor's agent, it integrates with any Agent Runtime — Claude Code, Codex, OpenCode, Hermes, OpenClaw — and brings a shared, cross-agent layer to all of them: a resident desktop **attention agent**, **holistic context memory**, **platform connectors**, and **proactive tasks**. Whichever agent you run, OpenLoomi watches the door, remembers what matters, and surfaces only the decisions worth your time — so you spend your attention on the work, not on chasing it.
+**OpenRice is open-source and neutral.** Instead of locking you into a single vendor's agent, it integrates with any Agent Runtime — Claude Code, Codex, OpenCode, Hermes, OpenClaw — and brings a shared, cross-agent layer to all of them: a resident desktop **attention agent**, **holistic context memory**, **platform connectors**, and **proactive tasks**. Whichever agent you run, OpenRice watches the door, remembers what matters, and surfaces only the decisions worth your time — so you spend your attention on the work, not on chasing it.
 
-| Compared with...           | OpenLoomi adds                                                                                                    |
+| Compared with...           | OpenRice adds                                                                                                     |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | Claude Cowork-style agents | an open-source, local-first AI coworker and workspace with source evidence and approval                           |
 | Codex / Claude Code        | workspace context beyond the repo: people, product decisions, launch context, issues, and follow-ups              |

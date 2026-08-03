@@ -1,12 +1,12 @@
 ---
 name: openloomi-loop
-description: "openloomi's Loop — the proactive execution brain that runs inside the OpenLoomi desktop app. Use this skill to inspect state, force-refresh connector health, run a tick, schedule / cancel decision actions, tune preferences, and extend Loop with user-defined decision types, Composio-backed signal channels, or deterministic classifier rules. Triggers: 'openloomi loop', 'loop tick', 'loop schedule', 'loop inbox', 'loop run', 'loop refresh', 'refresh connectors', 'force refresh connectors', 'check connections', 'check loop connectors', 'connector health', 'proactive decisions', 'signal → decision → execute', 'pull signals', 'decision queue', 'register loop type', 'add loop decision type', 'register custom channel', 'add composio channel', 'add loop rule', 'register classifier rule', 'force loop type', 'dry-run loop rule', 'list my loop extensions', 'remove loop type', 'delete loop channel'"
+description: "OpenRice's Loop — the proactive execution brain that runs inside the OpenRice desktop app. Use this skill to inspect state, force-refresh connector health, run a tick, schedule / cancel decision actions, tune preferences, and extend Loop with user-defined decision types, Composio-backed signal channels, or deterministic classifier rules. Triggers: 'openloomi loop', 'loop tick', 'loop schedule', 'loop inbox', 'loop run', 'loop refresh', 'refresh connectors', 'force refresh connectors', 'check connections', 'check loop connectors', 'connector health', 'proactive decisions', 'signal → decision → execute', 'pull signals', 'decision queue', 'register loop type', 'add loop decision type', 'register custom channel', 'add composio channel', 'add loop rule', 'register classifier rule', 'force loop type', 'dry-run loop rule', 'list my loop extensions', 'remove loop type', 'delete loop channel'"
 allowed-tools: "Bash(curl *), Bash(jq *), Bash(cat ~/.openloomi/token *), Bash(base64 -d *), Bash(ls ~/.openloomi/loop/*)"
 ---
 
 > **Note:** If you haven't downloaded or installed openloomi yet, please refer to [Getting Started](https://openloomi.ai/docs/getting-started) for installation instructions.
 
-# OpenLoomi Loop — The Proactive Execution Brain
+# OpenRice Loop — The Proactive Execution Brain
 
 Loop pulls signals from connected integrations, classifies them into
 typed decisions, and lets the user approve execution from the pet or
@@ -51,10 +51,10 @@ Then pass `-H "Authorization: Bearer $TOKEN"` on every call below.
 
 ## Sandbox and network
 
-If `setup-status`, Loop API calls, or any local `curl` to the OpenLoomi
+If `setup-status`, Loop API calls, or any local `curl` to the OpenRice
 desktop API fail with network errors (`ECONNREFUSED`, `ETIMEDOUT`,
 "unreachable"), check whether Codex is running inside a sandbox before
-concluding Loop or the OpenLoomi desktop is stopped. Codex network
+concluding Loop or the OpenRice desktop is stopped. Codex network
 sandboxing can block:
 
 - Loopback access to the host's `localhost` (e.g. `http://localhost:3414`).
@@ -230,7 +230,7 @@ After the call:
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Connection refused on `:3414` and `:3515`     | Loop isn't running. Re-run `/openloomi:setup` / check `/openloomi:status` first.                                                                 |
 | `401 Unauthorized`                            | Token is stale or missing. Re-run `/openloomi:setup` to mint a fresh guest bearer.                                                              |
-| `404` on `/api/loop/connectors`               | Runtime is older than Loop. Update OpenLoomi Desktop — the route ships in the desktop bundle.                                                   |
+| `404` on `/api/loop/connectors`               | Runtime is older than Loop. Update OpenRice Desktop — the route ships in the desktop bundle.                                                   |
 | Probe ran but every connector still red       | Real probe failure. Cross-check `composio connections list`; if those are healthy but Loop still fails, surface the gap.                        |
 | `fetchedAt` stayed empty / old                | The `?refresh=1` query didn't reach the route. Re-run with the exact URL above; flag as a regression.                                            |
 | `lastProbeError.kind == "agent_http_error"`   | The server agent itself failed reaching its own backend. Read `kind` and `message`; surface the 401/5xx verbatim — refresh endpoint is fine.    |

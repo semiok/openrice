@@ -334,7 +334,7 @@ export class WhatsAppAdapter extends MessagePlatformAdapter {
       auth,
       logger,
       printQRInTerminal: false,
-      browser: ["openloomi", "Desktop", "0.3.0"],
+      browser: ["OpenRice", "Desktop", "0.3.0"],
       generateHighQualityLinkPreview: false,
       connectTimeoutMs: 30_000,
       syncFullHistory: true,

@@ -58,7 +58,7 @@ function parseResurfacePayload(res: {
   return null;
 }
 
-const PROMPT = `You are filling in for an empty OpenLoomi Loop card — the user has nothing actionable today, so we want to put 2 of their own past insights on the card as a "remember this?" nudge. You have tool use — use the Bash tool to query the user's memory.
+const PROMPT = `You are filling in for an empty OpenRice Loop card — the user has nothing actionable today, so we want to put 2 of their own past insights on the card as a "remember this?" nudge. You have tool use — use the Bash tool to query the user's memory.
 
 # Step 1 — query memory
 

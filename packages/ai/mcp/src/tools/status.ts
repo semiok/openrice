@@ -20,9 +20,9 @@ export function registerStatusTools(
   server.registerTool(
     "openloomi_status",
     {
-      title: "OpenLoomi Status",
+      title: "OpenRice Status",
       description:
-        "Check whether the local OpenLoomi Desktop API and MCP token authentication are ready.",
+        "Check whether the local OpenRice Desktop API and MCP token authentication are ready.",
       annotations: {
         readOnlyHint: true,
         destructiveHint: false,
@@ -51,9 +51,9 @@ export function registerStatusTools(
   server.registerTool(
     "openloomi_setup",
     {
-      title: "OpenLoomi Setup",
+      title: "OpenRice Setup",
       description:
-        "Run first-use OpenLoomi MCP setup checks and return the exact next step when Desktop, API, token, or auth is not ready.",
+        "Run first-use OpenRice MCP setup checks and return the exact next step when Desktop, API, token, or auth is not ready.",
       annotations: {
         readOnlyHint: true,
         destructiveHint: false,

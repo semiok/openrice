@@ -173,7 +173,7 @@ export async function handleDingTalkInboundMessage(
     const userContent = text || allMediaHints.join("\n");
 
     const prompt = [
-      "You are the openloomi assistant. Help the user based on the following cross-platform message summaries.",
+      "You are the OpenRice assistant. Help the user based on the following cross-platform message summaries.",
       "When information is insufficient, say so instead of making up content.",
       "If the user sent media (image/voice/file) without text, acknowledge what was received and respond appropriately.",
       "",

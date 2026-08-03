@@ -524,7 +524,7 @@ export function SavedFiles() {
                   <p className="font-medium text-foreground">
                     {t(
                       "files.uploadDescription",
-                      "Add files from your device to store them in openloomi for later analysis.",
+                      "Add files from your device to store them in OpenRice for later analysis.",
                     )}
                   </p>
                   <p className="mt-1 text-muted-foreground">
@@ -662,7 +662,7 @@ export function SavedFiles() {
                         ? "Google Drive"
                         : file.storageProvider === "notion"
                           ? "Notion"
-                          : "openloomi Cloud",
+                          : "OpenRice Cloud",
                     )}
                   </span>
                 </div>

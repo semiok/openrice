@@ -215,7 +215,7 @@ async function installClaudeCode(): Promise<boolean> {
       console.error("[Claude] Claude Code is not installed on your system.");
       console.error(getInstallationInstructions(os));
       console.error(
-        "[Claude] After installation, please restart openloomi to continue.",
+        "[Claude] After installation, please restart OpenRice to continue.",
       );
       return false;
     }
@@ -662,7 +662,7 @@ function getClaudeCodePath(): string | undefined {
   if (os === "win32") {
     console.warn(getInstallationInstructions(os));
     console.warn(
-      "[Claude] After installing, restart openloomi for the changes to take effect.",
+      "[Claude] After installing, restart OpenRice for the changes to take effect.",
     );
   } else {
     console.warn(
@@ -711,7 +711,7 @@ async function ensureClaudeCode(): Promise<string | undefined> {
           "[Claude] ✗ Installation completed but Claude Code still not found in PATH",
         );
         console.error(
-          "[Claude] Please restart openloomi after installation completes",
+          "[Claude] Please restart OpenRice after installation completes",
         );
       }
     } else {
@@ -1041,12 +1041,12 @@ When user asks questions about their tasks, schedule, or chat history, ALWAYS us
    - "My contacts" / "Who is X" / "Contact information"
    - Before sending messages or replies, use this to find the contact person's information
 
-3. **queryIntegrations** - Use for queries about openloomi's first-party bots only:
+3. **queryIntegrations** - Use for queries about OpenRice's first-party bots only:
    - "My Slack / Telegram / Discord accounts" / "What first-party platforms are connected"
    - Before sending messages or replies, use this to check openloomi-native integrations (Slack, Discord, Telegram, Gmail, etc. — the ~26 platforms with openloomi adapters)
    - ⚠️ This tool does NOT see Composio-connected accounts. For HubSpot / Asana / Notion / GitHub / Linear / Salesforce / 1000+ other SaaS apps, use the **composio** skill instead (see item 3a).
 
-3a. **composio skill** - Use for queries about or actions on platforms that openloomi does NOT have a native bot for:
+3a. **composio skill** - Use for queries about or actions on platforms that OpenRice does NOT have a native bot for:
    - "What other apps am I connected to" / "List my Composio accounts" / "Connected SaaS apps"
    - "Send a HubSpot note" / "Create an Asana task" / "Post to a Notion database" / "List GitHub PRs"
    - When queryIntegrations returns no match for a platform the user mentions, fall back to the composio skill.
@@ -1055,7 +1055,7 @@ When user asks questions about their tasks, schedule, or chat history, ALWAYS us
    - Skill surface: \`Skill composio connections list\` (discover) → \`Skill composio execute <TOOL_SLUG> on <toolkit>\` (act)
    - CLI surface:   \`Bash(composio connections list)\` (discover) → \`Bash(composio execute <TOOL_SLUG> -d '{...}')\` (act)
 
-   If the user is not yet connected to the target toolkit, prompt them to run \`composio link <toolkit>\` (or use the openloomi Desktop UI for first-party platforms).
+   If the user is not yet connected to the target toolkit, prompt them to run \`composio link <toolkit>\` (or use the OpenRice Desktop UI for first-party platforms).
 
 4. **searchKnowledgeBase** - Use for queries about:
    - "My documents" / "Knowledge base" / "Files"

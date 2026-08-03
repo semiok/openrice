@@ -61,9 +61,9 @@ export function registerConnectorTools(
   server.registerTool(
     "openloomi_connectors_list_accounts",
     {
-      title: "OpenLoomi Connected Accounts",
+      title: "OpenRice Connected Accounts",
       description:
-        "List native OpenLoomi integration accounts for the authenticated local user.",
+        "List native OpenRice integration accounts for the authenticated local user.",
       inputSchema: {
         platform: z
           .string()
@@ -86,7 +86,7 @@ export function registerConnectorTools(
     async (args) =>
       withReadyOpenLoomiClient(
         context,
-        "OpenLoomi connected account listing failed",
+        "OpenRice connected account listing failed",
         async (client) => {
           const result = await client.getJson("/api/integrations/accounts", {
             timeoutMs: CONNECTOR_READ_TIMEOUT_MS,
@@ -108,7 +108,7 @@ export function registerConnectorTools(
             },
           };
 
-          return jsonToolResult("OpenLoomi connected accounts", filtered);
+          return jsonToolResult("OpenRice connected accounts", filtered);
         },
       ),
   );
@@ -116,9 +116,9 @@ export function registerConnectorTools(
   server.registerTool(
     "openloomi_connectors_status",
     {
-      title: "OpenLoomi Connector Status",
+      title: "OpenRice Connector Status",
       description:
-        "Run OpenLoomi's native live connector health check, including native account readiness when authentication is available.",
+        "Run OpenRice's native live connector health check, including native account readiness when authentication is available.",
       inputSchema: {
         platform: z
           .string()
@@ -136,7 +136,7 @@ export function registerConnectorTools(
     async (args) =>
       withReadyOpenLoomiClient(
         context,
-        "OpenLoomi connector status failed",
+        "OpenRice connector status failed",
         async (client) => {
           const result = await client.getJson(
             "/api/loop/connectors?refresh=1",
@@ -163,7 +163,7 @@ export function registerConnectorTools(
             },
           };
 
-          return jsonToolResult("OpenLoomi connector status", filtered);
+          return jsonToolResult("OpenRice connector status", filtered);
         },
       ),
   );

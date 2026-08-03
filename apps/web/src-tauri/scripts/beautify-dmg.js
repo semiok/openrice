@@ -64,7 +64,7 @@ const DS_STORE_TEMPLATE = path.join(SRC_TAURI_DIR, "resources", "dmg_DS_Store");
 
 function parseArgs(argv) {
   const args = {
-    appName: "openloomi",
+    appName: "openrice",
     bg: path.join(ICONS_DIR, "dmg-background@2x.png"),
   };
   const positional = [];

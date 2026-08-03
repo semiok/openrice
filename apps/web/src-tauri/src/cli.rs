@@ -713,7 +713,7 @@ fn load_cli_auth_token() -> Result<String, CliError> {
         Ok(_) => Err(CliError::new(
             "not_authenticated",
             format!(
-                "No OpenLoomi auth token found.\nLog in through the OpenLoomi desktop app, or set {}.",
+                "No OpenRice auth token found.\nLog in through the OpenRice desktop app, or set {}.",
                 OPENLOOMI_AUTH_TOKEN_ENV
             ),
         )),
@@ -1901,7 +1901,7 @@ fn map_one_shot_request_error(error: reqwest::Error, endpoint: &str) -> CliError
         return CliError::new(
             "service_unavailable",
             format!(
-                "could not connect to OpenLoomi agent API at {}. Start the OpenLoomi app or local web server first.",
+                "could not connect to OpenRice agent API at {}. Start the OpenRice app or local web server first.",
                 endpoint
             ),
         );

@@ -70,7 +70,7 @@ function buildProviderHeaders(config: ProviderConfig) {
   if (config.baseUrl.includes("openrouter.ai")) {
     headers["HTTP-Referer"] =
       process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3515";
-    headers["X-Title"] = "OpenLoomi";
+    headers["X-Title"] = "OpenRice";
   }
 
   return headers;

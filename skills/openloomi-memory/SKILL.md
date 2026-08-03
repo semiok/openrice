@@ -1,16 +1,16 @@
 ---
 name: openloomi-memory
-description: "openloomi Memory tools - search and manage the holistic context (people, projects, decisions, knowledge base, chat insights). Triggers: memory search, knowledge base, search documents, list insights, who is John, what did we decide about X, tiered memory, knowledge graph, people/projects/decisions, search-all, conversation memory"
+description: "OpenRice Memory tools - search and manage the holistic context (people, projects, decisions, knowledge base, chat insights). Triggers: memory search, knowledge base, search documents, list insights, who is John, what did we decide about X, tiered memory, knowledge graph, people/projects/decisions, search-all, conversation memory"
 metadata:
   version: 0.8.8
 allowed-tools: Bash(node $SKILL_DIR/scripts/openloomi-memory.cjs *)
 ---
 
-> **Note:** If OpenLoomi readiness is unknown, use `openloomi-setup` first. If OpenLoomi Desktop is not installed, follow [Getting Started](https://openloomi.ai/docs/getting-started).
+> **Note:** If OpenRice readiness is unknown, use `openloomi-setup` first. If OpenRice Desktop is not installed, follow [Getting Started](https://openloomi.ai/docs/getting-started).
 
-# OpenLoomi Memory Skill
+# OpenRice Memory Skill
 
-OpenLoomi Memory is the **long-lived context layer of OpenLoomi** — a tiered, locally-stored knowledge graph that grows on its own from your Connectors, chats, and Screen Capture. Memory is what makes Chat grounded and what Loop reads before it produces a Decision. It is always on your machine (local-first), always visible, and always auditable — see [Memory](https://openloomi.ai/docs/memory) for the full model.
+OpenRice Memory is the **long-lived context layer of OpenRice** — a tiered, locally-stored knowledge graph that grows on its own from your Connectors, chats, and Screen Capture. Memory is what makes Chat grounded and what Loop reads before it produces a Decision. It is always on your machine (local-first), always visible, and always auditable — see [Memory](https://openloomi.ai/docs/memory) for the full model.
 
 This skill exposes three searchable surfaces over that context:
 
@@ -26,7 +26,7 @@ Use `search-all` whenever the user asks a general memory question — it covers 
 
 ## Overview
 
-**Tiered model.** OpenLoomi Memory spans four tiers that OpenLoomi reasons across simultaneously:
+**Tiered model.** OpenRice Memory spans four tiers that OpenRice reasons across simultaneously:
 
 - **Raw information** — original messages, files, transcripts synced from your Connectors and Screen Capture.
 - **Insights** — extracted entities, decisions, key events from chats and source messages. Each insight carries usage analytics (view frequency, sources, value score) and a maintenance cycle (daily analytics refresh, weekly compaction) that surfaces the most relevant records and prevents context decay.

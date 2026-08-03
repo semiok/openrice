@@ -27,9 +27,9 @@ export function registerLoopTools(
   server.registerTool(
     "openloomi_loop_state",
     {
-      title: "OpenLoomi Loop State",
+      title: "OpenRice Loop State",
       description:
-        "Read the local OpenLoomi Loop dashboard state, including preferences, counts, connectors, and last tick metadata.",
+        "Read the local OpenRice Loop dashboard state, including preferences, counts, connectors, and last tick metadata.",
       annotations: {
         readOnlyHint: true,
         destructiveHint: false,
@@ -40,12 +40,12 @@ export function registerLoopTools(
     async () =>
       withReadyOpenLoomiClient(
         context,
-        "OpenLoomi Loop state failed",
+        "OpenRice Loop state failed",
         async (client) => {
           const result = await client.getJson("/api/loop/state", {
             timeoutMs: LOOP_READ_TIMEOUT_MS,
           });
-          return jsonToolResult("OpenLoomi Loop state", result);
+          return jsonToolResult("OpenRice Loop state", result);
         },
       ),
   );
@@ -53,9 +53,9 @@ export function registerLoopTools(
   server.registerTool(
     "openloomi_loop_list_decisions",
     {
-      title: "OpenLoomi Loop Decisions",
+      title: "OpenRice Loop Decisions",
       description:
-        "List local OpenLoomi Loop decisions. Defaults to pending decisions for the user's approval queue.",
+        "List local OpenRice Loop decisions. Defaults to pending decisions for the user's approval queue.",
       inputSchema: {
         status: decisionStatusSchema
           .optional()
@@ -78,7 +78,7 @@ export function registerLoopTools(
     async (args) =>
       withReadyOpenLoomiClient(
         context,
-        "OpenLoomi Loop decision listing failed",
+        "OpenRice Loop decision listing failed",
         async (client) => {
           const status = args.status ?? "pending";
           const result = await client.getJson(
@@ -101,7 +101,7 @@ export function registerLoopTools(
             },
           };
 
-          return jsonToolResult("OpenLoomi Loop decisions", filtered);
+          return jsonToolResult("OpenRice Loop decisions", filtered);
         },
       ),
   );

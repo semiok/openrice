@@ -31,7 +31,7 @@ export const OPENCODE_CONFIG_SCHEMA = {
           type: "boolean",
           default: false,
           description:
-            "Allow passing --auto when OpenLoomi permissionMode is bypassPermissions",
+            "Allow passing --auto when OpenRice permissionMode is bypassPermissions",
         },
         timeoutMs: {
           type: "number",

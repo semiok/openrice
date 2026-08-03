@@ -1,10 +1,10 @@
 ---
 name: openloomi-tour
-description: "Walk a brand-new OpenLoomi user through the entire pipeline in one guided session: setup health → pet reaction → connector onboarding → run a Loop tick → inspect & approve a decision card → seed Memory → optionally register a custom Loop channel / classifier rule / decision type. Triggers: openloomi tour, guided tour, walk me through openloomi, show me everything, end-to-end demo, 带我看一下, 体验一下, 一条龙, 一键体验, first time using openloomi, what's next after setup."
+description: "Walk a brand-new OpenRice user through the entire pipeline in one guided session: setup health → pet reaction → connector onboarding → run a Loop tick → inspect & approve a decision card → seed Memory → optionally register a custom Loop channel / classifier rule / decision type. Triggers: openloomi tour, guided tour, walk me through openloomi, show me everything, end-to-end demo, 带我看一下, 体验一下, 一条龙, 一键体验, first time using openloomi, what's next after setup."
 allowed-tools: "Bash(node ${CLAUDE_PLUGIN_ROOT}/scripts/loomi-bridge.mjs *), Bash(node ${CLAUDE_PLUGIN_ROOT}/skills/openloomi-connectors/scripts/openloomi-connectors.cjs *), Bash(node ${CLAUDE_PLUGIN_ROOT}/skills/openloomi-memory/scripts/openloomi-memory.cjs *), Bash(composio *), Bash(curl *), Bash(jq *), Bash(cat ~/.openloomi/token *), Bash(base64 -d *)"
 ---
 
-# OpenLoomi Tour — Hands-on Walkthrough
+# OpenRice Tour — Hands-on Walkthrough
 
 This skill is the **canonical first-run experience** for Claude Code
 users. After `/openloomi:setup` finishes and prints its post-ready
@@ -22,13 +22,13 @@ phase, you re-confirm it and move on.
 
 ## Reference docs
 
-Quick links to the OpenLoomi docs that this tour draws from. Every
+Quick links to the OpenRice docs that this tour draws from. Every
 phase below cites the relevant entries inline.
 
 | Topic | Doc |
 | --- | --- |
 | Getting started / install / one-time setup | <https://openloomi.ai/docs/getting-started> |
-| What OpenLoomi is (the pipeline in one page) | <https://openloomi.ai/docs/what-is-openloomi> |
+| What OpenRice is (the pipeline in one page) | <https://openloomi.ai/docs/what-is-openloomi> |
 | Glossary — every term used here (Connector / Signal / Loop channel / Action Runner / etc.) | <https://openloomi.ai/docs/glossary> |
 | Loop engine — ticks, Decisions, cards, channels, classifier rules | <https://openloomi.ai/docs/loop> |
 | Loop — Approve / Edit Draft / dry-run anatomy of a Card | <https://openloomi.ai/docs/loop#approvals-and-dry-run> |
@@ -39,10 +39,10 @@ phase below cites the relevant entries inline.
 | Composio / Loop channel — OAuth broker for 1000+ apps | <https://openloomi.ai/docs/glossary#composio--loop-channel> |
 | Attention Agent — Loomi the fox, card bubbles, sprite states | <https://openloomi.ai/docs/attention-agent> |
 | Agent Runtimes — Claude / Codex / OpenCode / Hermes / OpenClaw | <https://openloomi.ai/docs/reference/agent-runtimes> |
-| Plugins — bridge from Claude Code / Codex into OpenLoomi | <https://openloomi.ai/docs/plugins> |
+| Plugins — bridge from Claude Code / Codex into OpenRice | <https://openloomi.ai/docs/plugins> |
 | Automation / Proactive Tasks — recurring scheduled work | <https://openloomi.ai/docs/automation> |
 | Chat — conversational entry point (not Loop) | <https://openloomi.ai/docs/chat> |
-| Skills — reusable capabilities inside OpenLoomi | <https://openloomi.ai/docs/skills> |
+| Skills — reusable capabilities inside OpenRice | <https://openloomi.ai/docs/skills> |
 | Audit Log — every consequential moment recorded | <https://openloomi.ai/docs/privacy-security#audit-logs> |
 | Privacy & Security — local-first, AES-256, what's stored where | <https://openloomi.ai/docs/privacy-security> |
 | Changelog — what's new in each release | <https://openloomi.ai/docs/changelog> |
@@ -99,7 +99,7 @@ feel).
 For the full state taxonomy, see the [Attention Agent](https://openloomi.ai/docs/attention-agent) doc; for the broader pipeline see the [Glossary](https://openloomi.ai/docs/glossary).
 
 If `POST /api/pet/state` returns "would have set state to X — pending
-OpenLoomi endpoint", note that the runtime is older than the bridge
+OpenRice endpoint", note that the runtime is older than the bridge
 expects; the pet widget will catch up via the `~/.openloomi/loop/`
 file watcher anyway. Avoid `sleeping` / `sweeping` — those are
 watcher-only on the API surface and the bridge will surface a 400
@@ -131,7 +131,7 @@ offer them all and let the user pick:
 
 Suggested **first** picks by user profile:
 
-- New to OpenLoomi, just want a feel → **Gmail** via `composio link gmail` (richest signal)
+- New to OpenRice, just want a feel → **Gmail** via `composio link gmail` (richest signal)
 - Wants something offline-friendly → **Telegram** via the native CLI
 - Wants a work tool → **Slack** or **Linear** via Composio
 - Privacy-conscious / wants everything local → enable **screen memory** + skip Phase 3
@@ -365,7 +365,7 @@ curl -sS "http://localhost:3414/api/loop/channels" \
   jq '.items[] | select(.id == "demo_stripe_charges")'
 
 # 2. Inject a decision-style insight into the inbox so the user can see
-#    the registration event surface in OpenLoomi Memory > Insights. The
+#    the registration event surface in OpenRice Memory > Insights. The
 #    user can later filter by `groups: ["openloomi-tour"]` to find every
 #    registration card the tour produced.
 echo "=== injecting registration insight into inbox ==="
@@ -499,12 +499,12 @@ are complete), print the **quick reference card** from the
 `/openloomi:setup` post-ready walkthrough (the closed follow-up
 command list) and remind the user:
 
-> The tour is over. OpenLoomi is now wired up — Connectors will keep
+> The tour is over. OpenRice is now wired up — Connectors will keep
 > pulling, Loop will keep ticking, and the pet will surface new
 > decisions as cards. Approve a card to run an action; dismiss to
 > archive it; type `/openloomi:tour` to walk through this again.
 >
-> Every consequential moment is recorded in the [Audit Log](https://openloomi.ai/docs/privacy-security#audit-logs). The whole reason this tour was possible in the first place is the [Plugin](https://openloomi.ai/docs/plugins) bridge that exposes OpenLoomi to your shell.
+> Every consequential moment is recorded in the [Audit Log](https://openloomi.ai/docs/privacy-security#audit-logs). The whole reason this tour was possible in the first place is the [Plugin](https://openloomi.ai/docs/plugins) bridge that exposes OpenRice to your shell.
 
 ---
 
@@ -515,6 +515,6 @@ All API calls in this skill (`/api/loop/*`, `/api/rag/*`,
 host. If any call fails with `ECONNREFUSED` / `ETIMEDOUT` /
 "unreachable", **request approval and retry outside the sandbox** —
 Claude Code's network sandboxing can block loopback to the host even
-when the desktop API is listening. Do **not** declare OpenLoomi
+when the desktop API is listening. Do **not** declare OpenRice
 unhealthy until an outside-sandbox retry also fails. See the bridge's
 `loopbackAccess.verification.commands` for the manual probe.

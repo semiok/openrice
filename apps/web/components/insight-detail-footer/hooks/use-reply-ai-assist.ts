@@ -335,7 +335,7 @@ export function useReplyAiAssist({
       toast.error(
         t(
           "insight.aiPolishEmpty",
-          "Add some text before asking openloomi to polish it.",
+          "Add some text before asking OpenRice to polish it.",
         ),
       );
       return;
@@ -375,7 +375,7 @@ export function useReplyAiAssist({
         toast.error(
           t(
             "insight.aiPolishEmpty",
-            "Add some text before asking openloomi to polish it.",
+            "Add some text before asking OpenRice to polish it.",
           ),
         );
         return;

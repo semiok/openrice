@@ -58,7 +58,7 @@ function parseDigestPayload(res: {
   return null;
 }
 
-const PROMPT = `You are filling in for an empty OpenLoomi Loop morning — the user has no pending items today, so we want a 3-bullet digest of "what's happening in AI / tech in the last 24h" to put on their card. You have web search — use it.
+const PROMPT = `You are filling in for an empty OpenRice Loop morning — the user has no pending items today, so we want a 3-bullet digest of "what's happening in AI / tech in the last 24h" to put on their card. You have web search — use it.
 
 # Step 1 — search the web
 

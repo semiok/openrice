@@ -8,9 +8,9 @@
  * How it works:
  * - Uses @photon-ai/imessage-kit SDK to poll the iMessage database for new messages
  * - Identifies self-message conversations via the user's configured phone number/email
- * - Distinguishes user messages from AI responses via the "(By openloomi AI)" suffix
+ * - Distinguishes user messages from AI responses via the "(By OpenRice AI)" suffix
  * - User messages trigger Agent Runtime execution
- * - AI responses are sent back to the self-chat via iMessage, tagged with "(By openloomi AI)"
+ * - AI responses are sent back to the self-chat via iMessage, tagged with "(By OpenRice AI)"
  *
  * macOS only; requires full disk access permission
  */
@@ -36,7 +36,7 @@ import { DEFAULT_AI_MODEL, AI_PROXY_BASE_URL } from "@/lib/env/constants";
 const DEBUG = process.env.NODE_ENV === "development";
 
 // AI response suffix marker
-const AI_SUFFIX = "(By openloomi AI)";
+const AI_SUFFIX = "(By OpenRice AI)";
 
 // Polling interval (milliseconds)
 const POLLING_INTERVAL_MS = 3000;
@@ -768,7 +768,7 @@ end tell`;
           continue;
         }
 
-        // Distinguish AI responses from user messages via "(By openloomi AI)" suffix
+        // Distinguish AI responses from user messages via "(By OpenRice AI)" suffix
         // Check if message contains the AI suffix (may appear at the end or in the middle)
         if (text.includes(AI_SUFFIX)) {
           if (DEBUG)

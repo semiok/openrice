@@ -1283,7 +1283,7 @@ export class EmailAdapter extends MessagePlatformAdapter {
     }
 
     const fallbackBody =
-      body.length > 0 ? body : "Image(s) attached via openloomi.";
+      body.length > 0 ? body : "Image(s) attached via OpenRice.";
 
     await this.smtpTransport.sendMail({
       from: this.gmailAddress,

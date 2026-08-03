@@ -4,6 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "brand:apply": "node scripts/openrice-branding.mjs --apply",
+    "brand:check": "node scripts/openrice-branding.mjs --check",
     "dev": "pnpm --filter web dev",
     "dev:all": "pnpm -r --parallel dev",
     "test": "pnpm --filter web test",

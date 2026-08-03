@@ -54,7 +54,7 @@ export function ensureImageGenerationProvidersRegistered(): void {
           process.env.IMAGE_GENERATION_TIMEOUT_MS,
       ),
       referer: normalizeOptionalString(process.env.NEXT_PUBLIC_APP_URL),
-      title: "OpenLoomi",
+      title: "OpenRice",
     }),
   );
 

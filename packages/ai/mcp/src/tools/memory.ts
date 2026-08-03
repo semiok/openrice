@@ -15,9 +15,9 @@ export function registerMemoryTools(
   server.registerTool(
     "openloomi_memory_search",
     {
-      title: "OpenLoomi Memory Search",
+      title: "OpenRice Memory Search",
       description:
-        "Search OpenLoomi unified memory across raw memory, insights, and knowledge-base documents.",
+        "Search OpenRice unified memory across raw memory, insights, and knowledge-base documents.",
       inputSchema: {
         query: z.string().min(1).describe("Search query."),
         sources: z
@@ -25,7 +25,7 @@ export function registerMemoryTools(
           .min(1)
           .optional()
           .describe(
-            "Optional source filters. Omit to let OpenLoomi search all memory sources.",
+            "Optional source filters. Omit to let OpenRice search all memory sources.",
           ),
         limit: z
           .number()
@@ -59,7 +59,7 @@ export function registerMemoryTools(
     async (args) =>
       withReadyOpenLoomiClient(
         context,
-        "OpenLoomi memory search failed",
+        "OpenRice memory search failed",
         async (client) => {
           const result = await client.postJson("/api/memory/search", {
             query: args.query,
@@ -71,7 +71,7 @@ export function registerMemoryTools(
             includeArchivedInsights: args.includeArchivedInsights,
           });
 
-          return jsonToolResult("OpenLoomi memory search result", result, {
+          return jsonToolResult("OpenRice memory search result", result, {
             query: args.query,
             result,
           });
@@ -82,9 +82,9 @@ export function registerMemoryTools(
   server.registerTool(
     "openloomi_rag_search",
     {
-      title: "OpenLoomi RAG Search",
+      title: "OpenRice RAG Search",
       description:
-        "Search uploaded OpenLoomi knowledge-base documents with semantic RAG search.",
+        "Search uploaded OpenRice knowledge-base documents with semantic RAG search.",
       inputSchema: {
         query: z.string().min(1).describe("Knowledge-base search query."),
         limit: z
@@ -111,7 +111,7 @@ export function registerMemoryTools(
     async (args) =>
       withReadyOpenLoomiClient(
         context,
-        "OpenLoomi RAG search failed",
+        "OpenRice RAG search failed",
         async (client) => {
           const result = await client.postJson("/api/rag/search", {
             query: args.query,
@@ -119,7 +119,7 @@ export function registerMemoryTools(
             threshold: args.threshold,
           });
 
-          return jsonToolResult("OpenLoomi RAG search result", result, {
+          return jsonToolResult("OpenRice RAG search result", result, {
             query: args.query,
             result,
           });
@@ -130,9 +130,9 @@ export function registerMemoryTools(
   server.registerTool(
     "openloomi_kb_list_documents",
     {
-      title: "OpenLoomi Knowledge Base Documents",
+      title: "OpenRice Knowledge Base Documents",
       description:
-        "List documents uploaded to the local OpenLoomi knowledge base.",
+        "List documents uploaded to the local OpenRice knowledge base.",
       inputSchema: {
         pageSize: z
           .number()
@@ -157,7 +157,7 @@ export function registerMemoryTools(
     async (args) =>
       withReadyOpenLoomiClient(
         context,
-        "OpenLoomi knowledge-base document listing failed",
+        "OpenRice knowledge-base document listing failed",
         async (client) => {
           const params = new URLSearchParams();
           if (args.pageSize !== undefined) {
@@ -171,7 +171,7 @@ export function registerMemoryTools(
             `/api/rag/documents${query ? `?${query}` : ""}`,
           );
 
-          return jsonToolResult("OpenLoomi knowledge-base documents", result, {
+          return jsonToolResult("OpenRice knowledge-base documents", result, {
             result,
           });
         },
@@ -181,14 +181,14 @@ export function registerMemoryTools(
   server.registerTool(
     "openloomi_kb_get_document",
     {
-      title: "OpenLoomi Knowledge Base Document",
+      title: "OpenRice Knowledge Base Document",
       description:
-        "Read metadata and extracted chunks for one OpenLoomi knowledge-base document.",
+        "Read metadata and extracted chunks for one OpenRice knowledge-base document.",
       inputSchema: {
         documentId: z
           .string()
           .min(1)
-          .describe("OpenLoomi knowledge-base document id."),
+          .describe("OpenRice knowledge-base document id."),
       },
       annotations: {
         readOnlyHint: true,
@@ -200,14 +200,14 @@ export function registerMemoryTools(
     async (args) =>
       withReadyOpenLoomiClient(
         context,
-        "OpenLoomi knowledge-base document read failed",
+        "OpenRice knowledge-base document read failed",
         async (client) => {
           const documentId = encodeURIComponent(args.documentId);
           const result = await client.getJson(
             `/api/rag/documents/${documentId}`,
           );
 
-          return jsonToolResult("OpenLoomi knowledge-base document", result, {
+          return jsonToolResult("OpenRice knowledge-base document", result, {
             documentId: args.documentId,
             result,
           });
@@ -218,9 +218,9 @@ export function registerMemoryTools(
   server.registerTool(
     "openloomi_kb_stats",
     {
-      title: "OpenLoomi Knowledge Base Stats",
+      title: "OpenRice Knowledge Base Stats",
       description:
-        "Read aggregate document and chunk counts for the OpenLoomi knowledge base.",
+        "Read aggregate document and chunk counts for the OpenRice knowledge base.",
       annotations: {
         readOnlyHint: true,
         destructiveHint: false,
@@ -231,10 +231,10 @@ export function registerMemoryTools(
     async () =>
       withReadyOpenLoomiClient(
         context,
-        "OpenLoomi knowledge-base stats failed",
+        "OpenRice knowledge-base stats failed",
         async (client) => {
           const result = await client.getJson("/api/rag/stats");
-          return jsonToolResult("OpenLoomi knowledge-base stats", result);
+          return jsonToolResult("OpenRice knowledge-base stats", result);
         },
       ),
   );

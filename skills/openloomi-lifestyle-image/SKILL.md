@@ -1,17 +1,17 @@
 ---
 name: openloomi-lifestyle-image
-description: Identify whether a user is asking OpenLoomi to generate a lifestyle image, portrait, personal visual, or lifestyle scene. Use this skill for chat messages that may request image generation for a user's lifestyle, identity, persona, personal brand, social profile, memories, interests, or real-life scene; distinguish true generation intent from ordinary image understanding, prompt-writing, editing, or negated requests.
+description: Identify whether a user is asking OpenRice to generate a lifestyle image, portrait, personal visual, or lifestyle scene. Use this skill for chat messages that may request image generation for a user's lifestyle, identity, persona, personal brand, social profile, memories, interests, or real-life scene; distinguish true generation intent from ordinary image understanding, prompt-writing, editing, or negated requests.
 ---
 
-# OpenLoomi Lifestyle Image
+# OpenRice Lifestyle Image
 
 ## Purpose
 
-Decide whether the user is asking to generate a lifestyle image through OpenLoomi's existing lifestyle image flow. This skill only judges intent and prepares a decision signal for the host app. Do not call image generation providers from this skill.
+Decide whether the user is asking to generate a lifestyle image through OpenRice's existing lifestyle image flow. This skill only judges intent and prepares a decision signal for the host app. Do not call image generation providers from this skill.
 
 ## Decision
 
-Return a lifestyle image generation decision only when the user clearly wants OpenLoomi to create or generate a lifestyle-oriented image.
+Return a lifestyle image generation decision only when the user clearly wants OpenRice to create or generate a lifestyle-oriented image.
 
 Use `matched: true` when the request asks to generate, create, make, draw, design, render, or produce a lifestyle image, personal visual, avatar-like lifestyle scene, personal brand image, social profile visual, or life-scene image based on the user's profile, memory, interests, chat context, or uploaded reference image.
 

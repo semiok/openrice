@@ -276,7 +276,7 @@ export function FeishuAuthForm({
           name,
           description: t(
             "auth.feishuBotDescription",
-            "Chat with openloomi via Lark/Feishu",
+            "Chat with OpenRice via Lark/Feishu",
           ),
           adapter: "feishu",
           enable: true,
@@ -464,7 +464,7 @@ export function FeishuAuthForm({
             <p className="text-sm text-muted-foreground">
               {t(
                 "auth.feishuDescription",
-                "Create an enterprise self-built app on Lark/Feishu Open Platform and enable bot capability, select Use long connection to receive events and subscribe to im.message.receive_v1, fill in the credentials below to chat with openloomi.",
+                "Create an enterprise self-built app on Lark/Feishu Open Platform and enable bot capability, select Use long connection to receive events and subscribe to im.message.receive_v1, fill in the credentials below to chat with OpenRice.",
               )}
             </p>
             {manualFields}
@@ -502,7 +502,7 @@ export function FeishuAuthForm({
                 <p className="text-sm text-muted-foreground">
                   {t(
                     "auth.feishuDescription",
-                    "Create an enterprise self-built app on Lark/Feishu Open Platform and enable bot capability, select Use long connection to receive events and subscribe to im.message.receive_v1, fill in the credentials below to chat with openloomi.",
+                    "Create an enterprise self-built app on Lark/Feishu Open Platform and enable bot capability, select Use long connection to receive events and subscribe to im.message.receive_v1, fill in the credentials below to chat with OpenRice.",
                   )}
                 </p>
                 {manualFields}

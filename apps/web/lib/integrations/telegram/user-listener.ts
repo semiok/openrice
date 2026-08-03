@@ -42,7 +42,7 @@ const telegramConversationStore = new TelegramConversationStore(
 // Development environment logging switch
 const DEBUG = process.env.NODE_ENV === "development";
 // AI reply identifier suffix
-const AI_SUFFIX = "(By openloomi AI)";
+const AI_SUFFIX = "(By OpenRice AI)";
 
 // Extended message type to include properties that gramjs types don't properly expose
 interface TelegramMessageExtended {

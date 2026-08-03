@@ -28,7 +28,7 @@ import {
 } from "./conversation-store";
 import { handleAgentRuntime } from "./runtime";
 
-const AI_SUFFIX = "(By openloomi AI)";
+const AI_SUFFIX = "(By OpenRice AI)";
 const WHATSAPP_MAX_ATTACHMENT_BYTES = 100 * 1024 * 1024;
 const POLL_INTERVAL_MS = 3000;
 const POLL_MESSAGE_COUNT = 10;

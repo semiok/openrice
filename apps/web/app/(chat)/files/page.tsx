@@ -662,7 +662,7 @@ export default function SavedFilesPage() {
                           `files.providers.${file.storageProvider}`,
                           file.storageProvider === "google_drive"
                             ? "Google Drive"
-                            : "openloomi Cloud",
+                            : "OpenRice Cloud",
                         )}
                       </span>
                     </div>

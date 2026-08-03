@@ -58,7 +58,7 @@ interface AutoRefreshOptions {
 
 /**
  * Custom hook for Insight refresh related functionality
- * @param assistantName - Assistant name, used to replace "openloomi" in copy
+ * @param assistantName - Assistant name, used to replace "OpenRice" in copy
  * @param isFirstLanding - Whether it's the first visit (no Insight events)
  * @param initialRefresh - Whether to execute refresh once on Hook initialization, defaults to true
  * @param autoRefreshOptions - Auto refresh configuration, defaults to enabled
@@ -94,7 +94,7 @@ export function useInsightRefresh(
   }, [isRefreshing]);
 
   // Assistant name
-  const name = assistantName || "openloomi";
+  const name = assistantName || "OpenRice";
 
   /**
    * Convert API errors to friendly error messages

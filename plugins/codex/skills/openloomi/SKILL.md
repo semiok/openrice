@@ -1,15 +1,15 @@
 ---
 name: openloomi
-description: "Use local OpenLoomi from Codex. Triggers: Loomi, OpenLoomi, personal assistant, memory, workspace context, setup, install openloomi, setup openloomi, 一键装好并跑起来, finalize openloomi, fix openloomi, openloomi tour, guided tour, walk me through openloomi, show me everything, 一条龙, 体验一下, 带我看一下."
+description: "Use local OpenRice from Codex. Triggers: Loomi, OpenRice, personal assistant, memory, workspace context, setup, install openloomi, setup openloomi, 一键装好并跑起来, finalize openloomi, fix openloomi, openloomi tour, guided tour, walk me through openloomi, show me everything, 一条龙, 体验一下, 带我看一下."
 allowed-tools: "Bash(node $SKILL_DIR/../../scripts/loomi-bridge.mjs *)"
 ---
 
-# OpenLoomi
+# OpenRice
 
-Use this skill when the user wants Codex to work with OpenLoomi as a local
+Use this skill when the user wants Codex to work with OpenRice as a local
 personal assistant, memory layer, or setup guide.
 
-This skill is intentionally thin. It calls the local bridge and lets OpenLoomi
+This skill is intentionally thin. It calls the local bridge and lets OpenRice
 own runtime execution, memory, connectors, settings, and secret storage.
 
 Before taking action, check plugin readiness:
@@ -19,11 +19,11 @@ node "$SKILL_DIR/../../scripts/loomi-bridge.mjs" setup-status
 ```
 
 If the bridge returns `ready: false`, follow the reported `nextAction`. Do not
-ask the user to paste API keys, OAuth tokens, connector secrets, or OpenLoomi
+ask the user to paste API keys, OAuth tokens, connector secrets, or OpenRice
 auth tokens into Codex chat.
 
 When `setup-status` returns `loopbackAccessAmbiguous: true`, do not conclude
-that OpenLoomi is stopped. Codex network sandboxing can block access to the
+that OpenRice is stopped. Codex network sandboxing can block access to the
 host's `localhost` even while the desktop API is listening. Prefer the
 bridge's own auto-recovery path over manual `lsof` / `curl` paste: invoke
 
@@ -40,10 +40,10 @@ returns `nextAction: "run_host_probe"`, run this command yourself instead of
 asking the user to paste anything. Fall back to the manual
 `loopbackAccess.verification.commands` only if the host probe itself fails.
 
-OpenLoomi guest sessions are supported. A missing token is not a request for
+OpenRice guest sessions are supported. A missing token is not a request for
 account registration or manual token entry. When the bridge reports
 `initialize_openloomi_session` or `open_openloomi`, initialize a guest/session
-through OpenLoomi-owned surfaces:
+through OpenRice-owned surfaces:
 
 ```bash
 node "$SKILL_DIR/../../scripts/loomi-bridge.mjs" initialize-session
@@ -55,13 +55,13 @@ For installation guidance, call:
 node "$SKILL_DIR/../../scripts/loomi-bridge.mjs" install-instructions
 ```
 
-If the user asks to install OpenLoomi or explicitly approves installation, run the end-to-end wizard in one invocation:
+If the user asks to install OpenRice or explicitly approves installation, run the end-to-end wizard in one invocation:
 
 ```bash
 node "$SKILL_DIR/../../scripts/loomi-bridge.mjs" setup --yes
 ```
 
-That walks the whole state machine: resolve the official release → download → install → set `OPENLOOMI_AGENT_PROVIDER=codex` in the GUI launchd / environment.d → launch the OpenLoomi desktop app → wait for the local API on `http://localhost:3414` → mint a guest session token into `~/.openloomi/token`. Invoking this skill (or the user saying "install" / "install and run" / "一键装好并跑起来") counts as explicit approval to pass `--yes`. Sandbox prompts for network / install to `/Applications` / launching the GUI will appear — that's expected; approve them and the wizard continues.
+That walks the whole state machine: resolve the official release → download → install → set `OPENLOOMI_AGENT_PROVIDER=codex` in the GUI launchd / environment.d → launch the OpenRice desktop app → wait for the local API on `http://localhost:3414` → mint a guest session token into `~/.openloomi/token`. Invoking this skill (or the user saying "install" / "install and run" / "一键装好并跑起来") counts as explicit approval to pass `--yes`. Sandbox prompts for network / install to `/Applications` / launching the GUI will appear — that's expected; approve them and the wizard continues.
 
 The bridge resolves the official GitHub release artifact for the current
 platform and architecture automatically, downloads it, and installs it with the
@@ -80,7 +80,7 @@ For bridge metadata, call:
 node "$SKILL_DIR/../../scripts/loomi-bridge.mjs" version
 ```
 
-For available OpenLoomi workflows, call:
+For available OpenRice workflows, call:
 
 ```bash
 node "$SKILL_DIR/../../scripts/loomi-bridge.mjs" workflow-guidance
@@ -95,18 +95,18 @@ node "$SKILL_DIR/../../scripts/loomi-bridge.mjs" workflow-guidance --workflow op
 ```
 
 Use the thin wrapper skills when the user specifically asks for loop, memory,
-or connector readiness workflows. The plugin must not copy OpenLoomi
+or connector readiness workflows. The plugin must not copy OpenRice
 connector, memory, or loop logic into Codex.
 
 ---
 
 ## Launching the desktop app with the Codex runtime
 
-When OpenLoomi is used from Codex, prefer the desktop Codex runtime so
-OpenLoomi can reuse the user's existing Codex CLI runtime for the first
+When OpenRice is used from Codex, prefer the desktop Codex runtime so
+OpenRice can reuse the user's existing Codex CLI runtime for the first
 workflow.
 
-When the user asks to make OpenLoomi spawn Codex as the native-agent executor,
+When the user asks to make OpenRice spawn Codex as the native-agent executor,
 or diagnostics show that the desktop runtime is not using Codex, call:
 
 ```bash
@@ -118,5 +118,5 @@ wizard auto-restarts the desktop app after writing the env var, so if
 setup was used end-to-end the new env is already in effect — just verify
 `/api/native/providers` reports `defaultAgent: "codex"`. If instead the
 env was written via a direct `set-codex-runtime-env` invocation, ask the
-user to Quit+Reopen OpenLoomi Desktop so the freshly forked web server
+user to Quit+Reopen OpenRice Desktop so the freshly forked web server
 inherits the new value, then verify the same endpoint.

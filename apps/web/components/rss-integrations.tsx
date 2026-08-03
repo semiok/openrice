@@ -145,7 +145,7 @@ export function RssAddControls() {
           <p>
             {t(
               "integrations.customFeedDescription",
-              "Paste any RSS/Atom/JSON feed URL. openloomi will fetch it periodically and surface new stories in your understanding feed.",
+              "Paste any RSS/Atom/JSON feed URL. OpenRice will fetch it periodically and surface new stories in your understanding feed.",
             )}
           </p>
           <Button

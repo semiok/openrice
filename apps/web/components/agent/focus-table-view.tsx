@@ -423,7 +423,7 @@ export function FocusTableView({
           "insight.noDataPlaceholder.line1",
           "When there are new tracked events, {{name}} will keep an eye on them for you.",
           {
-            name: "openloomi",
+            name: "OpenRice",
           },
         )}
       </div>

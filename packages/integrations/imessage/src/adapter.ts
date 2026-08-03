@@ -900,7 +900,7 @@ end tell`;
           return {
             available: false,
             error:
-              "Full Disk Access permission is required to read iMessage database. Please add the current running application process (such as Terminal, Node, or openloomi) in System Settings > Privacy & Security > Full Disk Access, then restart the app and try again.",
+              "Full Disk Access permission is required to read iMessage database. Please add the current running application process (such as Terminal, Node, or OpenRice) in System Settings > Privacy & Security > Full Disk Access, then restart the app and try again.",
           };
         }
 

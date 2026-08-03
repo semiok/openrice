@@ -66,9 +66,9 @@ export default function ContactUs({
 
   const handleEmailClick = () => {
     if (isTauriEnv) {
-      openUrl(`mailto:${email}?subject=openloomi Suggestions`);
+      openUrl(`mailto:${email}?subject=OpenRice Suggestions`);
     } else {
-      openUrl(`mailto:${email}?subject=openloomi Suggestions`);
+      openUrl(`mailto:${email}?subject=OpenRice Suggestions`);
     }
     setShowEmailOptions(false);
   };

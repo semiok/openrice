@@ -925,7 +925,7 @@ export function AddPlatformContent({
         label: "Lark/Feishu",
         description: t(
           "auth.feishuDes",
-          "Connect Lark/Feishu with App ID and App Secret to chat with openloomi via WebSocket.",
+          "Connect Lark/Feishu with App ID and App Secret to chat with OpenRice via WebSocket.",
         ),
         icon: "chat-smile",
         buttonClass: "bg-[#3370FF] text-white hover:bg-[#2860E6]",
@@ -937,7 +937,7 @@ export function AddPlatformContent({
         label: "DingTalk",
         description: t(
           "auth.dingtalkDes",
-          "Connect DingTalk via Stream mode using Client ID and Client Secret to chat with openloomi.",
+          "Connect DingTalk via Stream mode using Client ID and Client Secret to chat with OpenRice.",
         ),
         icon: "chat-smile",
         buttonClass: "bg-[#0089FF] text-white hover:bg-[#0078E0]",
@@ -949,7 +949,7 @@ export function AddPlatformContent({
         label: "QQ",
         description: t(
           "auth.qqbotDes",
-          "Connect QQ Open Platform using AppID and AppSecret via WebSocket to chat with openloomi.",
+          "Connect QQ Open Platform using AppID and AppSecret via WebSocket to chat with OpenRice.",
         ),
         icon: "qq",
         buttonClass: "bg-[#12B7F5] text-white hover:bg-[#0E9AD4]",
@@ -996,7 +996,7 @@ export function AddPlatformContent({
         label: "GitHub",
         description: t(
           "auth.githubDes",
-          "Connect GitHub repositories to let openloomi learn from your code.",
+          "Connect GitHub repositories to let OpenRice learn from your code.",
         ),
         icon: "github",
         buttonClass: "bg-black text-white hover:bg-neutral-800",
@@ -1013,7 +1013,7 @@ export function AddPlatformContent({
         label: "Google Docs",
         description: t(
           "auth.googleDocsDes",
-          "Connect Google Docs to watch document changes and update content directly from openloomi.",
+          "Connect Google Docs to watch document changes and update content directly from OpenRice.",
         ),
         icon: "file_text",
         buttonClass: "bg-[#1A73E8] text-white hover:bg-[#1558b0]",
@@ -1026,7 +1026,7 @@ export function AddPlatformContent({
         label: "HubSpot",
         description: t(
           "auth.hubspotDes",
-          "Connect HubSpot to watch pipeline changes and update deal stages from openloomi.",
+          "Connect HubSpot to watch pipeline changes and update deal stages from OpenRice.",
         ),
         icon: "orbit",
         buttonClass: "bg-[#FF7A59] text-white hover:bg-[#e66545]",
@@ -1039,7 +1039,7 @@ export function AddPlatformContent({
         label: "Outlook Calendar",
         description: t(
           "auth.outlookCalendarDes",
-          "Sync Outlook Calendar to see updates and manage events in openloomi.",
+          "Sync Outlook Calendar to see updates and manage events in OpenRice.",
         ),
         icon: "calendar",
         buttonClass: "bg-[#0F7BFF] text-white hover:bg-[#0c62ca]",
@@ -1052,7 +1052,7 @@ export function AddPlatformContent({
         label: "Google Calendar",
         description: t(
           "auth.googleCalendarDes",
-          "Sync your events and get reminders directly in openloomi.",
+          "Sync your events and get reminders directly in OpenRice.",
         ),
         icon: "calendar",
         buttonClass: "bg-[#1A73E8] text-white hover:bg-[#1558b0]",
@@ -1110,7 +1110,7 @@ export function AddPlatformContent({
         label: "Microsoft Teams",
         description: t(
           "auth.teamsDes",
-          "Connect Teams chats and channels for openloomi insights.",
+          "Connect Teams chats and channels for OpenRice insights.",
         ),
         icon: "panel_left",
         buttonClass: "bg-[#6264A7] text-white hover:bg-[#4e4f9a]",
@@ -1123,7 +1123,7 @@ export function AddPlatformContent({
         label: "Notion",
         description: t(
           "auth.notionDes",
-          "Save files to Notion and let openloomi learn from selected pages.",
+          "Save files to Notion and let OpenRice learn from selected pages.",
         ),
         icon: "blocks",
         buttonClass: "bg-black text-white hover:bg-neutral-800",
@@ -1289,11 +1289,11 @@ export function AddPlatformContent({
               {pendingPlatform === "slack"
                 ? t(
                     "auth.slackAdminConfirmDesc",
-                    "You need to be a Slack workspace administrator to authorize this integration. Regular members cannot add openloomi to the workspace.",
+                    "You need to be a Slack workspace administrator to authorize this integration. Regular members cannot add OpenRice to the workspace.",
                   )
                 : t(
                     "auth.discordAdminConfirmDesc",
-                    "You need to be a Discord server administrator to authorize this integration. Regular members cannot add openloomi to the server.",
+                    "You need to be a Discord server administrator to authorize this integration. Regular members cannot add OpenRice to the server.",
                   )}
             </AlertDialogDescription>
           </AlertDialogHeader>

@@ -183,7 +183,7 @@ export function RssOpmlImport({ onImported }: RssOpmlImportProps) {
         <p className="text-[11px] text-[#8f8e88]">
           {t(
             "integrations.importOpmlHint",
-            "Only .opml files up to 2MB are accepted. openloomi processes the first 200 feeds per upload.",
+            "Only .opml files up to 2MB are accepted. OpenRice processes the first 200 feeds per upload.",
           )}
         </p>
       </div>

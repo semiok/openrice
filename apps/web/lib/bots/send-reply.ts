@@ -147,7 +147,7 @@ export async function sendReplyByBotId({
     }
 
     const ownerId = userId ?? bot.userId;
-    const suffix = withAppSuffix ? " (By openloomi AI)" : "";
+    const suffix = withAppSuffix ? " (By OpenRice AI)" : "";
     const sentMessage = (message ?? "").trim() + suffix;
     const normalizedHtml =
       typeof messageHtml === "string" ? messageHtml.trim() : "";
