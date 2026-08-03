@@ -30,15 +30,16 @@ Codex 负责 OpenRice 的总体维护和最终交付：
 
 Codex 的分支使用：`codex/MET-xx-short-scope`。
 
-### M5：高性能 Codex 实现者
+### M5：模块开发与体验实现者
 
-M5 适合承担边界明确、需要较强 CPU 或大量构建验证的独立任务：
+M5 与 lindong 是同级实现者，负责 Linear 指定的独立模块和 Bug 修复：
 
-- 实现 Linear 明确分配的独立功能。
-- 执行耗时构建、批量检查、测试和性能验证。
-- 当前任务是 MET-30 的“常用技能”菜单。
-- 只修改 issue 约定的模块，不处理 OpenLoomi 上游同步和品牌层。
-- 完成后推送功能分支并创建 PR，不自行合并、release 或部署。
+- 开发分配给自己的功能模块和体验优化。
+- 开工前读取 issue 最新正文、评论和当前 `main`，不沿用旧 session 的任务假设。
+- 只修改任务范围内模块，不覆盖 Codex、lindong 或其他协作者的工作。
+- 完成本地验证后推送功能分支并创建 PR，说明范围、测试、截图、风险和回滚方式。
+- 只负责提交 PR，不自行合并 `main`，不创建版本，不发布或部署。
+- PR 由 Codex 检查；只有 Codex 可以执行最终合并、版本、发布和部署。
 
 M5 与维护者共用 GitHub 账号 `semiok`。GitHub 无法仅靠账号区分操作者，因此：
 
@@ -48,14 +49,14 @@ M5 与维护者共用 GitHub 账号 `semiok`。GitHub 无法仅靠账号区分�
 
 ### lindong：模块开发与体验实现者
 
-lindong 负责 Linear 指定的独立模块和体验优化：
+lindong 与 M5 是同级实现者，负责 Linear 指定的独立模块和 Bug 修复：
 
-- 开发分配给自己的功能模块和 Bug 修复。
-- 处理明确的 UI、交互、安装和功能验证任务。
+- 开发分配给自己的功能模块和体验优化。
 - 开工前读取 issue 最新正文、评论和当前 `main`，不沿用旧 session 的任务假设。
-- 不修改任务范围外模块，不覆盖 Codex 或 M5 的工作。
-- 完成本地验证后创建 PR，说明范围、测试、截图、风险和回滚方式。
-- 不自行合并 `main`，不发布或部署。
+- 只修改任务范围内模块，不覆盖 Codex、M5 或其他协作者的工作。
+- 完成本地验证后推送功能分支并创建 PR，说明范围、测试、截图、风险和回滚方式。
+- 只负责提交 PR，不自行合并 `main`，不创建版本，不发布或部署。
+- PR 由 Codex 检查；只有 Codex 可以执行最终合并、版本、发布和部署。
 
 lindong 的分支使用：`lindong/MET-xx-short-scope`；协作留言和 PR 可标记 `[lindong]`。
 
@@ -64,8 +65,8 @@ lindong 的分支使用：`lindong/MET-xx-short-scope`；协作留言和 PR 可�
 最后核对日期：2026-08-03。
 
 - Codex：OpenLoomi 上游同步、品牌覆盖层、架构与兼容边界、review、合并、构建和部署；维护 MET-29、MET-30 的上游同步部分和 MET-31。
-- M5：MET-30 的“常用技能”菜单，分支 `m5/MET-30-favorite-skills`。
-- lindong：依据 MET-29 与后续 issue，处理独立模块、品牌边角审计、功能验证或明确 Bug。
+- M5（与 lindong 同级，仅提交 PR）：MET-30 的“常用技能”菜单，分支 `m5/MET-30-favorite-skills`。
+- lindong（与 M5 同级，仅提交 PR）：依据 MET-29 与后续 issue，处理独立模块、品牌边角审计、功能验证或明确 Bug。
 
 当前分工会变化。实际开工前必须以 Linear 最新记录为准。
 
