@@ -437,7 +437,13 @@
     </style>
   </head>
   <body>
-    <img class="fox" id="fox" data-state="idle" alt="openrice" draggable="false" />
+    <img
+      class="fox"
+      id="fox"
+      data-state="idle"
+      alt="openrice"
+      draggable="false"
+    />
     <span class="pending-badge" id="pending-badge" aria-hidden="true"></span>
     <!-- #365 — idle status affordance. The pill is hidden by default
          and made visible by `applyIdlePill()` when state === "idle"
@@ -460,7 +466,9 @@
     </span>
 
     <div id="pet-menu" role="menu" aria-hidden="true">
-      <button type="button" data-op="open" role="menuitem">Open openrice</button>
+      <button type="button" data-op="open" role="menuitem">
+        Open openrice
+      </button>
       <button type="button" data-op="settings" role="menuitem">Settings</button>
       <!-- User-defined prompt action buttons injected by applyContextActions(view). -->
       <hr />

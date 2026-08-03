@@ -40,8 +40,9 @@ export async function proxy(request: NextRequest) {
 
   // Keep legacy links working while making rice.traditionow.ai the
   // canonical browser entry point for OpenRice.
-  const hostname = (request.headers.get("x-forwarded-host") ??
-    request.headers.get("host"))
+  const hostname = (
+    request.headers.get("x-forwarded-host") ?? request.headers.get("host")
+  )
     ?.split(":")[0]
     .toLowerCase();
   if (hostname === "loomi.traditionow.ai") {
