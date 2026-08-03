@@ -560,7 +560,7 @@ function normalizeDirectReferenceImage(
 
 function buildLifestylePrompt(summary: LifestylePromptSourceSummary): string {
   const sections = [
-    "Create a polished personalized lifestyle image that represents the user's current Loomi context.",
+    "Create a polished personalized lifestyle image that represents the user's current OpenRice context.",
     "The result should feel shareable, warm, specific, and visually grounded rather than abstract.",
     "",
     buildProfileSection(summary),

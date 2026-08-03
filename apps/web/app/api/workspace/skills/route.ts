@@ -10,15 +10,21 @@ function getSkillMetadataPath(): string {
   return join(homeDir, APP_DIR_NAME, "skill-metadata.json");
 }
 
-/** Read skill metadata: Record<skillId, { avatar?: string }> */
-function readSkillMetadata(): Record<string, { avatar?: string }> {
+/** Read skill metadata keyed by the stable skill directory ID. */
+function readSkillMetadata(): Record<
+  string,
+  { avatar?: string; favorite?: boolean }
+> {
   const path = getSkillMetadataPath();
   if (!existsSync(path)) return {};
   try {
     const raw = readFileSync(path, "utf-8");
     const data = JSON.parse(raw);
     if (typeof data !== "object" || data === null) return {};
-    return data as Record<string, { avatar?: string }>;
+    return data as Record<
+      string,
+      { avatar?: string; favorite?: boolean }
+    >;
   } catch {
     return {};
   }
@@ -194,14 +200,15 @@ export async function GET() {
     }
 
     const metadata = readSkillMetadata();
-    const skillsWithAvatar = allSkills.map((s) => ({
+    const skillsWithMetadata = allSkills.map((s) => ({
       ...s,
       avatar: metadata[s.id]?.avatar,
+      favorite: metadata[s.id]?.favorite ?? false,
     }));
 
     return NextResponse.json({
       success: true,
-      skills: skillsWithAvatar,
+      skills: skillsWithMetadata,
       directories: {
         openloomi: sourceDirs[0],
         claude: sourceDirs[1],

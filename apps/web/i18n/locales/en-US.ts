@@ -119,7 +119,7 @@ const en = {
         working: "Set up your first decision",
       },
       subtitle:
-        "Connect a data source so Loomi can watch for decisions worth your attention.",
+        "Connect a data source so OpenRice can watch for decisions worth your attention.",
       step: {
         setup: "Setup",
         runtime: "Connect a source",
@@ -264,7 +264,7 @@ const en = {
     // inside the 168×168 pet window without overlapping the fox; the
     // compact card carries the verbose copy under loop.compactCard.*.
     idlePill: {
-      short: "Loomi is on watch · Nothing needs your attention",
+      short: "OpenRice is on watch · Nothing needs your attention",
       cta: "View status",
       paused: "Monitoring paused",
       working: "Checking your connected sources…",
@@ -279,11 +279,11 @@ const en = {
       },
       subtitle: {
         healthy:
-          "Nothing needs your attention. Loomi will open a card when a decision needs you.",
-        checking: "Loomi is checking your sources now.",
+          "Nothing needs your attention. OpenRice will open a card when a decision needs you.",
+        checking: "OpenRice is checking your sources now.",
         paused: "Loop is paused — nothing will surface until you resume.",
         failure:
-          "Loomi couldn't update {{source}} recently. Review the original before continuing.",
+          "OpenRice couldn't update {{source}} recently. Review the original before continuing.",
       },
       lastChecked: "Last checked: {{rel}}",
       lastCheckedNever: "Last checked: never",
@@ -307,7 +307,7 @@ const en = {
     loopSaveError: "Failed to save Loop settings.",
     loopSaveOk: "Loop settings saved.",
     loopNoticeDescription:
-      "Loop is on — Loomi reads your mail, calendar, code, and chat through your connectors in the background and combines that with screen memory to fill your morning brief. Toggle off here if you'd rather not.",
+      "Loop is on — OpenRice reads your mail, calendar, code, and chat through your connectors in the background and combines that with screen memory to fill your morning brief. Toggle off here if you'd rather not.",
     aiSettingsDescription:
       "Configure per-user API settings for compatible AI providers.",
     conversationModelsTitle: "Conversation models",
