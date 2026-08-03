@@ -6284,14 +6284,14 @@ const enUS = {
   pet: {
     menu: {
       title: "Menu",
-      openLoomi: "Open Loomi",
+      openLoomi: "Open OpenRice",
       settings: "Settings",
       theme: "Theme",
       themeFox: "Fox",
       themeCapybara: "Capybara",
       pauseReminders: "Pause reminders for 1 hour",
       checkNow: "Check now",
-      quit: "Quit Loomi",
+      quit: "Quit OpenRice",
     },
     theme: {
       customDirHelp: "Drop PNGs into ~/.openloomi/pet-custom/<name>/",

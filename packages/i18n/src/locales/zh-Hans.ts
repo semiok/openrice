@@ -5927,14 +5927,14 @@ const zhHans = {
   pet: {
     menu: {
       title: "菜单",
-      openLoomi: "打开 Loomi",
+      openLoomi: "打开 OpenRice",
       settings: "设置",
       theme: "主题",
       themeFox: "狐狸",
       themeCapybara: "水豚",
       pauseReminders: "暂停提醒 1 小时",
       checkNow: "立即检查",
-      quit: "退出 Loomi",
+      quit: "退出 OpenRice",
     },
     theme: {
       customDirHelp: "把 PNG 放到 ~/.openloomi/pet-custom/<名称>/",
