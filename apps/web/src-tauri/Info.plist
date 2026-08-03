@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleIdentifier</key>
-    <string>com.openloomi.app</string>
+    <string>ai.traditionow.openrice</string>
     <key>CFBundleDisplayName</key>
-    <string>openloomi</string>
+    <string>openrice</string>
     <key>CFBundleName</key>
-    <string>openloomi</string>
+    <string>openrice</string>
     <key>NSCameraUsageDescription</key>
-    <string>openloomi needs camera access for video and screen capture features</string>
+    <string>openrice needs camera access for video and screen capture features</string>
     <key>NSMicrophoneUsageDescription</key>
-    <string>openloomi needs microphone access to record your voice during meetings</string>
+    <string>openrice needs microphone access to record your voice during meetings</string>
     <key>NSAudioCaptureUsageDescription</key>
-    <string>openloomi needs system audio recording access to capture meeting audio from other participants</string>
+    <string>openrice needs system audio recording access to capture meeting audio from other participants</string>
     <key>NSScreenCaptureUsageDescription</key>
-    <string>openloomi needs screen and system audio recording access for screen memories and meeting audio capture</string>
+    <string>openrice needs screen and system audio recording access for screen memories and meeting audio capture</string>
 </dict>
 </plist>

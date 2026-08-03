@@ -27,7 +27,7 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
-    <title>Loomi · card</title>
+    <title>openrice · card</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -2113,7 +2113,7 @@
         <div class="header">
           <div class="brand">
             <span class="status-light"></span>
-            <span class="brand-text">LOOMI ONLINE</span>
+            <span class="brand-text">OPENRICE ONLINE</span>
           </div>
           <span class="spacer"></span>
           <button
@@ -2164,7 +2164,7 @@
         </span>
         <h2 class="compact-title" id="compact-title">Everything is working</h2>
         <p class="compact-subtitle" id="compact-subtitle">
-          Nothing needs your attention. Loomi will open a card when a decision
+          Nothing needs your attention. openrice will open a card when a decision
           needs you.
         </p>
         <p class="compact-last-checked" id="compact-last-checked">
@@ -2457,7 +2457,7 @@
             <span class="value" id="dec-confidence-value">72%</span>
           </div>
           <div class="dialogue" id="dec-dialogue">
-            <span class="label">From Loomi</span>
+            <span class="label">From openrice</span>
             <span class="body" id="dec-dialogue-body">…</span>
           </div>
           <div class="evidence-pills" id="dec-evidence"></div>
@@ -2998,7 +2998,7 @@
               action: "rsvp_decline",
               label: "✗ No",
               variant: "ghost",
-              tip: "Decline the invite — Loomi sends a polite 'can't make it' reply to the host",
+              tip: "Decline the invite — openrice sends a polite 'can't make it' reply to the host",
             },
             {
               action: "rsvp_maybe",
@@ -3010,7 +3010,7 @@
               action: "rsvp_attend",
               label: "✓ Yes",
               variant: "primary",
-              tip: "Confirm attendance — Loomi adds it to your calendar and replies 'yes' to the host",
+              tip: "Confirm attendance — openrice adds it to your calendar and replies 'yes' to the host",
             },
           ],
           email_reply: [
@@ -3119,7 +3119,7 @@
               action: "run",
               label: "✓ Add",
               variant: "primary",
-              tip: "Add to your todo list — Loomi tracks it across surfaces and the dashboard",
+              tip: "Add to your todo list — openrice tracks it across surfaces and the dashboard",
             },
           ],
           brief: [
@@ -3529,7 +3529,7 @@
             const empty = document.createElement("div");
             empty.className = "queue-row";
             empty.innerHTML =
-              '<span class="qicon">∅</span><span class="qtitle">Nothing pending — Loomi is idling.</span><span></span>';
+              '<span class="qicon">∅</span><span class="qtitle">Nothing pending — openrice is idling.</span><span></span>';
             queue.appendChild(empty);
           } else {
             for (const d of sortedPending(pendingList)) {
@@ -3708,13 +3708,13 @@
           "loop.compactCard.title.paused": "Monitoring is paused",
           "loop.compactCard.title.failure": "{{source}} needs attention",
           "loop.compactCard.subtitle.healthy":
-            "Nothing needs your attention. Loomi will open a card when a decision needs you.",
+            "Nothing needs your attention. openrice will open a card when a decision needs you.",
           "loop.compactCard.subtitle.checking":
-            "Loomi is checking your sources now.",
+            "openrice is checking your sources now.",
           "loop.compactCard.subtitle.paused":
             "Loop is paused — nothing will surface until you resume.",
           "loop.compactCard.subtitle.failure":
-            "Loomi couldn't update {{source}} recently. Review the original before continuing.",
+            "openrice couldn't update {{source}} recently. Review the original before continuing.",
           "loop.compactCard.lastChecked": "Last checked: {{rel}}",
           "loop.compactCard.lastCheckedNever": "Last checked: never",
           "loop.compactCard.syncHealthy": "Sync is healthy",
@@ -5783,7 +5783,7 @@
               empty.innerHTML =
                 '<span class="brief-priority p2">·</span>' +
                 '<div><div class="bi-title">GitHub notification details unavailable</div>' +
-                '<div class="bi-sub">OpenLoomi saw unread GitHub notifications, but this card did not receive the item details.</div></div>' +
+                '<div class="bi-sub">openrice saw unread GitHub notifications, but this card did not receive the item details.</div></div>' +
                 '<span class="bi-link-cell"><a class="bi-link" href="https://github.com/notifications" data-external-url="https://github.com/notifications" target="_blank" rel="noopener noreferrer">Open notifications</a></span>';
             } else {
               empty.innerHTML =

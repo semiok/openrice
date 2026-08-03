@@ -11,21 +11,21 @@ pub fn build_native_menu(app: &tauri::AppHandle) -> Result<(), tauri::Error> {
 
     // About item - use predefined on macOS, custom on Linux/Windows
     #[cfg(target_os = "macos")]
-    let about_item = PredefinedMenuItem::about(app, Some("About openloomi"), None)?;
+    let about_item = PredefinedMenuItem::about(app, Some("About openrice"), None)?;
 
     #[cfg(not(target_os = "macos"))]
-    let about_item = MenuItemBuilder::with_id("about-openloomi", "About openloomi").build(app)?;
+    let about_item = MenuItemBuilder::with_id("about-openrice", "About openrice").build(app)?;
 
-    // openloomi app menu
-    let openloomi_menu = SubmenuBuilder::new(app, "openloomi")
+    // openrice app menu
+    let openrice_menu = SubmenuBuilder::new(app, "openrice")
         .item(&about_item)
         .separator()
         .separator()
-        .item(&PredefinedMenuItem::hide(app, Some("Hide openloomi"))?)
+        .item(&PredefinedMenuItem::hide(app, Some("Hide openrice"))?)
         .item(&PredefinedMenuItem::hide_others(app, Some("Hide Others"))?)
         .item(&PredefinedMenuItem::show_all(app, Some("Show All"))?)
         .separator()
-        .item(&PredefinedMenuItem::quit(app, Some("Quit openloomi"))?)
+        .item(&PredefinedMenuItem::quit(app, Some("Quit openrice"))?)
         .build()?;
 
     // Edit menu
@@ -41,7 +41,7 @@ pub fn build_native_menu(app: &tauri::AppHandle) -> Result<(), tauri::Error> {
         .build()?;
 
     let menu = MenuBuilder::new(app)
-        .item(&openloomi_menu)
+        .item(&openrice_menu)
         .item(&edit_menu)
         .item(&help_submenu)
         .build()?;
@@ -62,12 +62,12 @@ pub fn build_native_menu(app: &tauri::AppHandle) -> Result<(), tauri::Error> {
                     .kind(tauri_plugin_dialog::MessageDialogKind::Error)
                     .show(|_| {});
             }
-        } else if id == "about-openloomi" {
+        } else if id == "about-openrice" {
             // Show About dialog (Linux/Windows)
             let version = env!("CARGO_PKG_VERSION");
             app.dialog()
-                .message(format!("openloomi v{}", version))
-                .title("About openloomi")
+                .message(format!("openrice v{}", version))
+                .title("About openrice")
                 .kind(tauri_plugin_dialog::MessageDialogKind::Info)
                 .show(|_| {});
         }

@@ -146,7 +146,7 @@ export default function SkillsPage() {
         <p className="text-muted-foreground">
           {t(
             "agent.panels.workspacePanel.skillsTauriOnly",
-            "Skills are only available in the openloomi desktop app.",
+            "Skills are only available in the openrice desktop app.",
           )}
         </p>
       </div>

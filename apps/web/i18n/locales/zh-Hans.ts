@@ -345,7 +345,7 @@ const zh = {
       "聊天记录不会受影响，完成对话 API 配置后即可发送新消息。",
     embeddingTitle: "Embedding 模型",
     embeddingDescription:
-      "选择 OpenLoomi 为知识库、记忆和语义搜索生成向量的方式。",
+      "选择 openrice 为知识库、记忆和语义搜索生成向量的方式。",
     embeddingCloudTitle: "在线 API",
     embeddingCloudDescription: "使用 OpenAI 兼容的 Embedding 接口。",
     embeddingLocalTitle: "本地模型",

@@ -24,9 +24,9 @@ const enUS = {
     reconnect: "Reconnect",
     email: "Email",
     password: "Password",
-    welcome: "Welcome to openloomi Alpha",
+    welcome: "Welcome to openrice Alpha",
     more: "More",
-    askopenloomi: "Ask openloomi",
+    askopenloomi: "Ask openrice",
     continue: "Continue",
     add: "Add",
     customInputPlaceholder: "Press Enter to add after input",
@@ -126,9 +126,9 @@ const enUS = {
         description: "Track updates from OpenAI, Claude, Google, and more.",
       },
       frontendDesign: {
-        title: "Create a website intro for openloomi",
+        title: "Create a website intro for openrice",
         description:
-          "Design a beautiful landing page showcasing openloomi features.",
+          "Design a beautiful landing page showcasing openrice features.",
       },
       linkedinPost: {
         title: "Create an event and scheduled task to remind me to drink water",
@@ -143,12 +143,12 @@ const enUS = {
         description: "Generate unique generative art and visuals.",
       },
       presentation: {
-        title: "Tell me about openloomi features",
-        description: "Tell me about openloomi features",
+        title: "Tell me about openrice features",
+        description: "Tell me about openrice features",
       },
     },
     quickAuthPrimaryCta: "Connect an integration",
-    quickAuthTitle: "Connect openloomi to your tools",
+    quickAuthTitle: "Connect openrice to your tools",
     quickAuthSubtitle:
       "Pick a channel below to unlock full history and streamlined replies.",
     quickAuthStatusConnect: "Connect {{platform}}",
@@ -159,7 +159,7 @@ const enUS = {
     rssTabWithCount: "RSS",
     noConnectedPlatforms: "No integrations connected yet.",
     allPlatformsConnected: "You've connected all available integrations.",
-    readyToChat: "You’re all set. Jump back into openloomi anytime.",
+    readyToChat: "You’re all set. Jump back into openrice anytime.",
     enterChat: "Go to chat",
     openloomiIntro1:
       "I'm your intelligent communication assistant to highlight most important messages,",
@@ -167,17 +167,17 @@ const enUS = {
       "helping you stay focused, save time, and communicate with greater ease.",
     contactUs: "Contact Us",
     suggestion:
-      "If you have suggestions or ideas about using openloomi, we'd love to hear from you.",
+      "If you have suggestions or ideas about using openrice, we'd love to hear from you.",
     joinTelegram: "Join Our Telegram Group",
     joinDiscord: "Join Our Discord Community",
     mailToUs: "Send Us an Email",
     reply: "We'll reply to your message as soon as possible",
     desktopAppFeedbackHint:
       "Join our community to share feedback and suggestions",
-    telegramBotHeadline: "Use openloomi Telegram Bot",
+    telegramBotHeadline: "Use openrice Telegram Bot",
     telegramBotDescription:
-      "Install the official openloomi Bot to surface understandings and run /insight, /ask, and /reply commands right inside Telegram.",
-    openTelegramBot: "Open openloomi Bot in Telegram",
+      "Install the official openrice Bot to surface understandings and run /insight, /ask, and /reply commands right inside Telegram.",
+    openTelegramBot: "Open openrice Bot in Telegram",
     unAuth:
       "You haven't authorized access to your communication integrations yet—so I can't access your communication data right now. Once you complete authorization, I'll pull the content you care about from your messages. Please select the integration you'd like to connect:", // Streamlined; added clarity ("communication data" instead of "information")
     supportedPlatforms:
@@ -214,7 +214,7 @@ const enUS = {
     sendErrorCannotFindInputEntity:
       "You need to add the recipient as your contact in Telegram",
     sending: "Sending...",
-    thinking: "openloomi is thinking...",
+    thinking: "openrice is thinking...",
     generating: "Crafting the best reply for you",
     sendSuccess: "Message sent successfully!",
     retry: "Retry",
@@ -233,7 +233,7 @@ const enUS = {
     replyError:
       "Sorry, I encountered an error while sending the message: {{error}}",
     replyToneHeading: "Tone presets",
-    replyToneHint: "Used whenever openloomi drafts a reply for you.",
+    replyToneHint: "Used whenever openrice drafts a reply for you.",
     replyToneChangeHint: "Switching tones will regenerate the next AI drafts.",
     replyRegenerating: "Regenerating draft",
     replyRegenerateFailed: "Couldn't regenerate the draft. Please try again.",
@@ -241,11 +241,11 @@ const enUS = {
     replyGenerateWithTone: "Please craft the reply in a {{toneLabel}} tone.",
     replyRefreshWithTone:
       "Help me regenerate the reply draft. Keep it {{toneLabel}}.",
-    aiSoulHeading: "openloomi Soul",
+    aiSoulHeading: "openrice Soul",
     aiSoulIntroDescription:
-      "Shape openloomi's personality and how it works — so it feels like yours, not just anyone's assistant.",
+      "Shape openrice's personality and how it works — so it feels like yours, not just anyone's assistant.",
     aiSoulHint:
-      "Describe the personality and tone you want from openloomi. Leave blank to use the default.",
+      "Describe the personality and tone you want from openrice. Leave blank to use the default.",
     aiSoulPromptLabel: "Custom Prompt",
     aiSoulPromptPlaceholder:
       "e.g. You are a sharp, direct assistant. Keep responses concise and always lead with action, not analysis.",
@@ -369,7 +369,7 @@ const enUS = {
     support: "Support",
     allRightsReserved: "All rights reserved",
     fetchCreditFailed: "Fetch credit failed",
-    authenticating: "Connecting to openloomi...",
+    authenticating: "Connecting to openrice...",
     executing: "Executing...",
     processing: "Processing...",
     searchingMessages: "Searching messages...",
@@ -627,7 +627,7 @@ const enUS = {
       description: "Manage your skills from ~/.openloomi/skills",
       titleNew: "Skills",
       descriptionNew:
-        "Provide pre-packaged and reusable best practices and tools for openloomi",
+        "Provide pre-packaged and reusable best practices and tools for openrice",
       searchPlaceholder: "Search skills...",
       enableSkills: "Enable Skills",
       addSkill: "Add Skill",
@@ -692,7 +692,7 @@ const enUS = {
     creditsTopUp: {
       topUpTitle: "Top Up Credits",
       topUpDescription:
-        "Purchase openloomi credits for AI conversations and features",
+        "Purchase openrice credits for AI conversations and features",
       selectAmount: "Select Amount",
       customAmount: "Custom Amount",
       creditsLabel: "Credits",
@@ -726,7 +726,7 @@ const enUS = {
       codexCompatibilityError: {
         title: "Codex setup needs attention",
         suggestions: [
-          "Upgrade Codex, then restart OpenLoomi",
+          "Upgrade Codex, then restart openrice",
           "Or choose a model supported by the installed Codex CLI",
         ],
         docsAction: "Open Codex installation guide",
@@ -752,7 +752,7 @@ const enUS = {
       description: "Manage your skills from ~/.openloomi/skills",
       titleNew: "Skills",
       descriptionNew:
-        "Provide pre-packaged and reusable best practices and tools for openloomi",
+        "Provide pre-packaged and reusable best practices and tools for openrice",
       searchPlaceholder: "Search skills...",
       enableSkills: "Enable Skills",
       addSkill: "Add Skill",
@@ -841,7 +841,7 @@ const enUS = {
   },
   connectors: {
     pageDescription:
-      "Link your platforms or subscribe to content you care about — openloomi keeps watch so you don't have to.",
+      "Link your platforms or subscribe to content you care about — openrice keeps watch so you don't have to.",
     // #361 — capability state labels surfaced on the connectors page so
     // users can tell authorization from Loop monitoring. The wording is
     // deliberately different from `connected: true` to make the gap
@@ -852,7 +852,7 @@ const enUS = {
     capabilityNeedsSetup: "Needs setup",
     capabilityUnsupported: "Unsupported mapping",
     capabilityReasonNoMapping:
-      "OpenLoomi recognizes this integration, but its signal type isn't mapped to a decision yet.",
+      "openrice recognizes this integration, but its signal type isn't mapped to a decision yet.",
     capabilityReasonNotLoopMonitored:
       "Authorized for chat & memory. Loop doesn't pull signals from this source yet.",
     /**
@@ -922,7 +922,7 @@ const enUS = {
     probeKindCopied: "Copied",
     probeKindSignIn: "Sign in via agent",
     probeKindSignInPrompt:
-      "Please help the user fix the Composio CLI auth so the Loop probe can run. The fastest path is `composio login --no-wait` in the terminal, but if they prefer, also mention that they can (a) run `claude auth login` to authenticate the Claude runtime directly, or (b) open OpenLoomi's API Settings (/?page=ai-api-settings) to add an Anthropic-compatible provider. Then retry the probe.",
+      "Please help the user fix the Composio CLI auth so the Loop probe can run. The fastest path is `composio login --no-wait` in the terminal, but if they prefer, also mention that they can (a) run `claude auth login` to authenticate the Claude runtime directly, or (b) open openrice's API Settings (/?page=ai-api-settings) to add an Anthropic-compatible provider. Then retry the probe.",
     probeKindOpenSettings: "Open API Settings",
     probeKindHttpTooltip: "Upstream status: {{status}}",
     healthOk: "Healthy",
@@ -934,7 +934,7 @@ const enUS = {
       "Manage your connected platforms, RSS feeds, and saved files in one place.",
     feedsSectionTitle: "RSS feeds & subscriptions",
     feedsSectionDescription:
-      "Pipe curated or custom RSS feeds into openloomi so Web3, finance, technology, AI, design, and hardware news stay in one stream.",
+      "Pipe curated or custom RSS feeds into openrice so Web3, finance, technology, AI, design, and hardware news stay in one stream.",
     imSectionDescription:
       "Connect your daily messaging tools to unify conversations, get real-time notifications, and manage all chats in one place.",
     calendarFeedToggle: "Show in feed",
@@ -942,7 +942,7 @@ const enUS = {
     telegramReconnectSuccess:
       "Please send /login command in Telegram to reconnect",
     calendarFeedToggleDesc:
-      "Push calendar events (Google/Outlook; new + upcoming) into openloomi.",
+      "Push calendar events (Google/Outlook; new + upcoming) into openrice.",
     addPlatform: "Add Platform",
     addConnector: "Add connector",
     connectMoreViaComposio: "Connect more via Composio",
@@ -969,13 +969,13 @@ const enUS = {
     feedTitlePlaceholder: "Name shown in your subscriptions list",
     feedCategoryPlaceholder: "e.g. Web3",
     customFeedDescription:
-      "Paste any RSS/Atom/JSON feed URL. openloomi fetches these feeds, deduplicates entries, and surfaces them in your understanding feed.",
+      "Paste any RSS/Atom/JSON feed URL. openrice fetches these feeds, deduplicates entries, and surfaces them in your understanding feed.",
     importOpmlBadge: "OPML bulk import",
     importOpmlTitle: "Upload an OPML file to import feeds",
     importOpmlDescription:
       "Bring in an OPML export from Feedly, Inoreader, or any RSS reader to subscribe in bulk.",
     importOpmlHint:
-      "Only .opml files up to 2MB are accepted. openloomi processes the first 200 feeds per upload.",
+      "Only .opml files up to 2MB are accepted. openrice processes the first 200 feeds per upload.",
     importOpmlSelectCta: "Choose .opml file",
     importOpmlChangeCta: "Change file",
     importOpmlFilePlaceholder: "No file selected yet.",
@@ -1033,7 +1033,7 @@ const enUS = {
     },
     rssResourceTitle: "Where to find more feeds",
     rssResourceDescription:
-      "Explore these directories to discover new feeds. Copy any RSS URL you like and paste it into openloomi.",
+      "Explore these directories to discover new feeds. Copy any RSS URL you like and paste it into openrice.",
     rssResource: {
       feedly:
         "Search trending business, tech, and finance feeds in Feedly’s public directory.",
@@ -1435,10 +1435,10 @@ const enUS = {
   openloomi: {
     assistant: "AI Message Assistant",
     communicationAssistant: "AI Communication Assistant",
-    contextPrefix: "openloomi is currently focused on the following content:",
-    thinking: "openloomi is thinking...",
+    contextPrefix: "openrice is currently focused on the following content:",
+    thinking: "openrice is thinking...",
     placeholder: "Ask anything about this report...",
-    placeholderGeneral: "Ask openloomi anything about message management...",
+    placeholderGeneral: "Ask openrice anything about message management...",
   },
   bot: {
     createError: "Failed to Create AI Agent",
@@ -1452,7 +1452,7 @@ const enUS = {
     maxFocusedReached: "You can only focus on up to 5 events",
     replyOptions: {
       quickSelect: "Quick Reply",
-      title: "openloomi Reply Suggestions",
+      title: "openrice Reply Suggestions",
       act: "Act",
       ask: "Ask",
       alter: "Alter",
@@ -1512,14 +1512,14 @@ const enUS = {
       saveSuccess: "File saved. Visit Saved Files to manage downloads.",
       saveFailed: "Failed to save file.",
       downloadFailed: "Unable to download this file.",
-      saveToopenloomi: "Save to openloomi",
+      saveToopenloomi: "Save to openrice",
       saveToGoogleDrive: "Save to Google Drive",
       saveToNotion: "Save to Notion",
       connectGoogleDrive:
         "Connect Google Drive in Integrations to use this option.",
       connectNotion: "Connect Notion in Integrations to use this option.",
       openIntegrations: "Open integrations",
-      missingBlob: "We couldn't locate this file in openloomi storage.",
+      missingBlob: "We couldn't locate this file in openrice storage.",
       upgradePrompt: "Upgrade to Basic or Pro to save files for later.",
       upgradeAction: "Upgrade to save",
       saveCost: "Saving uses {{credits}} credits",
@@ -1550,12 +1550,12 @@ const enUS = {
     refresh: "Refresh",
     doRefresh: "Refresh",
     noChatHistory: "No related chat history yet",
-    discussWithopenloomi: "Discuss with openloomi",
+    discussWithopenloomi: "Discuss with openrice",
     openChat: "Open Chat",
     closeChat: "Close Chat",
     openWorkspace: "Open Workspace",
     closeWorkspace: "Close Workspace",
-    continueDiscussWithopenloomi: "Continue discussing with openloomi",
+    continueDiscussWithopenloomi: "Continue discussing with openrice",
     newChat: "New Chat",
     chatHistory: "Chat History",
     focus: "Focus",
@@ -1750,12 +1750,12 @@ const enUS = {
         platformIntegration: {
           title: "Did you know?",
           content:
-            "Most people switch between multiple platforms daily. openloomi brings them together in one controllable view.",
+            "Most people switch between multiple platforms daily. openrice brings them together in one controllable view.",
         },
         privacy: {
           title: "About Privacy",
           content:
-            "openloomi only retains structured insights. Original messages are not stored long-term after processing.",
+            "openrice only retains structured insights. Original messages are not stored long-term after processing.",
         },
         focus: {
           title: "About Focus",
@@ -1780,17 +1780,17 @@ const enUS = {
         people: {
           title: "People",
           content:
-            "openloomi organizes related communications and commitments under one person. Important relationships don't need to rely on memory.",
+            "openrice organizes related communications and commitments under one person. Important relationships don't need to rely on memory.",
         },
         crossLanguage: {
           title: "Cross-Language Communication",
           content:
-            "openloomi can help you understand and translate before replying, reducing unnecessary back-and-forth.",
+            "openrice can help you understand and translate before replying, reducing unnecessary back-and-forth.",
         },
         actionSuggestions: {
           title: "Action Suggestions",
           content:
-            "openloomi generates next-step suggestions for Insight events. Whether to execute is always your decision.",
+            "openrice generates next-step suggestions for Insight events. Whether to execute is always your decision.",
         },
         random: "Random Tip",
       },
@@ -1814,24 +1814,24 @@ const enUS = {
   },
   guide: {
     close: "Close guide",
-    heading: "Welcome to openloomi",
+    heading: "Welcome to openrice",
     step: "Step",
     back: "Back",
     skip: "Skip",
     open: "Open welcome guide",
-    summariesTitle: "Let openloomi surface the understandings for you",
+    summariesTitle: "Let openrice surface the understandings for you",
     summariesBody:
       "Your latest highlights are ready. Tap “Show understandings” anytime to reopen this pane.",
     summariesEmpty:
-      "Once openloomi ingests your inboxes, understandings land here. You can keep working while we gather context.",
+      "Once openrice ingests your inboxes, understandings land here. You can keep working while we gather context.",
     summariesCta: "View understandings",
     detailTitle: "Preview the full story before you act",
     detailBody:
-      "Opening a card reveals openloomi' trace of why it matters, who is involved, and what needs your voice.",
+      "Opening a card reveals openrice' trace of why it matters, who is involved, and what needs your voice.",
     detailCta: "Keep going",
     replyTitle: "Reply as your AI assistant",
     replyBody:
-      "Compose or tweak openloomi' draft, send with one tap, and we confirm once your message is delivered.",
+      "Compose or tweak openrice' draft, send with one tap, and we confirm once your message is delivered.",
     replyCta: "Start replying",
   },
   mobileDock: {
@@ -1847,7 +1847,7 @@ const enUS = {
     navigation: "Navigation",
     insight: "Insights",
     focus: "Today",
-    openloomi: "openloomi",
+    openloomi: "openrice",
     more: "Assets",
   },
   urgency: {
@@ -1869,7 +1869,7 @@ const enUS = {
   auth: {
     signInTitle: "Your proactive AI workspace",
     signInSubtitle:
-      "Use your openloomi credentials or continue with Google to get back to your inbox.",
+      "Use your openrice credentials or continue with Google to get back to your inbox.",
     signInWithGoogle: "Log in with Google",
     signInWithGithub: "Log in with GitHub",
     googleOAuthBrowserPrompt:
@@ -1891,7 +1891,7 @@ const enUS = {
     forgotPassword: "Forgot password?",
     forgotPasswordTitle: "Reset your password",
     forgotPasswordSubtitle:
-      "Enter the email you used for openloomi and we'll send a reset link to your inbox.",
+      "Enter the email you used for openrice and we'll send a reset link to your inbox.",
     resetMissingEmail: "Please enter a valid email address.",
     resetRequestCta: "Send reset link",
     resetRequestSending: "Sending…",
@@ -1910,7 +1910,7 @@ const enUS = {
     signInCta: "Log In",
     needAccount: "Don't have an account yet?",
     signUpLink: "Sign Up",
-    signUpTitle: "Create your openloomi account",
+    signUpTitle: "Create your openrice account",
     signUpSubtitle: "Set up your workspace credentials in less than a minute.",
     passwordRequirements: "Password requirements",
     passwordRuleLength: "Between 8 to 20 characters",
@@ -1931,8 +1931,7 @@ const enUS = {
     resetSubmitCta: "Save new password",
     resetSubmitting: "Saving…",
     resetSuccessHeading: "Password updated",
-    resetSuccessBody:
-      "You can now sign in to openloomi with your new password.",
+    resetSuccessBody: "You can now sign in to openrice with your new password.",
     resetBackToLogin: "Return to Log In",
     requestAnotherLink: "Request another reset link",
     toastSignInSuccess: "Signed in successfully!",
@@ -1967,7 +1966,7 @@ const enUS = {
     signUpCta: "Sign Up",
     haveAccount: "Have an account already?",
     signInLink: "Log In",
-    heroTitle: "openloomi is your conversation avatar",
+    heroTitle: "openrice is your conversation avatar",
     heroSubtitle:
       "Redefining communication through privacy, understanding, memory, and intelligence.",
     illustrationPlaceholder: "Hero illustration coming soon",
@@ -1980,7 +1979,7 @@ const enUS = {
       "Authorize us to access your Discord server, send and receive messages, and view channel and member details.",
     discordConnectTitle: "Connect Discord",
     discordConnectDescription:
-      "Select the Discord server where openloomi should triage and summarize channels. Be sure to invite the openloomi bot before continuing.",
+      "Select the Discord server where openrice should triage and summarize channels. Be sure to invite the openrice bot before continuing.",
     discordGuildSelectLabel: "Discord server",
     discordGuildPlaceholder: "Select a server",
     discordGuildLoading: "Loading your Discord servers…",
@@ -1988,10 +1987,10 @@ const enUS = {
       "We couldn't fetch your Discord servers. Please try again.",
     discordSelectGuildError: "Choose a Discord server before continuing.",
     discordNoManageableGuilds:
-      "We couldn't find any Discord servers you manage. Invite openloomi to your workspace and try again.",
+      "We couldn't find any Discord servers you manage. Invite openrice to your workspace and try again.",
     discordInviteReminder:
-      "Invite the openloomi bot to your Discord server so it can read messages and keep understandings up to date.",
-    discordInviteCta: "Invite openloomi Bot",
+      "Invite the openrice bot to your Discord server so it can read messages and keep understandings up to date.",
+    discordInviteCta: "Invite openrice Bot",
     discordCreateBotCta: "Connect Discord Server",
     discordGuildOwnerSuffix: "Owner",
     qrErrorRetry:
@@ -2003,27 +2002,27 @@ const enUS = {
     gmailDes:
       "Authorize us to access your Gmail account, send and receive messages, and view email and contact details.",
     outlookDes:
-      "Authorize us to access your Outlook mailbox via IMAP/SMTP so openloomi can read and send emails for you.",
+      "Authorize us to access your Outlook mailbox via IMAP/SMTP so openrice can read and send emails for you.",
     outlookCalendarDes:
-      "Connect Outlook Calendar so openloomi can track changes and help schedule or update events.",
+      "Connect Outlook Calendar so openrice can track changes and help schedule or update events.",
     linkedinDes:
-      "Authorize us to access your LinkedIn inbox so openloomi can summarize and help you reply faster.",
+      "Authorize us to access your LinkedIn inbox so openrice can summarize and help you reply faster.",
     twitterDes:
-      "Authorize us to access your X account so openloomi can read and post tweets and reply to DMs in one place.",
+      "Authorize us to access your X account so openrice can read and post tweets and reply to DMs in one place.",
     instagramDes:
-      "Authorize us to access your Instagram DMs so openloomi can summarize and help you reply.",
+      "Authorize us to access your Instagram DMs so openrice can summarize and help you reply.",
     googleCalendarDes:
-      "Authorize us to access your Google Calendar so openloomi can surface new and upcoming events and help you take action quickly.",
+      "Authorize us to access your Google Calendar so openrice can surface new and upcoming events and help you take action quickly.",
     googleDriveDes:
-      "Connect Google Drive so openloomi can save files straight to your personal storage.",
+      "Connect Google Drive so openrice can save files straight to your personal storage.",
     googleDocsDes:
-      "Connect Google Docs so openloomi can watch document changes and draft updates for you.",
+      "Connect Google Docs so openrice can watch document changes and draft updates for you.",
     notionDes:
-      "Connect Notion to save files into your workspace and let openloomi learn from selected pages or databases.",
+      "Connect Notion to save files into your workspace and let openrice learn from selected pages or databases.",
     messengerDes:
-      "Connect a Facebook Page so openloomi can read and reply to Messenger conversations using your page access token.",
+      "Connect a Facebook Page so openrice can read and reply to Messenger conversations using your page access token.",
     whatsappDes:
-      "Authorize us to access your WhatsApp messages so openloomi can summarize conversations and help you reply on time.",
+      "Authorize us to access your WhatsApp messages so openrice can summarize conversations and help you reply on time.",
     githubDes:
       "Connect GitHub to read repositories, create issues, and assign tasks to collaborators.",
     githubCreateIssue: "Create Issue",
@@ -2039,7 +2038,7 @@ const enUS = {
     githubAddAssigneesSuccess: "Assignees added successfully!",
     githubAddAssigneesFailed: "Failed to add assignees.",
     hubspotDes:
-      "Connect HubSpot to monitor deal changes and update pipeline stages from openloomi.",
+      "Connect HubSpot to monitor deal changes and update pipeline stages from openrice.",
     asanaDes:
       "Connect Asana to manage tasks, track projects, and update work items.",
     jiraDes:
@@ -2064,10 +2063,10 @@ const enUS = {
     imessageDes:
       "Connect iMessage to read and send messages from your Mac (macOS only).",
     feishuDes:
-      "Connect Lark/Feishu with App ID and App Secret to chat with openloomi via WebSocket.",
+      "Connect Lark/Feishu with App ID and App Secret to chat with openrice via WebSocket.",
     feishuTitle: "Connect Lark/Feishu",
     feishuDescription:
-      'Create an app in Lark/Feishu Open Platform with bot capability, choose "Use long connection to receive events" and subscribe to im.message.receive_v1, then enter your credentials below to chat with openloomi.',
+      'Create an app in Lark/Feishu Open Platform with bot capability, choose "Use long connection to receive events" and subscribe to im.message.receive_v1, then enter your credentials below to chat with openrice.',
     feishuAppId: "App ID",
     feishuAppSecret: "App Secret",
     feishuDisplayName: "Display name (optional)",
@@ -2078,7 +2077,7 @@ const enUS = {
     feishuConnectSuccess: "Lark/Feishu connected",
     feishuConnectRestartTitle: "Lark/Feishu connected",
     feishuConnectRestartDescTauri:
-      "To ensure Lark/Feishu message listening works reliably, please fully quit and restart the openloomi desktop app",
+      "To ensure Lark/Feishu message listening works reliably, please fully quit and restart the openrice desktop app",
     feishuConnectRestartDescWeb:
       "Refresh this page so the Lark/Feishu listener and integration state can take full effect",
     feishuConnectRestartConfirm: "OK",
@@ -2095,7 +2094,7 @@ const enUS = {
     feishuUserCodeHint: "If you are asked for a code:",
     feishuManualEntryTitle: "Enter credentials manually",
     feishuHideManual: "Hide manual entry",
-    feishuBotDescription: "Chat with openloomi via Lark/Feishu",
+    feishuBotDescription: "Chat with openrice via Lark/Feishu",
     feishuStepsLink: "Setup steps",
     feishuStepsSection1Title: "1. Create Lark/Feishu app and get credentials",
     feishuSteps1Before: "Open ",
@@ -2104,13 +2103,13 @@ const enUS = {
     feishuSteps2: 'Get App ID and App Secret under "Credentials & Basic Info"',
     feishuSteps3:
       'Enter the App ID and App Secret above in the form and click "Connect Lark/Feishu"',
-    feishuSteps4: "Restart openloomi",
+    feishuSteps4: "Restart openrice",
     feishuSteps5:
       'Go back to Lark/Feishu Open Platform, enable "Bot" under "Capabilities"',
     feishuSteps6:
       'Under "Permissions", use "Batch import/export", paste the JSON below',
     feishuStepsNote:
-      "Note: If long connection is not shown here, try restarting openloomi",
+      "Note: If long connection is not shown here, try restarting openrice",
     feishuSteps7:
       'Under "Events & Callbacks", open "Event configuration", choose "Use long connection to receive events"',
     feishuSteps8:
@@ -2123,7 +2122,7 @@ const enUS = {
     feishuStepsAddFav3:
       "The bot will appear in favorites; double-click to open the chat",
     dingtalkDes:
-      "Connect DingTalk with Client ID and Client Secret via Stream mode to chat with openloomi.",
+      "Connect DingTalk with Client ID and Client Secret via Stream mode to chat with openrice.",
     dingtalkTitle: "Connect DingTalk",
     dingtalkDescription:
       "Create an enterprise app on DingTalk Open Platform, add a Stream-mode bot, then enter your Client ID (AppKey) and Client Secret below.",
@@ -2133,10 +2132,10 @@ const enUS = {
     dingtalkDisplayNamePlaceholder: "My DingTalk bot",
     dingtalkConnect: "Connect DingTalk",
     dingtalkClientIdSecretRequired: "Please enter Client ID and Client Secret",
-    dingtalkBotDescription: "Chat with openloomi via DingTalk",
+    dingtalkBotDescription: "Chat with openrice via DingTalk",
     dingtalkConnectRestartTitle: "DingTalk connected",
     dingtalkConnectRestartDescTauri:
-      "Fully quit and restart the openloomi desktop app so DingTalk message listening stays reliable.",
+      "Fully quit and restart the openrice desktop app so DingTalk message listening stays reliable.",
     dingtalkConnectRestartDescWeb:
       "Refresh this page so DingTalk listeners and integration state are fully applied.",
     dingtalkConnectRestartConfirm: "OK",
@@ -2149,14 +2148,14 @@ const enUS = {
     dingtalkSteps2:
       'Add the "Bot" capability and choose Stream mode (long connection).',
     dingtalkSteps3:
-      "After publishing, enter Client ID and Client Secret in openloomi and connect.",
+      "After publishing, enter Client ID and Client Secret in openrice and connect.",
     dingtalkSteps4:
       "Server deployments auto-start Stream; on desktop, restart the app after connecting.",
     qqbotDes:
-      "Connect QQ with App ID and App Secret to chat with openloomi via WebSocket.",
+      "Connect QQ with App ID and App Secret to chat with openrice via WebSocket.",
     qqbotTitle: "Connect QQ",
     qqbotDescription:
-      "Create a bot on QQ Open Platform, then enter your App ID and App Secret below to chat with openloomi.",
+      "Create a bot on QQ Open Platform, then enter your App ID and App Secret below to chat with openrice.",
     qqbotAppId: "App ID",
     qqbotAppSecret: "App Secret",
     qqbotDisplayName: "Display name (optional)",
@@ -2174,10 +2173,10 @@ const enUS = {
     qqbotSteps4:
       'Enter App ID and App Secret in the form below and click "Connect QQ"',
     qqbotAppIdSecretRequired: "Please enter App ID and App Secret",
-    qqbotBotDescription: "Chat with openloomi via QQ",
+    qqbotBotDescription: "Chat with openrice via QQ",
     weixinLabel: "Weixin",
     weixinDes:
-      "Scan the QR code in the page to sign in to Weixin and chat with openloomi via long polling.",
+      "Scan the QR code in the page to sign in to Weixin and chat with openrice via long polling.",
     weixinTitle: "Connect Weixin",
     weixinHelpLink: "Help & FAQ",
     weixinConnectSuccess: "Weixin connected",
@@ -2207,7 +2206,7 @@ const enUS = {
     weixinErrorLoginFailed: "Login failed",
     imessageConnectTitle: "Connect iMessage",
     imessageConnectDescription:
-      "Connect your Mac iMessage to read and send messages from openloomi.",
+      "Connect your Mac iMessage to read and send messages from openrice.",
     imessageMacOnly: "macOS only",
     imessageMacOnlyDesc:
       "iMessage integration is only available on macOS. Please use this feature on a Mac computer.",
@@ -2223,7 +2222,7 @@ const enUS = {
       "Local file storage is only available in Tauri mode",
     imessageErrorFileNotFound: "Local file not found: {{path}}",
     imessageErrorPermission:
-      "Full Disk Access permission is required to read iMessage database. Please add the current running application process (such as Terminal, Node, or openloomi) in System Settings > Privacy & Security > Full Disk Access, then restart the app and try again.",
+      "Full Disk Access permission is required to read iMessage database. Please add the current running application process (such as Terminal, Node, or openrice) in System Settings > Privacy & Security > Full Disk Access, then restart the app and try again.",
     imessageErrorConnection: "Unable to connect to iMessage: {{message}}",
     imessageNotAvailable:
       "iMessage is not available. Please ensure you are running on macOS and have granted Full Disk Access permissions.",
@@ -2233,13 +2232,13 @@ const enUS = {
     displayName: "Display Name",
     imessageDisplayNamePlaceholder: "My iMessage",
     imessageDisplayNameHint:
-      "This name will be used to identify your iMessage account in openloomi",
+      "This name will be used to identify your iMessage account in openrice",
     imessageDataNote:
-      "Your message data stays on your local device. openloomi only reads recent messages when you use it to generate insights.",
+      "Your message data stays on your local device. openrice only reads recent messages when you use it to generate insights.",
     imessageConnecting: "Connecting iMessage...",
     imessageConnected: "iMessage Connected",
     imessageConnectedDesc:
-      "You can now access your iMessage messages through openloomi.",
+      "You can now access your iMessage messages through openrice.",
     imessageError: "Connection Failed",
     imessageConnect: "Connect iMessage",
     displayNameRequired: "Please enter a display name",
@@ -2433,10 +2432,10 @@ const enUS = {
       "Unable to connect to Gmail server. Please check if your network or firewall allows access to imap.gmail.com:993, and try again later.",
     slackAdminConfirmTitle: "Slack Admin Required",
     slackAdminConfirmDesc:
-      "You need to be a Slack workspace administrator to authorize this integration. Regular members cannot add openloomi to the workspace.",
+      "You need to be a Slack workspace administrator to authorize this integration. Regular members cannot add openrice to the workspace.",
     discordAdminConfirmTitle: "Discord Admin Required",
     discordAdminConfirmDesc:
-      "You need to be a Discord server administrator to authorize this integration. Regular members cannot add openloomi to the server.",
+      "You need to be a Discord server administrator to authorize this integration. Regular members cannot add openrice to the server.",
     iAmAdmin: "I am an Admin",
     errors: {
       streamError: {
@@ -2586,7 +2585,7 @@ const enUS = {
       runtimeNotLoggedIn: {
         title: "Claude runtime not signed in",
         description:
-          "The chat is using the built-in Claude runtime, but no Claude credentials were found. Sign in to the Claude runtime, or point OpenLoomi at an Anthropic-compatible API key.",
+          "The chat is using the built-in Claude runtime, but no Claude credentials were found. Sign in to the Claude runtime, or point openrice at an Anthropic-compatible API key.",
         suggestions: [
           "Run `claude auth login` in your terminal, then retry",
           "Or open API Settings and add an Anthropic-compatible provider",
@@ -2596,7 +2595,7 @@ const enUS = {
     },
   },
   survey: {
-    title: "Welcome to openloomi!",
+    title: "Welcome to openrice!",
     intro:
       "To help us serve you better, please take about 1 minute to complete this short survey. Your feedback is greatly appreciated!",
     shared: {
@@ -2735,7 +2734,7 @@ const enUS = {
     guest: {
       step1: {
         title: "Connect an integration to get started",
-        body: "Use this button to link openloomi with Slack, Telegram, Gmail, or more. Authorizing lets us pull the conversations you care about.",
+        body: "Use this button to link openrice with Slack, Telegram, Gmail, or more. Authorizing lets us pull the conversations you care about.",
       },
       step2: {
         title: "Pick from popular integrations",
@@ -2743,12 +2742,12 @@ const enUS = {
       },
       step3: {
         title: "After you connect...",
-        body: "openloomi reads new conversations, builds daily understandings, and drafts replies so you can clear your inbox faster.",
+        body: "openrice reads new conversations, builds daily understandings, and drafts replies so you can clear your inbox faster.",
       },
     },
     summary: {
       open: "Guided tour",
-      openHelp: "See how openloomi organises your updates",
+      openHelp: "See how openrice organises your updates",
       step1: {
         title: "See connected and available integrations",
         body: "This section lists every service you've already linked alongside the integrations still available to add—scan it to confirm what's connected and expand whenever you need.",
@@ -2762,8 +2761,8 @@ const enUS = {
         body: "Each card represents an understanding built from related messages. Tap any row to see why it matters and what needs action.",
       },
       step4: {
-        title: "Ask openloomi anything",
-        body: "Use the chat to ask questions like “What did I miss today?” or “Who mentioned the launch?”—openloomi reads your connected channels to answer.",
+        title: "Ask openrice anything",
+        body: "Use the chat to ask questions like “What did I miss today?” or “Who mentioned the launch?”—openrice reads your connected channels to answer.",
       },
       step5: {
         title: "Open the full context",
@@ -2771,7 +2770,7 @@ const enUS = {
       },
       step6: {
         title: "Tune understanding & reply preferences",
-        body: "Choose drafting language, people, and topics openloomi should prioritise—everything stays in sync with your settings.",
+        body: "Choose drafting language, people, and topics openrice should prioritise—everything stays in sync with your settings.",
       },
       step7: {
         title: "Unlock more with a plan",
@@ -2782,7 +2781,7 @@ const enUS = {
   insightPreferences: {
     title: "Understanding & reply preferences",
     subtitle:
-      "Tell openloomi how you prefer understandings to be generated so we can prioritize the messages and tone that matter most.",
+      "Tell openrice how you prefer understandings to be generated so we can prioritize the messages and tone that matter most.",
     loading: "Loading your preferences…",
     languageLabel: "Output Language",
     languageDescription: "AI will prioritize replying in this language.",
@@ -2806,15 +2805,15 @@ const enUS = {
     identity: {
       heading: "Industry & work context",
       description:
-        "Grounded in your onboarding responses so openloomi can stay aligned with your day-to-day tone and focus.",
+        "Grounded in your onboarding responses so openrice can stay aligned with your day-to-day tone and focus.",
       introDescription:
-        "The more you share, the better openloomi understands what truly matters to you.",
+        "The more you share, the better openrice understands what truly matters to you.",
       industryHeading: "Industry signals",
       industryEmpty:
         "We haven’t detected industries yet. Complete the onboarding survey to unlock industry-aware understandings.",
       workHeading: "Work description",
       workEmpty:
-        "You haven’t described your day-to-day work yet. Add it in onboarding so openloomi can stay in context.",
+        "You haven’t described your day-to-day work yet. Add it in onboarding so openrice can stay in context.",
       industryLabel: "My industry",
       industryHint: "Select up to 4 industries",
       industryLimit: "You can select up to {{count}} industries.",
@@ -2826,7 +2825,7 @@ const enUS = {
       roleCustomPlaceholder: "Type a custom role",
       workDescriptionLabel: "About me",
       workDescriptionHint:
-        "Tell openloomi about yourself in your own words — your work, priorities, and how you spend your day.",
+        "Tell openrice about yourself in your own words — your work, priorities, and how you spend your day.",
       workDescriptionPlaceholder:
         "e.g. I'm a co-founder of a B2B SaaS startup, leading product and fundraising. I spend most of my day in Slack and email, and care most about customer renewals and our next funding round.",
       emptyResults: "No results. You can type to create one.",
@@ -2835,13 +2834,13 @@ const enUS = {
     roles: {
       heading: "Role targeting & overlays",
       description:
-        "See which professional roles openloomi is using and add more overlays so understandings stay aligned with your responsibilities.",
+        "See which professional roles openrice is using and add more overlays so understandings stay aligned with your responsibilities.",
       currentLabel: "Currently detected roles",
       noneDetected:
         "We haven’t detected any roles yet—connect more sources or complete the onboarding survey to unlock tailored overlays.",
       selectionLabel: "Adjust role focus",
       selectionDescription:
-        "Pick the overlays openloomi should always consider. We’ll keep using survey responses and automatic detection on top of your selections.",
+        "Pick the overlays openrice should always consider. We’ll keep using survey responses and automatic detection on top of your selections.",
       selectionHint: "Select up to {{count}} roles",
       limitReached: "You can select up to {{count}} roles.",
       manualSelectedLabel: "Pinned roles",
@@ -2975,7 +2974,7 @@ const enUS = {
     },
     focusPeopleLabel: "People I follow",
     focusPeopleDescription:
-      "openloomi will use it as a reference when prioritizing",
+      "openrice will use it as a reference when prioritizing",
     focusPeopleExampleIntro: " (e.g. ",
     focusPeopleExampleOutro: ")",
     focusPeopleExamplePhrase1: "Jess in finance",
@@ -3042,17 +3041,17 @@ const enUS = {
     title: "Connect Telegram",
     description:
       "Authorize us to access your Telegram account, receive and send messages, view channels and member information",
-    commitmentTitle: "openloomi's Commitment to Your Telegram Data",
+    commitmentTitle: "openrice's Commitment to Your Telegram Data",
     permissions: {
       readMessages: "Read Message Content",
       readMessagesDesc:
         "We will read your Telegram messages to generate message understandings, provide quick reply suggestions, and identify important information.",
       sendMessages: "Send Messages",
       sendMessagesDesc:
-        "openloomi will send messages on your behalf in Telegram only with your explicit instruction to help you respond efficiently.",
+        "openrice will send messages on your behalf in Telegram only with your explicit instruction to help you respond efficiently.",
       viewGroups: "View Groups & Contacts",
       viewGroupsDesc:
-        "This helps openloomi understand your social network and intelligently identify communication context and mentions.",
+        "This helps openrice understand your social network and intelligently identify communication context and mentions.",
     },
     principles: {
       leastAccess: "Principle of Least Access",
@@ -3068,17 +3067,17 @@ const enUS = {
       accessControlDesc:
         "All system operations have permission verification and audit logs.",
     },
-    learnMore: "Learn More: openloomi Privacy Policy →",
+    learnMore: "Learn More: openrice Privacy Policy →",
     stepsTitle: "Steps to Authorize Access",
     stepsDesc:
-      "Before authorizing, please make sure you understand how openloomi protects your data.",
+      "Before authorizing, please make sure you understand how openrice protects your data.",
     step1: 'Click the "Connect" button below',
     step2: "You will be redirected to Telegram",
     step3: "Log in to your Telegram account",
-    step4: "Authorize openloomi to access your Telegram data",
-    step5: "You will be redirected back to openloomi",
+    step4: "Authorize openrice to access your Telegram data",
+    step5: "You will be redirected back to openrice",
     privacyNotice:
-      "Privacy Notice: By clicking 'Connect', you agree to openloomi processing your Telegram data according to our privacy policy. Your data will be securely encrypted and used only to provide openloomi services.",
+      "Privacy Notice: By clicking 'Connect', you agree to openrice processing your Telegram data according to our privacy policy. Your data will be securely encrypted and used only to provide openrice services.",
     continueButton: "Continue to Connect",
   },
   telegram: {
@@ -3088,10 +3087,10 @@ const enUS = {
     missingTokenTitle: "Missing Login Token",
     missingTokenDesc: "Please return to Telegram and re-send the {{command}}.",
     title: "Connect Telegram Bot",
-    pendingMessage: "Binding your openloomi account…",
+    pendingMessage: "Binding your openrice account…",
     success: {
       message:
-        "Binding successful! You can now return to Telegram to use the openloomi bot.",
+        "Binding successful! You can now return to Telegram to use the openrice bot.",
     },
     error: {
       missingToken:
@@ -3114,7 +3113,7 @@ const enUS = {
       retry: "Retry",
     },
     actions: {
-      backToConsole: "Back to openloomi Console",
+      backToConsole: "Back to openrice Console",
       openTelegram: "Open Telegram",
       retry: "Try Again",
       contactSupport: "Contact Support Team",
@@ -3186,10 +3185,10 @@ const enUS = {
     missingTokenTitle: "Missing Login Token",
     missingTokenDesc: "Please return to WhatsApp and re-send the {{command}}.",
     title: "Connect WhatsApp Bot",
-    pendingMessage: "Binding your openloomi account…",
+    pendingMessage: "Binding your openrice account…",
     success: {
       message:
-        "Binding successful! You can now return to WhatsApp to use the openloomi bot.",
+        "Binding successful! You can now return to WhatsApp to use the openrice bot.",
     },
     error: {
       missingToken:
@@ -3199,7 +3198,7 @@ const enUS = {
         "Binding failed, please return to WhatsApp and send /login again.",
     },
     actions: {
-      backToConsole: "Back to openloomi Console",
+      backToConsole: "Back to openrice Console",
       goToIntegrations: "Go to Integrations",
       retry: "Try Again",
       contactSupport: "Contact Support Team",
@@ -3211,14 +3210,14 @@ const enUS = {
     missingTokenDesc:
       "Please return to Discord and re-send the /login command.",
     title: "Connect Discord Bot",
-    pendingMessage: "Binding your openloomi account…",
+    pendingMessage: "Binding your openrice account…",
     missingTokenError: "Missing login token, please re-send /login in Discord.",
     defaultLinkError: "Binding failed",
     successMessage:
-      "Binding successful! You can now return to Discord to use the openloomi bot.",
+      "Binding successful! You can now return to Discord to use the openrice bot.",
     defaultRetryError:
       "Binding failed, please return to Discord and re-send /login.",
-    backToConsoleBtn: "Return to openloomi Console",
+    backToConsoleBtn: "Return to openrice Console",
     retryBtn: "Try Again",
     contactSupportBtn: "Contact Support Team",
     linkingBtn: "Binding…",
@@ -3232,7 +3231,7 @@ const enUS = {
   assistantIcon: "Assistant",
   applyBtn: "Apply",
   suggestedAction1st: {
-    title: "What is openloomi",
+    title: "What is openrice",
   },
   suggestedAction2nd: {
     title: "What are my contacts",
@@ -3308,8 +3307,8 @@ const enUS = {
     action: "help me generate a detailed document",
   },
   chat: {
-    replySent: "Delivered. openloomi will monitor replies.",
-    replyGenerating: "openloomi is shaping your twin reply...",
+    replySent: "Delivered. openrice will monitor replies.",
+    replyGenerating: "openrice is shaping your twin reply...",
     replyQueued: "Sending now...",
     scrollToBottom: "Scroll to bottom",
     sendAs: "Send As",
@@ -3366,7 +3365,7 @@ const enUS = {
       saveSuccess: "File saved. Visit Saved Files to manage downloads.",
       saveFailed: "Failed to save file.",
       downloadFailed: "Unable to download this file.",
-      missingBlob: "We couldn't locate this file in openloomi storage.",
+      missingBlob: "We couldn't locate this file in openrice storage.",
       storageWarning:
         "You're using {{percent}}% of your storage. Consider cleaning up or upgrading.",
       unsupportedSource: "Saving not available for this file.",
@@ -3453,7 +3452,7 @@ const enUS = {
       "Download, preview, and delete the files you've saved from conversations(Saving a file uses 2 credits per operation).",
     uploadTitle: "Upload files",
     uploadDescription:
-      "Add files from your device to store them in openloomi for later analysis.",
+      "Add files from your device to store them in openrice for later analysis.",
     uploadButton: "Upload files",
     uploading: "Uploading...",
     uploadSuccess: "File uploaded successfully.",
@@ -3490,7 +3489,7 @@ const enUS = {
     loadMore: "Load more",
     storageProviderLabel: "Stored in",
     providers: {
-      vercel_blob: "openloomi Cloud",
+      vercel_blob: "openrice Cloud",
       google_drive: "Google Drive",
       notion: "Notion",
     },
@@ -3507,7 +3506,7 @@ const enUS = {
     firstReply: {
       title: "Send your first reply",
       description:
-        "Use openloomi to respond once and unlock automation controls.",
+        "Use openrice to respond once and unlock automation controls.",
     },
     integrationProgress: "Connected {{count}} account(s)",
     replyProgress: "Sent {{count}} replies",
@@ -3531,7 +3530,7 @@ const enUS = {
     adminCap: "Daily cap",
   },
   nav: {
-    messageHub: "openloomi",
+    messageHub: "openrice",
     chat: "Chats",
     agent: "Tasks",
     newChat: "Chats",
@@ -3563,7 +3562,7 @@ const enUS = {
     profile: "Profile",
     notifications: "Notification Preferences",
     archive: "Archive",
-    myopenloomi: "My openloomi",
+    myopenloomi: "My openrice",
     insightPreferences: "Summary & Reply Preferences",
     language: "Language Settings",
     /** Settings sidebar trigger: bilingual label, distinct from account menu */
@@ -3578,7 +3577,7 @@ const enUS = {
     upgrade: "Upgrade",
     help: "Help",
     checkForUpdates: "Check for Updates",
-    referralCardTitle: "Share openloomi with Friends",
+    referralCardTitle: "Share openrice with Friends",
     referralCardSubtitle: "Get Extra Rewards",
     personalization: "Personalization",
     onboardingGuide: "Onboarding Guide",
@@ -3596,13 +3595,13 @@ const enUS = {
     onboardingGuide: {
       title: "Get started",
       dialogTitle: "Newcomer guide",
-      heading: "Meet openloomi",
+      heading: "Meet openrice",
       subheading: "Finish the remaining tasks to complete your setup.",
-      resumeHint: "Click here to explore everything openloomi can do for you.",
+      resumeHint: "Click here to explore everything openrice can do for you.",
       resumeHintImageAlt: "Onboarding hint",
       openMandatoryDebug: "Open new onboarding modal",
       collectInfo: {
-        title: "Give openloomi context to work with",
+        title: "Give openrice context to work with",
         messagingAppsTitle: "Connect messaging apps",
         telegram: "Telegram",
         whatsapp: "WhatsApp",
@@ -3616,21 +3615,20 @@ const enUS = {
           iconLabel: "Task details",
           openDocButton: "learn more",
           connectTelegram:
-            "Connect Telegram so you can chat with openloomi directly in Telegram.",
+            "Connect Telegram so you can chat with openrice directly in Telegram.",
           connectWhatsApp:
-            "Connect WhatsApp so you can chat with openloomi directly in WhatsApp.",
+            "Connect WhatsApp so you can chat with openrice directly in WhatsApp.",
           connectIMessage:
-            "Connect iMessage so you can chat with openloomi directly in iMessage.",
-          connectQQ:
-            "Connect QQ so you can chat with openloomi directly in QQ.",
+            "Connect iMessage so you can chat with openrice directly in iMessage.",
+          connectQQ: "Connect QQ so you can chat with openrice directly in QQ.",
           connectFeishu:
-            "Connect Lark/Feishu so you can chat with openloomi directly in Lark/Feishu.",
+            "Connect Lark/Feishu so you can chat with openrice directly in Lark/Feishu.",
           linkPlatform:
-            "Connect Slack, Gmail, Telegram and more. openloomi reads your conversations and surfaces what needs follow-up — before you have to ask.",
+            "Connect Slack, Gmail, Telegram and more. openrice reads your conversations and surfaces what needs follow-up — before you have to ask.",
           addSubscription:
-            "Add newsletters, RSS feeds, or research sources. openloomi monitors them continuously and brings you only what's relevant to your work.",
+            "Add newsletters, RSS feeds, or research sources. openrice monitors them continuously and brings you only what's relevant to your work.",
           uploadFile:
-            "Upload docs, reports, or reference materials. openloomi uses them as context so it can give you more accurate, grounded responses.",
+            "Upload docs, reports, or reference materials. openrice uses them as context so it can give you more accurate, grounded responses.",
         },
       },
     },
@@ -4279,7 +4277,7 @@ const enUS = {
       messageCount:
         "In the past 24 hours, {{agentName}} helped you process {{messageCount}} information sources and generated {{insightCount}} Insights",
       messageCountShort:
-        "In the past 24 hours, openloomi helped you process {{messageCount}} information sources",
+        "In the past 24 hours, openrice helped you process {{messageCount}} information sources",
     },
   },
   agent: {
@@ -4287,7 +4285,7 @@ const enUS = {
       todo: "Actions",
       favorite: "Saved",
       people: "Network",
-      askAi: "openloomi",
+      askAi: "openrice",
       messages: "Original Messages",
       files: "Files",
     },
@@ -4569,7 +4567,7 @@ const enUS = {
         noTools: "No tools yet",
         noArtifacts: "No output yet",
         emptyFiles: "No files yet",
-        emptyFilesHint: "Chat with openloomi to generate some files",
+        emptyFilesHint: "Chat with openrice to generate some files",
         noSkills: "No skills installed",
         skillsHint: "Add skills to ~/.openloomi/skills/",
         searchSkills: "Search skills",
@@ -4690,7 +4688,7 @@ const enUS = {
         error: "Error",
         noHistory: "No execution history",
         tauriOnly:
-          "Scheduled jobs are only available in the openloomi desktop app.",
+          "Scheduled jobs are only available in the openrice desktop app.",
         viewChat: "View Chat",
         output: "Output",
         task: "Task Instruction",
@@ -4820,13 +4818,13 @@ const enUS = {
   cookie: {
     title: "We use cookies to help you communicate more efficiently",
     description:
-      "To ensure openloomi works properly, remember your preferences, and continuously improve understanding quality for a better personalized experience, we use different types of cookies. You can choose to accept all cookies or only necessary ones. For details on our cookie usage, see our Privacy Policy.", // Streamlined; "improve understanding quality" instead of "optimize aggregated understandings"; "see our" instead of "refer to our" (idiomatic)
+      "To ensure openrice works properly, remember your preferences, and continuously improve understanding quality for a better personalized experience, we use different types of cookies. You can choose to accept all cookies or only necessary ones. For details on our cookie usage, see our Privacy Policy.", // Streamlined; "improve understanding quality" instead of "optimize aggregated understandings"; "see our" instead of "refer to our" (idiomatic)
     acceptAll: "Accept All Cookies",
     onlyNecessary: "Only Necessary Cookies",
   },
   alpha: {
     info1:
-      "openloomi is currently in Alpha testing phase. Features are continuously being iterated and optimized. We look forward to working with you to make openloomi better;",
+      "openrice is currently in Alpha testing phase. Features are continuously being iterated and optimized. We look forward to working with you to make openrice better;",
     info2:
       "To ensure service stability and control operational costs, limited free usage is provided during this phase. You can enjoy hourly understanding updates and 20 conversations for free each day, with limits resetting the next day;",
     info3:
@@ -4846,7 +4844,7 @@ const enUS = {
       "Provides more powerful message processing capabilities for busy professionals. Longer history retention, more processing capacity, and weekly automatic learning of your communication habits.",
     pro: "Pro",
     proDesc:
-      "Designed for professionals and high-intensity communication contexts. Significantly enhanced processing capabilities and longer memory cycles make openloomi your truly intelligent assistant that understands you.",
+      "Designed for professionals and high-intensity communication contexts. Significantly enhanced processing capabilities and longer memory cycles make openrice your truly intelligent assistant that understands you.",
     team: "Team",
     teamDesc:
       "A collaborative intelligent communication hub built for teams. Shared credit pools allow flexible resource allocation, and unified message management ensures information transparency.",
@@ -4993,9 +4991,9 @@ const enUS = {
     headerEyebrow: "Grow with us",
     title: "Affiliate Program",
     subtitle:
-      "Earn up to 30% recurring commission by sharing openloomi. Your audience gets smarter conversations and you earn passive income every month.",
+      "Earn up to 30% recurring commission by sharing openrice. Your audience gets smarter conversations and you earn passive income every month.",
     heroSupporting:
-      "Creators, community leads, and automation experts use openloomi to turn conversations into reliable revenue.",
+      "Creators, community leads, and automation experts use openrice to turn conversations into reliable revenue.",
     loading: "Loading affiliate data...",
     status: {
       approved: "Approved",
@@ -5031,7 +5029,7 @@ const enUS = {
     linkLabel: "Referral link",
     linkCopied: "Referral link copied.",
     shareHint:
-      "Add ?ref={{code}} to any openloomi URL to set the referral cookie automatically.",
+      "Add ?ref={{code}} to any openrice URL to set the referral cookie automatically.",
     requestPayout: "Request payout",
     transactionsTitle: "Recent transactions",
     stepsTitle: "Get started in 3 steps",
@@ -5059,7 +5057,7 @@ const enUS = {
       audience: {
         question: "Who can join?",
         answer:
-          "Content creators, community managers, and AI enthusiasts who love showcasing openloomi are welcome.",
+          "Content creators, community managers, and AI enthusiasts who love showcasing openrice are welcome.",
       },
       tracking: {
         question: "How are referrals tracked?",
@@ -5078,7 +5076,7 @@ const enUS = {
     emptyTransactions: "No commission transactions yet.",
     payoutsTitle: "Payout history",
     emptyPayouts: "You haven't requested any payouts yet.",
-    applyTitle: "Join the openloomi Partner Network",
+    applyTitle: "Join the openrice Partner Network",
     applySubtitle:
       "Answer a few quick questions so we can tailor your referral dashboard.",
     applyCustomCode: "Custom code (optional)",
@@ -5091,7 +5089,7 @@ const enUS = {
       "We'll use this to power co-branded landing pages soon, so it's fine to skip for now.",
     applyNotes: "Tell us about your audience",
     applyNotesPlaceholder:
-      "Where you'll share openloomi (e.g. Twitter, YouTube, newsletters, community groups).",
+      "Where you'll share openrice (e.g. Twitter, YouTube, newsletters, community groups).",
     applyCta: "Apply & start earning",
     applyDisclaimer:
       "We review every application within 2 business days and email your approval status.",
@@ -5220,7 +5218,7 @@ const enUS = {
       "You're now subscribed to {{plan}}. We'll email you a receipt shortly.",
     whatsNext: "What's next",
     activationNote:
-      "Your benefits will appear in openloomi within a few moments. We'll let you know if we need anything else.",
+      "Your benefits will appear in openrice within a few moments. We'll let you know if we need anything else.",
     successChecklist1:
       "Access your new quota and integration automations right away.",
     successChecklist2:
@@ -5333,7 +5331,7 @@ const enUS = {
     profileSoulNavTitle: "Personalization",
     skillsNavTitle: "Skills",
     profileDescription:
-      "Update how your name and avatar appear across openloomi",
+      "Update how your name and avatar appear across openrice",
     accountOverviewTitle: "Account overview",
     accountOverviewDescription:
       "Stay on top of your identity, credit usage, and activity.",
@@ -5351,7 +5349,7 @@ const enUS = {
     profileNameTooShort: "Display name should be at least 2 characters.",
     profilePreviewTitle: "How others see you",
     profilePreviewDescription:
-      "Your display name and avatar appear in openloomi notifications and sharing surfaces.",
+      "Your display name and avatar appear in openrice notifications and sharing surfaces.",
     profileGuestTip:
       "Guest sessions use a temporary identity. Sign in to keep edits in sync.",
     profileSyncTip: "Changes sync to your sessions instantly.",
@@ -5401,12 +5399,12 @@ const enUS = {
     experimentalFeatures: "Experimental features",
     subscriptionDescription: "Manage your subscription plan and credits usage",
     personalizationDescription:
-      "Tell openloomi how you prefer understandings to be generated so we can prioritize the messages and tone that matter most.",
+      "Tell openrice how you prefer understandings to be generated so we can prioritize the messages and tone that matter most.",
     rolesDescription:
-      "Review detected roles, industries, and work context, then lock the identities openloomi should prioritize.",
+      "Review detected roles, industries, and work context, then lock the identities openrice should prioritize.",
     personalizationTabs: {
       avatar: "Assistant Avatar",
-      basic: "openloomi Soul",
+      basic: "openrice Soul",
       roles: "My Description",
       people: "My Interests",
       contexts: "My Contexts",
@@ -5415,11 +5413,11 @@ const enUS = {
       skills: "My Skills",
     },
     basicSettingsDescription:
-      "Configure openloomi basic settings, including the language for understanding and replies, and the understanding refresh frequency.",
+      "Configure openrice basic settings, including the language for understanding and replies, and the understanding refresh frequency.",
     peopleDescription:
-      "Tell openloomi who and what you follow — it'll prioritize them every time it tracks.",
+      "Tell openrice who and what you follow — it'll prioritize them every time it tracks.",
     contextsDescription:
-      "Choose your contexts — openloomi will automatically sort events into the right categories, so you can focus on what matters most.",
+      "Choose your contexts — openrice will automatically sort events into the right categories, so you can focus on what matters most.",
     contextsListTitle: "My contexts",
     categoryName: "Context Name",
     categoryDescription: "Context Description",
@@ -5515,7 +5513,7 @@ const enUS = {
     enableCategory: "Enable Context",
     disableCategory: "Disable Context",
     dragToReorder: "Drag to reorder",
-    topicsDescription: "openloomi will use it as a reference when prioritizing",
+    topicsDescription: "openrice will use it as a reference when prioritizing",
     preferencesLandingDescription:
       "Assistant setup now lives in focused tabs. Use the sidebar to hop between avatar, language, roles, people, and topics.",
     preferencesLandingHint:
@@ -5523,7 +5521,7 @@ const enUS = {
     assistantNameLabel: "Assistant name",
     assistantNameEdit: "Edit assistant name",
     avatarStateDescription:
-      "openloomi' appearance automatically changes based on different states",
+      "openrice' appearance automatically changes based on different states",
     currentTokenBalance: "Current credits balance",
     creditsRemaining: "Credits remaining",
     currentBalance: "Current balance",
@@ -5598,7 +5596,7 @@ const enUS = {
     },
   },
   share: {
-    shareContent: "Share openloomi",
+    shareContent: "Share openrice",
     shareDescription: "Choose how you want to share and customize your message",
     shareSettings: "Share Settings",
     customizeShare: "Personalize your sharing message",
@@ -5623,12 +5621,12 @@ const enUS = {
     previewGenerated: "Share preview generated",
   },
   onboarding: {
-    title: "Welcome to openloomi",
+    title: "Welcome to openrice",
     common: {
       back: "Previous step",
     },
     welcome: {
-      title: "👋 Welcome to openloomi",
+      title: "👋 Welcome to openrice",
       userNameFallback: "there",
       description1: "Your proactive AI workspace.",
       description2: "Senses signals, orchestrates tasks, tracks results.",
@@ -5641,14 +5639,14 @@ const enUS = {
       oneClickRecruit: "One-click recruit",
       preWelcome: {
         eyebrow: "Your AI Workspace",
-        title: "Welcome to openloomi",
+        title: "Welcome to openrice",
         description: "Reads your work. Tracks what matters. Closes every loop.",
         startButton: "Get started →",
         privacy: "Your data is always private and never used for training.",
         languageButton: "Language",
       },
       profile: {
-        title: "Help openloomi understand you",
+        title: "Help openrice understand you",
       },
       mate: {
         title: "Recruit your first AI Mate",
@@ -5676,7 +5674,7 @@ const enUS = {
         "Please describe your main daily work, e.g., handling customer inquiries, managing order fulfillment, coordinating with suppliers...",
       instruction: "Let's get to know you",
       description:
-        "Tell openloomi a bit about your role and what you focus on.\nThis helps your assistant understand how you think and work.",
+        "Tell openrice a bit about your role and what you focus on.\nThis helps your assistant understand how you think and work.",
       selectorHint:
         "Pick everything that fits you; tap again or remove a tag to deselect.",
       doneButton: "Finish",
@@ -5689,12 +5687,12 @@ const enUS = {
     },
     industry: {
       title: "Start with your industry",
-      subtitle: "Let openloomi understand your work context",
+      subtitle: "Let openrice understand your work context",
       otherPlaceholder: "Enter other industry",
     },
     role: {
       title: "Select your role",
-      subtitle: "Help openloomi stay aligned with how you work",
+      subtitle: "Help openrice stay aligned with how you work",
     },
     size: {
       title: "Select team size",
@@ -5702,9 +5700,9 @@ const enUS = {
       submitButton: "Complete",
     },
     painPoints: {
-      title: "How should openloomi organize your focus?",
+      title: "How should openrice organize your focus?",
       subtitle:
-        "Select the focus contexts that matter. openloomi will automatically categorize events to help you easily switch focus modes.",
+        "Select the focus contexts that matter. openrice will automatically categorize events to help you easily switch focus modes.",
       configuredTitle: "Configured focus rules",
       configuredSubtitle:
         "Review, remove, or keep adding rules whenever you need",
@@ -5712,7 +5710,7 @@ const enUS = {
         "No focus rules yet—pick a template below to create your first one.",
       templatesTitle: "Start with a guided template",
       templatesSubtitle:
-        "Click an option and fill in the blanks so openloomi captures the exact signal you need",
+        "Click an option and fill in the blanks so openrice captures the exact signal you need",
       templatesHint:
         "Not sure what to write? Pick a template, fill it in, then refine it.",
       customLabel: "Use a fully custom rule",
@@ -5740,7 +5738,7 @@ const enUS = {
           projectProgress: {
             title: "Track project progress",
             template: "Track major milestones and changes for [Project]",
-            example: "e.g., Track major milestones for the openloomi project",
+            example: "e.g., Track major milestones for the openrice project",
           },
           pendingTasks: {
             title: "Capture pending actions",
@@ -5772,14 +5770,14 @@ const enUS = {
             title: "Capture achievements",
             template: "Capture milestones and wins for [Team/Project]",
             example:
-              "e.g., Capture openloomi launch highlights and user milestones",
+              "e.g., Capture openrice launch highlights and user milestones",
           },
         },
         executiveUpdates: {
           title: "Executive or key clients",
           description: "Any movement from important stakeholders",
           helper:
-            "Tell us who matters most and which angle openloomi should watch.",
+            "Tell us who matters most and which angle openrice should watch.",
           preview:
             "Notify me when {{people}} share anything related to {{context}}.",
           fields: {
@@ -5848,14 +5846,13 @@ const enUS = {
         keywordWatch: {
           title: "Specific keywords or topics",
           description: "Product launches, funding, competitors…",
-          helper:
-            "Tell openloomi the keyword and the scope it should apply to.",
+          helper: "Tell openrice the keyword and the scope it should apply to.",
           preview:
             "Flag any conversation mentioning {{keyword}} that relates to {{context}}.",
           fields: {
             keyword: {
               label: "Keyword / phrase",
-              placeholder: "e.g. openloomi 2.0",
+              placeholder: "e.g. openrice 2.0",
             },
             context: {
               label: "Context or scope",
@@ -5867,7 +5864,7 @@ const enUS = {
           title: "Priority channels or groups",
           description: "Core project rooms, customer chats, etc.",
           helper:
-            "Name the channel and why it matters so openloomi stays vigilant.",
+            "Name the channel and why it matters so openrice stays vigilant.",
           preview:
             "Continuously monitor {{channel}} for conversations about {{reason}}.",
           fields: {
@@ -5885,7 +5882,7 @@ const enUS = {
           title: "Messages waiting on me",
           description: "Someone expects my response",
           helper:
-            "Who usually pings you and what deadline should openloomi enforce?",
+            "Who usually pings you and what deadline should openrice enforce?",
           preview:
             "Remind me when {{audience}} send items I must handle before {{deadline}}.",
           fields: {
@@ -5959,10 +5956,10 @@ const enUS = {
     integration: {
       title: "Connect platforms to unlock deeper insight",
       subtitle:
-        "Connect one or more platforms to give openloomi real signals to work with.\nYou can start with just one — and add or remove connections anytime.",
+        "Connect one or more platforms to give openrice real signals to work with.\nYou can start with just one — and add or remove connections anytime.",
       privacyTipsTitle: "Privacy Commitment🔐",
       privacyTips:
-        "openloomi only accesses the minimum data needed to do its job.\nRaw messages and emails stay on your device — not uploaded to our cloud.\nAll authorized data is encrypted using industry standards (AES-256 / TLS 1.2+).\nYou can disconnect any integration at any time.",
+        "openrice only accesses the minimum data needed to do its job.\nRaw messages and emails stay on your device — not uploaded to our cloud.\nAll authorized data is encrypted using industry standards (AES-256 / TLS 1.2+).\nYou can disconnect any integration at any time.",
       defaultTwinName: "Your AI Assistant",
       connected: "Connected {{count}} platform(s)",
       addPlatform: "Add Platform",
@@ -5975,99 +5972,99 @@ const enUS = {
       rewardCompleted: "Reward ready to claim!",
       rewardClaimedBadge: "+{{credits}} credits",
       footerNote:
-        "You can go to the integration management page to authorize openloomi to access more of your content, such as RSS feeds and file uploads.",
+        "You can go to the integration management page to authorize openrice to access more of your content, such as RSS feeds and file uploads.",
     },
     hub: {
-      title: "Meet openloomi",
+      title: "Meet openrice",
       progress: "Progress: {{done}}/{{total}} steps completed",
       description: "Onboarding guide",
       debugClose: "Close onboarding (dev)",
       groups: {
         required: "Quick Setup",
-        recommended: "Experience openloomi",
+        recommended: "Experience openrice",
         explore: "Learn more",
       },
       steps: {
         setupProfile: {
-          title: "Help openloomi Know You",
-          desc: "The more you share, the better openloomi understands what truly matters to you",
-          guideTitle: "Help openloomi Know You",
+          title: "Help openrice Know You",
+          desc: "The more you share, the better openrice understands what truly matters to you",
+          guideTitle: "Help openrice Know You",
         },
         createFirstEvent: {
           title: "Create your first tracking",
-          desc: "Add or sync an update so openloomi can start organizing for you",
+          desc: "Add or sync an update so openrice can start organizing for you",
           guideTitle: "Create your first tracking",
           bullet1:
             "Sync messages from connected platforms or add a tracking manually",
           bullet2:
             "Trackings are auto-categorized by context for easier review",
           bullet3:
-            "Once you have trackings, you can ask openloomi to analyze or suggest",
+            "Once you have trackings, you can ask openrice to analyze or suggest",
           popoverHint: "Choose how to create your first tracking",
           popoverSubtitle:
-            "Tell openloomi what to track — it'll monitor updates and surface what matters.",
+            "Tell openrice what to track — it'll monitor updates and surface what matters.",
           actionAuthorizePlatform: "Auto Track",
           actionAuthorizePlatformDesc:
-            "Connect your accounts — openloomi finds what's worth tracking, automatically",
-          actionChatWithAI: "Chat with openloomi",
+            "Connect your accounts — openrice finds what's worth tracking, automatically",
+          actionChatWithAI: "Chat with openrice",
           actionChatWithAIDesc:
-            "Chat or upload a file, and openloomi will turn it into a Tracking",
+            "Chat or upload a file, and openrice will turn it into a Tracking",
           createTrackingPrompt:
             "Use the openloomi-event-creator skill to create a tracking that reminds me to drink water every hour",
         },
         openloomiFirstTask: {
-          title: "Let openloomi do your first task",
-          desc: "Ask about an event or give a task to experience openloomi's help",
-          guideTitle: "Let openloomi do your first task",
+          title: "Let openrice do your first task",
+          desc: "Ask about an event or give a task to experience openrice's help",
+          guideTitle: "Let openrice do your first task",
           bullet1:
-            'Click "Ask openloomi" on an event card and enter your question',
+            'Click "Ask openrice" on an event card and enter your question',
           bullet2:
-            "Ask openloomi to summarize, draft a reply, or suggest next steps",
+            "Ask openrice to summarize, draft a reply, or suggest next steps",
           bullet3:
             "Replies are based on full context of that event, not generic answers",
           popoverSubtitle:
-            "Tell openloomi what to do — it'll help you get things done.",
+            "Tell openrice what to do — it'll help you get things done.",
           tryIt: "Try it",
           action1Title: "Draft a Message",
           action1Desc:
-            "Tell openloomi what you want to say — she'll make it professional, warm, and ready to send.",
+            "Tell openrice what you want to say — she'll make it professional, warm, and ready to send.",
           action1Prompt:
             "Help me draft a message to my investor — let them know our Series A is progressing well and suggest a sync next week.",
-          action2Title: "Co-create with openloomi",
+          action2Title: "Co-create with openrice",
           action2Desc:
-            "Share what's on your mind — openloomi thinks alongside you and turns scattered ideas into something tangible.",
+            "Share what's on your mind — openrice thinks alongside you and turns scattered ideas into something tangible.",
           action2Prompt:
             "I want to write a positioning document for our product. Let's work on it together — I'll share my thoughts and you help me shape it.",
           action3Title: "Break It Down",
           action3Desc:
-            "Big goals stall without structure. Describe what you're working toward — openloomi breaks it into clear, ownable next steps.",
+            "Big goals stall without structure. Describe what you're working toward — openrice breaks it into clear, ownable next steps.",
           action3Prompt:
             "I want to close our first 10 paying customers in the next 30 days. Help me break this down into a concrete action plan.",
           action4Title: "Plan Your Content",
           action4Desc:
-            "Content is your most durable asset. Tell openloomi your product and audience — she'll build a strategy with rhythm.",
+            "Content is your most durable asset. Tell openrice your product and audience — she'll build a strategy with rhythm.",
           action4Prompt:
             "My product is an AI work assistant for SMB founders. Help me plan a LinkedIn content strategy.",
           action5Title: "Spark Marketing Ideas",
           action5Desc:
-            "Great marketing ideas are one angle away. Tell openloomi what you're launching — she'll find the hook.",
+            "Great marketing ideas are one angle away. Tell openrice what you're launching — she'll find the hook.",
           action5Prompt:
             "We're launching a new feature for our AI Agent product. Give me 5 creative campaign ideas with strong shareability.",
           action6Title: "Build a Deck",
           action6Desc:
-            "Structure is persuasion. Describe your topic and audience — openloomi builds the skeleton so you focus on the story.",
+            "Structure is persuasion. Describe your topic and audience — openrice builds the skeleton so you focus on the story.",
           action6Prompt:
             "Help me outline a VC pitch deck. We're an early-stage AI communication assistant startup, raising Pre-A.",
           action7Title: "AI News Brief",
           action7Desc:
-            "The AI space moves fast. openloomi filters the noise and surfaces only the signals worth your attention.",
+            "The AI space moves fast. openrice filters the noise and surfaces only the signals worth your attention.",
           action7Prompt:
             "What's worth knowing in AI today? Give me a quick briefing.",
-          action8Title: "What Can openloomi Do?",
+          action8Title: "What Can openrice Do?",
           action8Desc:
-            "Not sure how to use openloomi? This is your starting point — explore what she can do and find the workflow that fits you best.",
+            "Not sure how to use openrice? This is your starting point — explore what she can do and find the workflow that fits you best.",
           action8Prompt:
-            "I'm an early-stage startup founder dealing with a ton of communication every day. What can openloomi do for me?",
+            "I'm an early-stage startup founder dealing with a ton of communication every day. What can openrice do for me?",
         },
         updateEvents: {
           title: "Update your events",
@@ -6079,11 +6076,11 @@ const enUS = {
           bullet3: "Status syncs to your workspace for review and management",
         },
         firstChat: {
-          title: "Chat with openloomi via messaging apps",
-          desc: "Not just in the app —\nchat with openloomi directly via Telegram, QQ, Lark/Feishu, iMessage, WhatsApp.\nAsk questions, track updates, get things done anywhere.",
-          guideTitle: "Chat with openloomi via messaging apps",
+          title: "Chat with openrice via messaging apps",
+          desc: "Not just in the app —\nchat with openrice directly via Telegram, QQ, Lark/Feishu, iMessage, WhatsApp.\nAsk questions, track updates, get things done anywhere.",
+          guideTitle: "Chat with openrice via messaging apps",
           learnMoreLink: "Learn how to connect →",
-          bullet1: "Send messages to openloomi in your connected messaging app",
+          bullet1: "Send messages to openrice in your connected messaging app",
           bullet2:
             "Ask about today's updates, assign tasks, or get suggestions",
           bullet3:
@@ -6093,11 +6090,11 @@ const enUS = {
         },
         exploreAgents: {
           title: "Learn about Agents",
-          desc: "With automations, just hand off the recurring stuff to openloomi — it runs automatically at the time you set, so it never slips your mind. Skills are like equipping openloomi with the right toolkit, helping it handle specific scenarios with greater precision and care.",
+          desc: "With automations, just hand off the recurring stuff to openrice — it runs automatically at the time you set, so it never slips your mind. Skills are like equipping openrice with the right toolkit, helping it handle specific scenarios with greater precision and care.",
           descAutomation:
-            "In Automation, you manage all your scheduled tasks.\nHand off anything you need to repeat or plan for later to openloomi — it runs them for you at the time you set.",
+            "In Automation, you manage all your scheduled tasks.\nHand off anything you need to repeat or plan for later to openrice — it runs them for you at the time you set.",
           descSkill:
-            "In Skills, you give openloomi the right abilities for different scenarios.\nThese Skills help it handle specific tasks with better context and more precise execution.",
+            "In Skills, you give openrice the right abilities for different scenarios.\nThese Skills help it handle specific tasks with better context and more precise execution.",
           learnMoreAutomation: "Learn about Automation",
           learnMoreSkills: "Learn about Skill",
           guideTitle: "Learn about Agents",
@@ -6113,7 +6110,7 @@ const enUS = {
         },
         exploreLibrary: {
           title: "Learn about Library",
-          desc: "Library is where openloomi helps you collect and organize everything — notes and files from your Trackings, plus anything generated in your conversations.",
+          desc: "Library is where openrice helps you collect and organize everything — notes and files from your Trackings, plus anything generated in your conversations.",
           guideTitle: "Learn about Library",
           bullet1: "Archived events and insights are saved to your workspace",
           bullet2: "Search, filter, tag, and export your records",
@@ -6130,14 +6127,14 @@ const enUS = {
       stepGotIt: "Got it — mark as done",
       stepContentComingSoon: "Coming soon",
       groupAllDone: "All done",
-      finishButton: "Enter openloomi",
+      finishButton: "Enter openrice",
       finishHint: 'Complete all steps in "Quick Setup" to finish the guide',
       finishAlertTitle: "🎉 The basics are done!",
       finishAlertDescription:
-        "You're ready to enter openloomi — or keep going if you'd like.\nWant to come back later? The \"Onboarding Guide\" at the bottom of the menu is always here.",
+        "You're ready to enter openrice — or keep going if you'd like.\nWant to come back later? The \"Onboarding Guide\" at the bottom of the menu is always here.",
       startHereFirstTitle: "Start here first",
       startHereFirstDescription:
-        "Takes 2 minutes — and openloomi will actually know who you are.",
+        "Takes 2 minutes — and openrice will actually know who you are.",
       finishError: "Failed to finish onboarding, please try again",
       finishing: "Finishing...",
       debugReset: "reset(dev)",
@@ -6163,7 +6160,7 @@ const enUS = {
     avatarBackground: "Avatar",
     colorPresetLabels: {
       "openloomi-primary": "Primary",
-      "openloomi-original": "openloomi Original",
+      "openloomi-original": "openrice Original",
       "sunset-dream": "Sunset Dream",
       "sakura-breeze": "Sakura Breeze",
       "forest-whisper": "Forest Whisper",
@@ -6249,16 +6246,16 @@ const enUS = {
   },
   toast: {
     genericError: "Something didn't land",
-    serverStartFailed: "openloomi failed to start",
-    serverStartError: "openloomi startup error",
-    appStarting: "openloomi is starting...",
-    appDownloading: "openloomi is updating...",
+    serverStartFailed: "openrice failed to start",
+    serverStartError: "openrice startup error",
+    appStarting: "openrice is starting...",
+    appDownloading: "openrice is updating...",
   },
   update: {
     titleNewVersion: "New Version Available",
     titleUpdateComplete: "Update Complete",
     description:
-      "A new version of openloomi is available. Update now for the latest features and fixes.",
+      "A new version of openrice is available. Update now for the latest features and fixes.",
     descriptionRestarting:
       "Update installed. The app will restart automatically...",
     currentVersion: "Current Version",

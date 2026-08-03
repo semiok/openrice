@@ -2329,7 +2329,7 @@ async fn check_network_connectivity() -> PreflightCheck {
 
     // GitHub Releases is the only update source.
     let mut request = client
-        .get("https://api.github.com/repos/melandlabs/openloomi/releases/latest")
+        .get("https://api.github.com/repos/semiok/openrice/releases/latest")
         .header("Accept", "application/vnd.github+json");
     if let Ok(token) = std::env::var("GITHUB_TOKEN") {
         if !token.is_empty() {

@@ -350,7 +350,7 @@ const en = {
     aiSetupEyebrow: "One-minute setup",
     aiSetupTitle: "Connect your conversation model",
     aiSetupDescription:
-      "OpenLoomi needs an Anthropic-compatible provider before it can start a conversation. Your credentials are stored securely and can be changed later.",
+      "openrice needs an Anthropic-compatible provider before it can start a conversation. Your credentials are stored securely and can be changed later.",
     aiSetupApiKey: "API key",
     aiSetupEndpoint: "Endpoint",
     aiSetupModel: "Model",
@@ -362,7 +362,7 @@ const en = {
       "Your chat history is safe. Add a conversation API configuration to send new messages.",
     embeddingTitle: "Embedding models",
     embeddingDescription:
-      "Choose how OpenLoomi creates vectors for knowledge, memory, and semantic search.",
+      "Choose how openrice creates vectors for knowledge, memory, and semantic search.",
     embeddingCloudTitle: "Online API",
     embeddingCloudDescription: "Use an OpenAI-compatible embedding endpoint.",
     embeddingLocalTitle: "Local model",

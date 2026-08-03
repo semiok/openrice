@@ -31,7 +31,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Loomi</title>
+    <title>openrice</title>
     <style>
       :root {
         /* Visual size in CSS px. The Tauri window is 168×168 logical, so
@@ -437,7 +437,7 @@
     </style>
   </head>
   <body>
-    <img class="fox" id="fox" data-state="idle" alt="Loomi" draggable="false" />
+    <img class="fox" id="fox" data-state="idle" alt="openrice" draggable="false" />
     <span class="pending-badge" id="pending-badge" aria-hidden="true"></span>
     <!-- #365 — idle status affordance. The pill is hidden by default
          and made visible by `applyIdlePill()` when state === "idle"
@@ -456,19 +456,19 @@
       data-enabled="true"
     >
       <span class="idle-dot" aria-hidden="true"></span>
-      <span class="idle-label" id="idle-pill-label">Loomi is on watch</span>
+      <span class="idle-label" id="idle-pill-label">openrice is on watch</span>
     </span>
 
     <div id="pet-menu" role="menu" aria-hidden="true">
-      <button type="button" data-op="open" role="menuitem">Open Loomi</button>
+      <button type="button" data-op="open" role="menuitem">Open openrice</button>
       <button type="button" data-op="settings" role="menuitem">Settings</button>
       <!-- User-defined prompt action buttons injected by applyContextActions(view). -->
       <hr />
       <div class="menu-separator">Theme</div>
       <button type="button" data-op="theme-fox" role="menuitem">
-        <span class="menu-tick active" data-theme-tick="fox">✓</span>Fox
+        <span class="menu-tick active" data-theme-tick="fox">✓</span>Rice
       </button>
-      <button type="button" data-op="theme-capybara" role="menuitem">
+      <button type="button" data-op="theme-capybara" role="menuitem" hidden>
         <span class="menu-tick" data-theme-tick="capybara">✓</span>Capybara
       </button>
       <!-- Custom theme buttons injected at boot by applyConfig(view). -->
@@ -572,7 +572,7 @@
         // `__loomiIdlePill` global if/when we wire that, but the
         // English fallback is good enough for the standalone path
         // because it never sits next to a real watcher.
-        const IDLE_PILL_FALLBACK = "Loomi is on watch";
+        const IDLE_PILL_FALLBACK = "openrice is on watch";
         const IDLE_PILL_PAUSED_FALLBACK = "Monitoring paused";
         const IDLE_PILL_WORKING_FALLBACK = "Checking sources…";
 

@@ -287,7 +287,7 @@ pub fn build_pet_window(app: &AppHandle) -> tauri::Result<()> {
     #[cfg(windows)]
     let builder =
         WebviewWindowBuilder::new(app, PET_LABEL, WebviewUrl::App("loomi-widget.html".into()))
-            .title("Loomi")
+            .title("openrice")
             .inner_size(PET_W, PET_H)
             .resizable(false)
             .decorations(false)
@@ -312,7 +312,7 @@ pub fn build_pet_window(app: &AppHandle) -> tauri::Result<()> {
     #[cfg(not(windows))]
     let builder =
         WebviewWindowBuilder::new(app, PET_LABEL, WebviewUrl::App("loomi-widget.html".into()))
-            .title("Loomi")
+            .title("openrice")
             .inner_size(PET_W, PET_H)
             .resizable(false)
             .decorations(false)

@@ -1186,7 +1186,7 @@ export function DecisionCard({
               <span className="text-xs text-muted-foreground">
                 {t(
                   "loop.quietDigest.githubDetailsUnavailableBody",
-                  "OpenLoomi saw unread GitHub notifications, but this card did not receive the item details.",
+                  "openrice saw unread GitHub notifications, but this card did not receive the item details.",
                 )}
               </span>
               <a
