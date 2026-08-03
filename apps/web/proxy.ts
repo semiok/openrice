@@ -38,6 +38,20 @@ const CORS_HEADERS: Record<string, string> = {
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Keep legacy links working while making rice.traditionow.ai the
+  // canonical browser entry point for OpenRice.
+  const hostname = (request.headers.get("x-forwarded-host") ??
+    request.headers.get("host"))
+    ?.split(":")[0]
+    .toLowerCase();
+  if (hostname === "loomi.traditionow.ai") {
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.protocol = "https";
+    redirectUrl.hostname = "rice.traditionow.ai";
+    redirectUrl.port = "";
+    return NextResponse.redirect(redirectUrl, 308);
+  }
+
   // ========== CORS preflight for /api/* ==========
   // Each API route only exports the methods it implements
   // (GET/POST/etc.), so an unhandled OPTIONS would return 405. The

@@ -1,4 +1,5 @@
 import { Noto_Sans_SC, Noto_Serif_SC, Roboto } from "next/font/google";
+import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { I18nProvider } from "@/components/i18n-provider";
 import { TooltipProvider } from "@openloomi/ui";
@@ -11,6 +12,21 @@ import { MotionConfigProvider } from "@/components/motion-config-provider";
 import { GeddleScript } from "@/components/geddle-script";
 import { AppProviders } from "@/components/app-providers";
 import { UpdateBanner } from "@/components/update-banner";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://rice.traditionow.ai"),
+  title: {
+    default: "OpenRice",
+    template: "%s | OpenRice",
+  },
+  description: "OpenRice AI collaboration workspace",
+  applicationName: "OpenRice",
+  icons: {
+    icon: [{ url: "/icon.png", type: "image/png" }],
+    shortcut: "/favicon.ico",
+    apple: "/icon.png",
+  },
+};
 
 const notoSansSC = Noto_Sans_SC({
   subsets: ["latin"],

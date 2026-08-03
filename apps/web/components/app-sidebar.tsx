@@ -599,7 +599,7 @@ export function AppSidebar() {
                     <div className="pl-3 size-8 flex items-center justify-center bg-transparent border-0 cursor-pointer hover:bg-sidebar-hover rounded-md">
                       <Image
                         src="/images/logo_web.png"
-                        alt="openloomi Logo"
+                        alt="OpenRice logo"
                         width={24}
                         height={24}
                         className="object-contain"
@@ -645,7 +645,7 @@ export function AppSidebar() {
                   >
                     <Image
                       src="/images/logo_web.png"
-                      alt="openloomi Logo"
+                      alt="OpenRice logo"
                       width={24}
                       height={24}
                       className="object-contain"

@@ -336,7 +336,7 @@ export default function GuestGuide({
               <div className="size-16 sm:size-20 bg-gradient-to-br rounded-full flex items-center justify-center">
                 <Image
                   src="/images/logo_web.png"
-                  alt="openloomi Logo"
+                  alt="OpenRice logo"
                   width={32}
                   height={32}
                   className="object-contain"
@@ -360,7 +360,7 @@ export default function GuestGuide({
             <div className="size-32 sm:size-20 bg-gradient-to-br rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
               <Image
                 src="/images/logo_web.png"
-                alt="openloomi Logo"
+                alt="OpenRice logo"
                 width={32}
                 height={32}
                 className="object-contain"
