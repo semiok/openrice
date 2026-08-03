@@ -3,6 +3,7 @@
 > 最近核对：2026-08-03 EDT（America/New_York）
 > 权威来源：Linear 的 OpenRice 项目、MET-29、MET-30、MET-31，以及 GitHub `semiok/openrice` 的 `main`、PR 和分支。
 > 使用原则：每次开工先读对应 Linear issue 的正文和最新评论，再核对 GitHub `origin/main`。本文用于说明长期协作方式，不覆盖用户最新指令。
+> 能力规范：SkillHub 相关开发同时遵循 `docs/SkillHub-development-framework.md`。
 
 ## 项目身份与当前基线
 
