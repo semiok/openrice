@@ -84,7 +84,7 @@ export function DingTalkStepsDialog({
                   <li>
                     {t(
                       "auth.dingtalkSteps3",
-                      "After publishing the app, fill in Client ID and Client Secret in openloomi and connect",
+                      "After publishing the app, fill in Client ID and Client Secret in OpenRice and connect",
                     )}
                   </li>
                   <li>

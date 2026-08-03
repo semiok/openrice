@@ -1,0 +1,17 @@
+name: OpenRice brand check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  brand-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/openrice-branding.mjs --check

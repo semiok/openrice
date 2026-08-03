@@ -143,7 +143,7 @@ export class CloudEmbeddingProvider implements EmbeddingProvider {
       if (this.baseURL.includes("openrouter.ai")) {
         headers["HTTP-Referer"] =
           process.env.NEXT_PUBLIC_APP_URL || "https://openloomi.ai";
-        headers["X-Title"] = "OpenLoomi AI";
+        headers["X-Title"] = "OpenRice AI";
       }
     } else if (this.userAuthToken) {
       headers.Authorization = `Bearer ${this.userAuthToken}`;

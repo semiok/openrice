@@ -1,27 +1,26 @@
 {
   "name": "openloomi",
   "owner": {
-    "name": "OpenLoomi",
-    "email": "developers@melandlabs.ai"
+    "name": "OpenRice"
   },
   "metadata": {
-    "description": "OpenLoomi local-first runtime plugins for Claude",
+    "description": "OpenRice local-first runtime plugins for Claude",
     "version": "4",
-    "homepage": "https://openloomi.ai",
-    "repository": "https://github.com/melandlabs/openloomi",
+    "homepage": "https://rice.traditionow.ai",
+    "repository": "https://github.com/semiok/openrice",
     "license": "Apache-2.0"
   },
   "plugins": [
     {
       "name": "openloomi",
       "source": "./plugins/claude",
-      "description": "Connect Claude Code to your local OpenLoomi runtime. Sync ANTHROPIC_API_KEY, mirror lifecycle onto the Loomi Pet, auto-archive Stop events into OpenLoomi memory.",
+      "description": "Connect Claude Code to your local OpenRice runtime. Sync ANTHROPIC_API_KEY, mirror lifecycle onto the Loomi Pet, auto-archive Stop events into OpenRice memory.",
       "version": "0.8.8",
       "author": {
-        "name": "OpenLoomi"
+        "name": "OpenRice"
       },
-      "homepage": "https://openloomi.ai",
-      "repository": "https://github.com/melandlabs/openloomi/tree/main/plugins/claude",
+      "homepage": "https://rice.traditionow.ai",
+      "repository": "https://github.com/semiok/openrice/tree/main/plugins/claude",
       "license": "Apache-2.0",
       "keywords": [
         "openloomi",

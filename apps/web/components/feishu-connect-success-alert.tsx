@@ -43,7 +43,7 @@ export function FeishuConnectSuccessAlert({
             {isTauri()
               ? t(
                   "auth.feishuConnectRestartDescTauri",
-                  "To ensure stable Lark/Feishu message listening, please fully quit and restart the openloomi desktop client",
+                  "To ensure stable Lark/Feishu message listening, please fully quit and restart the OpenRice desktop client",
                 )
               : t(
                   "auth.feishuConnectRestartDescWeb",

@@ -1,15 +1,15 @@
 ---
 name: openloomi-api
-description: "openloomi HTTP API reference (local-first, served from the OpenLoomi Desktop app at http://localhost:3414). Use when working with openloomi backend routes — auth, AI, files, integrations, RAG, memory, Loop, pet, workspace, platform callbacks. Triggers: API endpoints, backend routes, /api/*, local API, port 3414, integrations REST, OAuth start, RAG search, loop state, memory search, pet state, audit logs"
+description: "OpenRice HTTP API reference (local-first, served from the OpenRice Desktop app at http://localhost:3414). Use when working with openloomi backend routes — auth, AI, files, integrations, RAG, memory, Loop, pet, workspace, platform callbacks. Triggers: API endpoints, backend routes, /api/*, local API, port 3414, integrations REST, OAuth start, RAG search, loop state, memory search, pet state, audit logs"
 ---
 
 > **Note:** If you haven't downloaded or installed openloomi yet, please refer to [Getting Started](https://openloomi.ai/docs/getting-started) for installation instructions.
 
-# OpenLoomi API Documentation
+# OpenRice API Documentation
 
 ## API Modules
 
-OpenLoomi ships a **local-first** HTTP API served from the desktop app (port `3414`, fallback `3515`). All auth, Memory, AI, RAG, Loop, and Audit data live in a local SQLite database — your data stays on your machine and the OpenLoomi app is the source of truth. The only externally-routed auth path is the **Composio OAuth broker** that backs the Slack, GitHub, Google, Notion, Linear, HubSpot, LinkedIn, Jira, and Asana Connectors (see `openloomi-connectors`).
+OpenRice ships a **local-first** HTTP API served from the desktop app (port `3414`, fallback `3515`). All auth, Memory, AI, RAG, Loop, and Audit data live in a local SQLite database — your data stays on your machine and the OpenRice app is the source of truth. The only externally-routed auth path is the **Composio OAuth broker** that backs the Slack, GitHub, Google, Notion, Linear, HubSpot, LinkedIn, Jira, and Asana Connectors (see `openloomi-connectors`).
 
 The `remote-auth` prefix is historical — those routes once proxied to a cloud server; today they are the canonical local endpoints, and the Claude/Codex plugin bridge uses `/api/remote-auth/user` as a port-discovery + auth-handshake probe.
 
@@ -273,9 +273,9 @@ Each integration platform has its own `/api/<platform>/*` module:
 
 ## Sandbox and network
 
-If `curl` calls, the OpenLoomi CLI, or `setup-status` fail with network errors
+If `curl` calls, the OpenRice CLI, or `setup-status` fail with network errors
 (e.g. `ECONNREFUSED`, `ETIMEDOUT`, "unreachable"), check whether Codex is
-running inside a sandbox before concluding the OpenLoomi desktop API is stopped.
+running inside a sandbox before concluding the OpenRice desktop API is stopped.
 Codex network sandboxing can block:
 
 - Loopback access to the host's `localhost` (e.g. `http://localhost:3414` /
@@ -285,7 +285,7 @@ Codex network sandboxing can block:
 
 Request approval and retry the same call outside the sandbox. If the
 outside-sandbox retry succeeds, treat the in-sandbox failure as a sandbox
-artifact — not a real product problem. Do not recommend restarting OpenLoomi
+artifact — not a real product problem. Do not recommend restarting OpenRice
 until the outside-sandbox checks also fail. See `openloomi` for the canonical
 sandbox / loopback probe.
 

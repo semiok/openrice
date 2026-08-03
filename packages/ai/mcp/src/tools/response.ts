@@ -51,7 +51,7 @@ export function apiErrorToolResult(
     error instanceof Error &&
     (error.name === "AbortError" || /aborted/i.test(error.message))
   ) {
-    const message = "Request timed out before OpenLoomi responded.";
+    const message = "Request timed out before OpenRice responded.";
     return {
       content: [{ type: "text", text: `${title}: ${message}` }],
       structuredContent: {

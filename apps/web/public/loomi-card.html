@@ -2164,8 +2164,8 @@
         </span>
         <h2 class="compact-title" id="compact-title">Everything is working</h2>
         <p class="compact-subtitle" id="compact-subtitle">
-          Nothing needs your attention. openrice will open a card when a decision
-          needs you.
+          Nothing needs your attention. openrice will open a card when a
+          decision needs you.
         </p>
         <p class="compact-last-checked" id="compact-last-checked">
           Last checked: —
@@ -5936,7 +5936,7 @@
               ? ` with sub-action ${JSON.stringify(body)}`
               : "";
           const base = [
-            `You are executing a Loop decision for openloomi. The user clicked the \`${action}\` button on the pet card${subAction}.`,
+            `You are executing a Loop decision for OpenRice. The user clicked the \`${action}\` button on the pet card${subAction}.`,
             ``,
             `Decision:`,
             "```json",
@@ -7039,7 +7039,7 @@
           // before the first probe completes would see "No sources
           // connected" forever — even after the watcher wrote healthy
           // entries to `~/.openloomi/loop/connectors.json` — until they
-          // restarted OpenLoomi. We fire the refresh for both compact
+          // restarted OpenRice. We fire the refresh for both compact
           // and full opens so a full-mode decision card also reflects
           // the latest connector state when it appears.
           tauri.event.listen("loop:card-mode", (e) => {

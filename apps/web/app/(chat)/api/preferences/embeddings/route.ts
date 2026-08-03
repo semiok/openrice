@@ -200,7 +200,7 @@ export async function POST(request: Request) {
             },
           });
 
-    const embedding = await provider.embedQuery("OpenLoomi embedding test");
+    const embedding = await provider.embedQuery("OpenRice embedding test");
     if (!embedding.length || !embedding.every(Number.isFinite)) {
       throw new Error("Provider returned an invalid embedding vector.");
     }

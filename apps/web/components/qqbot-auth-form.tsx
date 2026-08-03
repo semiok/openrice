@@ -100,7 +100,7 @@ export function QQBotAuthForm({
           name,
           description: t(
             "auth.qqbotBotDescription",
-            "Chat with openloomi via QQ",
+            "Chat with OpenRice via QQ",
           ),
           adapter: "qqbot",
           enable: true,
@@ -148,7 +148,7 @@ export function QQBotAuthForm({
       <p className="text-sm text-muted-foreground">
         {t(
           "auth.qqbotDescription",
-          "Create a bot on QQ Open Platform, get AppID and AppSecret, fill them in below to chat with openloomi.",
+          "Create a bot on QQ Open Platform, get AppID and AppSecret, fill them in below to chat with OpenRice.",
         )}
       </p>
       <div className="grid gap-4 py-4">
@@ -247,7 +247,7 @@ export function QQBotAuthForm({
             <DialogDescription>
               {t(
                 "auth.qqbotDescription",
-                "Create a bot on QQ Open Platform, get AppID and AppSecret, fill them in below to chat with openloomi.",
+                "Create a bot on QQ Open Platform, get AppID and AppSecret, fill them in below to chat with OpenRice.",
               )}
             </DialogDescription>
           </DialogHeader>

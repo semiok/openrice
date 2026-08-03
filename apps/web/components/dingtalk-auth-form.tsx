@@ -93,7 +93,7 @@ export function DingTalkAuthForm({
           name,
           description: t(
             "auth.dingtalkBotDescription",
-            "Chat with openloomi via DingTalk",
+            "Chat with OpenRice via DingTalk",
           ),
           adapter: "dingtalk",
           enable: true,
@@ -147,7 +147,7 @@ export function DingTalkAuthForm({
       <p className="text-sm text-muted-foreground">
         {t(
           "auth.dingtalkDescription",
-          "Create an enterprise internal app on DingTalk Open Platform, add a Stream mode bot, fill in Client ID (AppKey) and Client Secret below to chat with openloomi.",
+          "Create an enterprise internal app on DingTalk Open Platform, add a Stream mode bot, fill in Client ID (AppKey) and Client Secret below to chat with OpenRice.",
         )}
       </p>
       <div className="grid gap-4 py-4">
@@ -256,7 +256,7 @@ export function DingTalkAuthForm({
             <DialogDescription>
               {t(
                 "auth.dingtalkDescription",
-                "Create an enterprise internal app on DingTalk Open Platform, add a Stream mode bot, fill in Client ID (AppKey) and Client Secret below to chat with openloomi.",
+                "Create an enterprise internal app on DingTalk Open Platform, add a Stream mode bot, fill in Client ID (AppKey) and Client Secret below to chat with OpenRice.",
               )}
             </DialogDescription>
           </DialogHeader>

@@ -1,13 +1,13 @@
 ---
 name: openloomi-pet
-description: "OpenLoomi Pet sprite and state helper for Codex. Use for pet state, themes, custom characters, and sprite overrides."
+description: "OpenRice Pet sprite and state helper for Codex. Use for pet state, themes, custom characters, and sprite overrides."
 allowed-tools: Bash(node $SKILL_DIR/../../scripts/loomi-bridge.mjs *)
 ---
 
-# OpenLoomi Pet Sub-skill
+# OpenRice Pet Sub-skill
 
 The Loomi Pet has 9 universal state names. The plugin ships the fox
-(`loomi-*`) sprite set for branding; the OpenLoomi runtime's
+(`loomi-*`) sprite set for branding; the OpenRice runtime's
 state-resolution watcher renders the matching sprite for whichever
 theme you have active (fox or capybara, or any folder under
 `~/.openloomi/pet-custom/`). State set:
@@ -31,8 +31,8 @@ theme you have active (fox or capybara, or any folder under
 
 Sprite set is hardcoded in the bridge — invalid state names are rejected
 before any HTTP call. The endpoint `POST /api/pet/state` may not yet exist
-in the target OpenLoomi runtime; the bridge falls back to "would have set
-state to X — pending OpenLoomi endpoint" without raising an error.
+in the target OpenRice runtime; the bridge falls back to "would have set
+state to X — pending OpenRice endpoint" without raising an error.
 
 ---
 
@@ -121,10 +121,10 @@ Absolute paths only — the runtime routes them through `tauri::convertFileSrc`,
 
 If `node ... loomi-bridge.mjs pet <state>` or `POST /api/pet/state` fails
 with a network error (`ECONNREFUSED`, `ETIMEDOUT`, "unreachable"), check
-whether Codex is running inside a sandbox before concluding the OpenLoomi
+whether Codex is running inside a sandbox before concluding the OpenRice
 desktop API is stopped. Codex network sandboxing can block loopback access
 to the host's `localhost` (e.g. `http://localhost:3414`). The bridge's
-"would have set state to X — pending OpenLoomi endpoint" fallback hides
+"would have set state to X — pending OpenRice endpoint" fallback hides
 this in many cases, but a genuine `ECONNREFUSED` still surfaces.
 
 Request approval and retry the same command outside the sandbox. If the

@@ -26,7 +26,7 @@ export function useInsightAvatar(
   /**
    * Agent name
    */
-  const assistantName = "openloomi";
+  const assistantName = "OpenRice";
 
   /**
    * Get avatar configuration based on state

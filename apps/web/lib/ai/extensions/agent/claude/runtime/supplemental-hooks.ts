@@ -190,7 +190,7 @@ function formatSupplementalInputContext(
     ].join("\n"),
   );
   return [
-    "OpenLoomi received the following non-urgent inputs while tools were running. Apply them before choosing the next action.",
+    "OpenRice received the following non-urgent inputs while tools were running. Apply them before choosing the next action.",
     ...blocks,
   ].join("\n\n");
 }

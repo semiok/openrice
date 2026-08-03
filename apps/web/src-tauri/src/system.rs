@@ -40,7 +40,7 @@ struct ScreenCaptureEvent {
     state: String,
 }
 
-const ACCESSIBILITY_REQUIRED_MSG: &str = "Accessibility permission is required for the global capture shortcut. Enable openloomi under System Settings → Privacy & Security → Accessibility.";
+const ACCESSIBILITY_REQUIRED_MSG: &str = "Accessibility permission is required for the global capture shortcut. Enable openrice under System Settings → Privacy & Security → Accessibility.";
 const LISTENER_READY_TIMEOUT: Duration = Duration::from_secs(2);
 
 fn stop_screen_capture_listener() {
@@ -1057,7 +1057,7 @@ pub fn test_global_shortcut() -> Result<String, String> {
 pub fn get_app_info() -> Result<serde_json::Value, String> {
     catch_unwind_result("get_app_info", || {
         Ok(serde_json::json!({
-            "name": "openloomi",
+            "name": "OpenRice",
             "version": env!("CARGO_PKG_VERSION"),
             "description": env!("CARGO_PKG_DESCRIPTION"),
         }))

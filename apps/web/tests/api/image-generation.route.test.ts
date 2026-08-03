@@ -274,7 +274,7 @@ describe("POST /api/ai/v1/images/generations", () => {
         headers: expect.objectContaining({
           Authorization: "Bearer test-openrouter-key",
           "HTTP-Referer": "http://localhost:3000",
-          "X-Title": "OpenLoomi",
+          "X-Title": "OpenRice",
         }),
       }),
     );

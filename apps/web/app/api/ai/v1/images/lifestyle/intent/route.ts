@@ -130,7 +130,7 @@ function buildLifestyleImageIntentSystemPrompt(
 ): string {
   return [
     skillInstructions,
-    "You are OpenLoomi's lifestyle image intent classifier.",
+    "You are OpenRice's lifestyle image intent classifier.",
     "Return only JSON matching the skill's Output Contract.",
     "Do not include Markdown, prose, code fences, or tool calls.",
     "If the intent is unclear, invalid, negated, or only asks for image understanding, return matched false with confidence low.",

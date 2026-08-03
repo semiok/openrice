@@ -1,0 +1,15 @@
+{
+  "name": "OpenRice",
+  "lowercaseName": "openrice",
+  "webUrl": "https://rice.traditionow.ai",
+  "repository": "https://github.com/semiok/openrice",
+  "upstreamRepository": "https://github.com/melandlabs/openloomi",
+  "compatibility": {
+    "pluginId": "openloomi",
+    "packageScope": "@openloomi",
+    "dataDirectory": "~/.openloomi",
+    "environmentPrefix": "OPENLOOMI_",
+    "eventPrefix": "openloomi:",
+    "cli": "openloomi-ctl"
+  }
+}

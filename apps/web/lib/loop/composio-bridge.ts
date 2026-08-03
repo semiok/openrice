@@ -122,7 +122,7 @@ function buildProbePrompt(
     })
     .join("\n");
 
-  return `You are running a **connector probe** for the openloomi Loop. Your job is to inspect active Composio surfaces, identify which of the toolkits below have at least one healthy connected account, and return one structured JSON object as your final assistant response. NO signal pull, NO classify, NO decision persist — just the connector snapshot.
+  return `You are running a **connector probe** for the OpenRice Loop. Your job is to inspect active Composio surfaces, identify which of the toolkits below have at least one healthy connected account, and return one structured JSON object as your final assistant response. NO signal pull, NO classify, NO decision persist — just the connector snapshot.
 
 # Available Composio surfaces — work through ALL of them before giving up
 

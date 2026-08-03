@@ -1,13 +1,13 @@
 ---
 name: openloomi-pet
-description: "OpenLoomi Pet sprite & state helper for Claude Code. Use when the user wants to change their Loomi Pet state, switch theme, drop in a custom character, override individual sprites, or ask Claude to mirror its lifecycle onto the pet. Triggers: pet state, /openloomi:pet, set pet, loomi pet, pet to happy, pet to working, pet to thinking, fox sprite, capybara sprite, custom pet theme, pet-custom, pet-config, override pet sprite."
+description: "OpenRice Pet sprite & state helper for Claude Code. Use when the user wants to change their Loomi Pet state, switch theme, drop in a custom character, override individual sprites, or ask Claude to mirror its lifecycle onto the pet. Triggers: pet state, /openloomi:pet, set pet, loomi pet, pet to happy, pet to working, pet to thinking, fox sprite, capybara sprite, custom pet theme, pet-custom, pet-config, override pet sprite."
 allowed-tools: Bash(node ${CLAUDE_PLUGIN_ROOT}/scripts/loomi-bridge.mjs *)
 ---
 
-# OpenLoomi Pet Sub-skill
+# OpenRice Pet Sub-skill
 
 The Loomi Pet has 9 universal state names. The plugin ships the fox
-(`loomi-*`) sprite set for branding; the OpenLoomi runtime's
+(`loomi-*`) sprite set for branding; the OpenRice runtime's
 state-resolution watcher renders the matching sprite for whichever
 theme you have active (fox or capybara, or any folder under
 `~/.openloomi/pet-custom/`). State set:
@@ -31,8 +31,8 @@ theme you have active (fox or capybara, or any folder under
 
 Sprite set is hardcoded in the bridge — invalid state names are rejected
 before any HTTP call. The endpoint `POST /api/pet/state` may not yet exist
-in the target OpenLoomi runtime; the bridge falls back to "would have set
-state to X — pending OpenLoomi endpoint" without raising an error.
+in the target OpenRice runtime; the bridge falls back to "would have set
+state to X — pending OpenRice endpoint" without raising an error.
 
 ---
 

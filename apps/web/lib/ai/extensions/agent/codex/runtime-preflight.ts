@@ -89,7 +89,7 @@ export class CodexModelCompatibilityError extends Error {
       : "";
 
     super(
-      `The selected model "${model}" is not available in Codex CLI ${installedVersion}. It may require a newer Codex CLI or may not be available to this account. Upgrade Codex with \`codex update\` (or install the latest \`@openai/codex\`), restart OpenLoomi, or choose a compatible model.${availableHint}`,
+      `The selected model "${model}" is not available in Codex CLI ${installedVersion}. It may require a newer Codex CLI or may not be available to this account. Upgrade Codex with \`codex update\` (or install the latest \`@openai/codex\`), restart OpenRice, or choose a compatible model.${availableHint}`,
     );
     this.name = "CodexModelCompatibilityError";
   }
@@ -249,7 +249,7 @@ async function probeCodexVersion(
   const version = parseCodexVersion(output);
   if (!version) {
     throw new CodexRuntimePreflightError(
-      `OpenLoomi could not determine the installed Codex CLI version from \`${options.command} --version\`. Output: ${output || "(empty)"}. Upgrade Codex or verify providerConfig.codexPath.`,
+      `OpenRice could not determine the installed Codex CLI version from \`${options.command} --version\`. Output: ${output || "(empty)"}. Upgrade Codex or verify providerConfig.codexPath.`,
     );
   }
 
@@ -276,7 +276,7 @@ async function probeCodexModels(
     await client.request("initialize", {
       clientInfo: {
         name: "openloomi",
-        title: "OpenLoomi",
+        title: "OpenRice",
         version: PREFLIGHT_CLIENT_VERSION,
       },
       capabilities: {},
@@ -515,7 +515,7 @@ class CodexAppServerProbeClient {
         id: message.id,
         error: {
           code: -32601,
-          message: `Unsupported OpenLoomi preflight method: ${message.method}`,
+          message: `Unsupported OpenRice preflight method: ${message.method}`,
         },
       });
       return;

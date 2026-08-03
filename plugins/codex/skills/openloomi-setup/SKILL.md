@@ -1,16 +1,16 @@
 ---
 name: openloomi-setup
-description: "Run OpenLoomi one-time setup — auto-chains install → set Codex provider → launch → wait API → mint guest session token → ready in one call. Mirrors Claude's `/openloomi:setup`. Triggers: setup openloomi, install openloomi, install and run, 一键装好并跑起来, fix openloomi, finalize openloomi, install_required, awaiting_user_action, session_initialization_required, ai_provider_required, install_failed, api_not_ready, what now, what next, first time, what can i do."
+description: "Run OpenRice one-time setup — auto-chains install → set Codex provider → launch → wait API → mint guest session token → ready in one call. Mirrors Claude's `/openloomi:setup`. Triggers: setup openloomi, install openloomi, install and run, 一键装好并跑起来, fix openloomi, finalize openloomi, install_required, awaiting_user_action, session_initialization_required, ai_provider_required, install_failed, api_not_ready, what now, what next, first time, what can i do."
 allowed-tools: "Bash(node $SKILL_DIR/../../scripts/loomi-bridge.mjs setup *)"
 ---
 
-# OpenLoomi Setup (end-to-end wizard)
+# OpenRice Setup (end-to-end wizard)
 
 The bridge now exposes a **single end-to-end wizard**: `setup --yes`. One
 invocation walks the full Codex state machine:
 
 ```
-install OpenLoomi.app from the official GitHub release
+install OpenRice.app from the official GitHub release
   → set OPENLOOMI_AGENT_PROVIDER=codex in the GUI launchd / environment.d
      (auto-restarts the desktop if it was already running)
   → launch the desktop app (`open -a <desktopMarker>` / platform equivalent)
@@ -74,10 +74,10 @@ dial language.
 | `--yes`                | off     | Pre-approve install. Without it, the bridge stops at `INSTALL_CONFIRMATION_REQUIRED` because Codex can't presume consent. With it, the chain runs end-to-end.    |
 | `--max-wait`           | 120000  | Global cap (ms) across the wait stages. Defaults to 120 s to absorb the first-run install + TCC prompts.                                                        |
 | `--api-timeout`        | 120000  | Per-stage budget for "waiting for local API". Independent of `--max-wait`.                                                                                       |
-| `--install-timeout`    | 300000  | Per-stage budget for "installing OpenLoomi". Covers download + copy on a 50 Mbps link.                                                                           |
+| `--install-timeout`    | 300000  | Per-stage budget for "installing OpenRice". Covers download + copy on a 50 Mbps link.                                                                           |
 | `--launch-timeout`     | 10000   | Per-stage budget for `open -a <bundle>` (and platform equivalents). Almost never actually hit; included for parity with the Claude side.                       |
 | `--permission-timeout` | 60000   | Extra grace wait after `--api-timeout` when the desktop process is up but the API never woke up — only fires when the bridge can confirm the process is alive.   |
-| `--bin-path`           | _auto_  | Explicit path to the OpenLoomi desktop bundle (e.g. `/Applications/OpenLoomi.app`). Mirrors Claude's flag and overrides the usual discovery order.                |
+| `--bin-path`           | _auto_  | Explicit path to the OpenRice desktop bundle (e.g. `/Applications/OpenRice.app`). Mirrors Claude's flag and overrides the usual discovery order.                |
 
 ## Live status
 
@@ -85,7 +85,7 @@ While the wizard is inside a long stage, the bridge writes a throttled
 1 Hz line to **stderr** so the user can see progress:
 
 ```
-  · installing OpenLoomi  (12s / max 5m) …
+  · installing OpenRice  (12s / max 5m) …
   · waiting for local API  (4s / max 2m) …
   · waiting on macOS permission prompt  (3s / max 1m) …
 ```
@@ -156,7 +156,7 @@ the audit table plus "where to go next" line, but never skip the intro.
 
 ### 1. One-paragraph intro
 
-> OpenLoomi is your **open-source, local-first AI partner**, built to
+> OpenRice is your **open-source, local-first AI partner**, built to
 > protect your attention. It runs as a desktop
 > app on your Mac, connects to the tools you authorise (Gmail, Slack,
 > GitHub, Google Calendar, Notion, Linear, etc. via Composio, plus
@@ -171,7 +171,7 @@ the audit table plus "where to go next" line, but never skip the intro.
 
 | Surface | Where |
 | --- | --- |
-| Desktop app | `/Applications/OpenLoomi.app` |
+| Desktop app | `/Applications/OpenRice.app` |
 | Local HTTP API | `http://localhost:3414` (fallback `3515`) |
 | Guest bearer token | `~/.openloomi/token` (base64-encoded JWT) |
 | Codex runtime env | `OPENLOOMI_AGENT_PROVIDER=codex` (LaunchAgent, survives reboot) |

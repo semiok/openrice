@@ -69,7 +69,7 @@ describe("lifestyle image intent route", () => {
       }),
     );
     const request = mocks.complete.mock.calls[0][0];
-    expect(request.system).toContain("OpenLoomi Lifestyle Image");
+    expect(request.system).toContain("OpenRice Lifestyle Image");
     expect(request.userContent).toContain("Reference image uploaded: true");
   });
 

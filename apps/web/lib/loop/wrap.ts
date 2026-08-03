@@ -367,7 +367,7 @@ export function buildWrapPrompt(
     2,
   );
 
-  return `You are writing the evening wrap for the user's OpenLoomi Loop — a single, agentic narrative summary of what got resolved today and what's still open. You have tool use — use it to ground the narrative in real past context BEFORE composing.
+  return `You are writing the evening wrap for the user's OpenRice Loop — a single, agentic narrative summary of what got resolved today and what's still open. You have tool use — use it to ground the narrative in real past context BEFORE composing.
 
 # Inputs
 

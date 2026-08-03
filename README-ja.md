@@ -1,10 +1,13 @@
 <div align="center">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="apps/web/public/images/logo-text-dark.png">
-  <img src="apps/web/public/images/logo-text.png" alt="OpenLoomi Logo" width="400">
-</picture>
+<img src="apps/web/public/images/logo_web.png" alt="OpenRice Logo" width="160">
+
+## OpenRice
 
 **注意エージェントが動かすオープンソースのAIパートナー。**
+
+これは [`semiok/openrice`](https://github.com/semiok/openrice) が独立して
+保守する OpenRice フォークです。既存環境との互換性のため、内部では
+上流 OpenLoomi のデータパス、プラグイン ID、コマンド規約を維持します。
 
 <p align="center">
 <a href="./README.md">English</a> | <a href="./README-zh.md">简体中文</a> | <a href="./README-ja.md">日本語</a>
@@ -20,7 +23,7 @@
 
 <div align="center">
 
-⭐ **OpenLoomi が役に立ったなら、GitHub で star をいただけると嬉しいです！** より多くの人にプロジェクトを知ってもらい、開発を続ける励みになります。🙏
+⭐ **OpenRice が役に立ったなら、GitHub で star をいただけると嬉しいです！** より多くの人にプロジェクトを知ってもらい、開発を続ける励みになります。🙏
 
 [![GitHub Repo stars](https://img.shields.io/github/stars/melandlabs/openloomi?style=social&label=Star)](https://github.com/melandlabs/openloomi)
 
@@ -28,12 +31,12 @@
 
 ---
 
-## OpenLoomiとは？
+## OpenRiceとは？
 
-OpenLoomiは、オープンソースのAIパートナーです。デスクトップ常駐の**注意エージェント**を中心に、認可した業務ツールと画面コンテンツをつなぎ、あなたの人間関係、プロジェクト、意思決定の**ホリスティック・コンテキスト**を構築。何が起きたのか、なぜ重要なのか、次に何をすべきか、日々のサマリーまで教えてくれるので、本当に大切なことに注意を向けられます。
+OpenRiceは、オープンソースのAIパートナーです。デスクトップ常駐の**注意エージェント**を中心に、認可した業務ツールと画面コンテンツをつなぎ、あなたの人間関係、プロジェクト、意思決定の**ホリスティック・コンテキスト**を構築。何が起きたのか、なぜ重要なのか、次に何をすべきか、日々のサマリーまで教えてくれるので、本当に大切なことに注意を向けられます。
 
 <p align="center">
-  <img src="screenshots/app/main-with-loomi.gif" alt="OpenLoomi メインウィンドウと Loomi" width="100%">
+  <img src="screenshots/app/main-with-loomi.gif" alt="OpenRice メインウィンドウと Loomi" width="100%">
 </p>
 
 ## 何に使える？
@@ -56,7 +59,7 @@ OpenLoomiは、オープンソースのAIパートナーです。デスクトッ
 | 🔌  | **[プラットフォームコネクタ](https://openloomi.ai/docs/connectors)**             | **[自動フェッチ](https://openloomi.ai/docs/what-is-openloomi#a-complete-intelligence-loop-from-perception-to-action)** バックグラウンド同期ループがコミット、課題、メール、ドキュメントを能動的に取得しグラフに保存。**[メッセージングアプリ](https://openloomi.ai/docs/messaging-apps)** — Telegram、WhatsApp、iMessage、QQ、Feishu/拉翅 — 既存の会話内で直接AIとチャット可能。 |
 | ⏰  | **[プロアクティブタスク](https://openloomi.ai/docs/automation)**                 | 繰り返しの作業——日次ダイジェスト、週次レポート、リマインダー——をデスクトップで自動実行。                                                                                                                                                                                                                                                                                         |
 | 🖥️  | **[セキュリティと使いやすさ](https://openloomi.ai/docs/privacy-security)**       | Windows、macOS、Linux向けのネイティブデスクトップアプリ。**すぐに使えて**、セットアップは数分、設定で苦労することはありません。ローカルファースト保存、AES-256暗号化、データが端末外に出ることはなく、監査可能なアクセスログを備えています                                                                                                                                       |
-| 🧩  | **[任意のエージェント統合](https://openloomi.ai/docs/reference/agent-runtimes)** | OpenLoomi のコンテキスト、メモリ、コネクタ、注意エージェント、Loop エンジンはいずれもオープンソースの[スキル](https://openloomi.ai/docs/skills)および[プラグイン](https://openloomi.ai/docs/plugins)として提供されています。OpenLoomi Desktop をそのまま使うことも、既存のエージェント — Claude、Codex、OpenCode、Hermes、OpenClaw — に組み込むこともできます。                  |
+| 🧩  | **[任意のエージェント統合](https://openloomi.ai/docs/reference/agent-runtimes)** | OpenRice のコンテキスト、メモリ、コネクタ、注意エージェント、Loop エンジンはいずれもオープンソースの[スキル](https://openloomi.ai/docs/skills)および[プラグイン](https://openloomi.ai/docs/plugins)として提供されています。OpenRice Desktop をそのまま使うことも、既存のエージェント — Claude、Codex、OpenCode、Hermes、OpenClaw — に組み込むこともできます。                    |
 
 ## クイックスタート
 
@@ -79,12 +82,12 @@ OpenLoomiは、オープンソースのAIパートナーです。デスクトッ
 
 **Agent プラグインとして使う**（Claude Code / Codex ユーザー向け）:
 
-OpenLoomi は公式の marketplace プラグインを提供しており、既存のエージェントをローカル OpenLoomi runtime へのフロントエンドにできます。
+OpenRice は公式の marketplace プラグインを提供しており、既存のエージェントをローカル OpenRice runtime へのフロントエンドにできます。
 
-| Agent       | インストール                                                                              | 初回セットアップ                  |
-| ----------- | ----------------------------------------------------------------------------------------- | --------------------------------- |
-| Claude Code | `/plugin marketplace add melandlabs/plugins`<br>`/plugin install openloomi`               | `/openloomi:setup`                |
-| Codex CLI   | `codex plugin marketplace add melandlabs/plugins && codex plugin add openloomi@openloomi` | `@OpenLoomi Run first-use setup.` |
+| Agent       | インストール                                                                              | 初回セットアップ                 |
+| ----------- | ----------------------------------------------------------------------------------------- | -------------------------------- |
+| Claude Code | `/plugin marketplace add melandlabs/plugins`<br>`/plugin install openloomi`               | `/openloomi:setup`               |
+| Codex CLI   | `codex plugin marketplace add melandlabs/plugins && codex plugin add openloomi@openloomi` | `@OpenRice Run first-use setup.` |
 
 スリム版マーケットプレースは [`melandlabs/plugins`](https://github.com/melandlabs/plugins) にあり、追加時にプラグインパッケージのみを取得します。詳細は各プラグインのドキュメントを参照: [`plugins/claude`](https://openloomi.ai/docs/plugins/claude) · [`plugins/codex`](https://openloomi.ai/docs/plugins/codex)。
 
@@ -102,9 +105,9 @@ Node.js 22以上、pnpm 9以上、Rust 1.75以上が必要です。Windows で�
 
 ## 他のとは違う点
 
-**OpenLoomi はオープンソースで中立です。** 特定ベンダーの Agent に縛られることなく、あらゆる Agent Runtime——Claude Code、Codex、OpenCode、Hermes、OpenClaw——と統合し、それらすべてに共有のクロス Agent レイヤーをもたらします：常駐型デスクトップの**アテンションエージェント**、**包括的なコンテキストメモリ**、**プラットフォームコネクタ**、そして**プロアクティブなタスク**。どの Agent を使っていても、OpenLoomi があなたの代わりに入口を見張り、本当に重要なことを記憶し、時間を割く価値のある意思決定だけを提示します——追いかけるためではなく、仕事そのものにあなたの注意を使えるように。
+**OpenRice はオープンソースで中立です。** 特定ベンダーの Agent に縛られることなく、あらゆる Agent Runtime——Claude Code、Codex、OpenCode、Hermes、OpenClaw——と統合し、それらすべてに共有のクロス Agent レイヤーをもたらします：常駐型デスクトップの**アテンションエージェント**、**包括的なコンテキストメモリ**、**プラットフォームコネクタ**、そして**プロアクティブなタスク**。どの Agent を使っていても、OpenRice があなたの代わりに入口を見張り、本当に重要なことを記憶し、時間を割く価値のある意思決定だけを提示します——追いかけるためではなく、仕事そのものにあなたの注意を使えるように。
 
-| 比較対象               | OpenLoomi が追加するもの                                                                                           |
+| 比較対象               | OpenRice が追加するもの                                                                                            |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | Claude Cowork 型 Agent | オープンソースでローカルファーストのAIパートナーとワークスペース。ソース証拠と承認を備えている                     |
 | Codex / Claude Code    | リポジトリを超えたワークスペースコンテキスト：人物、製品の意思決定、リリースコンテキスト、課題、フォローアップ     |

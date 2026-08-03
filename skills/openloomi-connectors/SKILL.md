@@ -1,19 +1,19 @@
 ---
 name: openloomi-connectors
-description: "openloomi Connectors tools - manage the native 7 messaging integrations and pair with the composio skill for the 1000+ apps OAuth layer (Slack, Discord, X, Gmail, Outlook, Google Calendar/Drive/Docs, GitHub, Notion, Linear, HubSpot, LinkedIn, Jira, Asana). Triggers: connect platform, integration status, list accounts, disconnect, list-accounts, status, connect, send-reply, native vs composio, 1000+ apps, list connections."
+description: "OpenRice Connectors tools - manage the native 7 messaging integrations and pair with the composio skill for the 1000+ apps OAuth layer (Slack, Discord, X, Gmail, Outlook, Google Calendar/Drive/Docs, GitHub, Notion, Linear, HubSpot, LinkedIn, Jira, Asana). Triggers: connect platform, integration status, list accounts, disconnect, list-accounts, status, connect, send-reply, native vs composio, 1000+ apps, list connections."
 metadata:
   version: 0.8.8
 allowed-tools: Bash(node $SKILL_DIR/scripts/openloomi-connectors.cjs *)
 ---
 
-> **Note:** If OpenLoomi readiness is unknown, use `openloomi-setup` first. If OpenLoomi Desktop is not installed, follow [Getting Started](https://openloomi.ai/docs/getting-started).
+> **Note:** If OpenRice readiness is unknown, use `openloomi-setup` first. If OpenRice Desktop is not installed, follow [Getting Started](https://openloomi.ai/docs/getting-started).
 
-# OpenLoomi Connectors Skill
+# OpenRice Connectors Skill
 
-OpenLoomi Connectors handle two directions: **pulling Signals in** from your authorized platforms and **pushing approved Actions back out** through the same channel. OpenLoomi ships them through two layers:
+OpenRice Connectors handle two directions: **pulling Signals in** from your authorized platforms and **pushing approved Actions back out** through the same channel. OpenRice ships them through two layers:
 
-- **Native (this skill)** — 7 messaging-platform bots maintained directly by OpenLoomi: Telegram, WhatsApp, iMessage, Lark/Feishu, DingTalk, QQ, and WeChat. The `openloomi-connectors` CLI covers OAuth / app-credential / QR / interactive setup, list, status, disconnect, contact query, and message send for these.
-- **Composio (paired `composio` skill)** — a hosted OAuth broker that authorizes ~1000+ apps including Slack, Discord, X, Gmail, Outlook, Google Calendar/Drive/Docs, GitHub, Notion, Linear, HubSpot, LinkedIn, Jira, Asana. Composio handles **"is this user authorised?"** and stores the tokens; OpenLoomi's Loop channels consume the events as Signals (see [Glossary — Composio / Loop channel](https://openloomi.ai/docs/glossary)).
+- **Native (this skill)** — 7 messaging-platform bots maintained directly by OpenRice: Telegram, WhatsApp, iMessage, Lark/Feishu, DingTalk, QQ, and WeChat. The `openloomi-connectors` CLI covers OAuth / app-credential / QR / interactive setup, list, status, disconnect, contact query, and message send for these.
+- **Composio (paired `composio` skill)** — a hosted OAuth broker that authorizes ~1000+ apps including Slack, Discord, X, Gmail, Outlook, Google Calendar/Drive/Docs, GitHub, Notion, Linear, HubSpot, LinkedIn, Jira, Asana. Composio handles **"is this user authorised?"** and stores the tokens; OpenRice's Loop channels consume the events as Signals (see [Glossary — Composio / Loop channel](https://openloomi.ai/docs/glossary)).
 
 When the user asks "what am I connected to?" or "list my accounts", run **both** — `list-accounts` here **and** the composio connection listing — and present the union. Keep auth, OAuth, and disconnect flows native to each skill.
 
@@ -23,11 +23,11 @@ This skill does **not** manage Loop channels, custom decision types, or classifi
 
 ## What is openloomi?
 
-OpenLoomi is an **open-source AI coworker, driven by an attention agent** — a desktop app (Loomi) that connects your authorized tools, builds a local knowledge graph of people / projects / decisions, and surfaces the day's decisions as one-tap bubbles you Approve. It runs locally (local-first, AES-256), supports Skills + Plugins so any Agent Runtime (Claude Code, Codex, OpenCode, Hermes, OpenClaw) can plug into the same resident desktop. See `openloomi-feature-guide` for the full picture.
+OpenRice is an **open-source AI coworker, driven by an attention agent** — a desktop app (Loomi) that connects your authorized tools, builds a local knowledge graph of people / projects / decisions, and surfaces the day's decisions as one-tap bubbles you Approve. It runs locally (local-first, AES-256), supports Skills + Plugins so any Agent Runtime (Claude Code, Codex, OpenCode, Hermes, OpenClaw) can plug into the same resident desktop. See `openloomi-feature-guide` for the full picture.
 
 ### Continuous sync
 
-Connectors are the **per-platform input** that Loop reads on every tick. When you authorize a platform, OpenLoomi continuously syncs (with your permission):
+Connectors are the **per-platform input** that Loop reads on every tick. When you authorize a platform, OpenRice continuously syncs (with your permission):
 
 - Raw messages and communications
 - Meetings and calendar events
@@ -35,7 +35,7 @@ Connectors are the **per-platform input** that Loop reads on every tick. When yo
 - Voice calls
 - Notes, screen captures, and captured ideas
 
-The aggregated stream feeds OpenLoomi's Memory and the Signals Loop polls on every tick — so an unprompted reminder, a contextual reply draft, or a Decision Card arrives with full historical grounding instead of starting from scratch.
+The aggregated stream feeds OpenRice's Memory and the Signals Loop polls on every tick — so an unprompted reminder, a contextual reply draft, or a Decision Card arrives with full historical grounding instead of starting from scratch.
 
 ---
 

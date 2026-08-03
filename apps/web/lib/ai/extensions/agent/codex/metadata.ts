@@ -27,7 +27,7 @@ export const CODEX_CONFIG_SCHEMA = {
           type: "string",
           enum: ["read-only", "workspace-write", "danger-full-access"],
           description:
-            "Sandbox mode forwarded to the Codex CLI. Planning always uses read-only. Execution defaults to workspace-write, which OpenLoomi maps to danger-full-access on macOS so Codex can reach local and remote services.",
+            "Sandbox mode forwarded to the Codex CLI. Planning always uses read-only. Execution defaults to workspace-write, which OpenRice maps to danger-full-access on macOS so Codex can reach local and remote services.",
         },
         askForApproval: {
           type: "string",
@@ -39,7 +39,7 @@ export const CODEX_CONFIG_SCHEMA = {
           type: "boolean",
           default: false,
           description:
-            "Allow passing --full-auto when OpenLoomi permissionMode is bypassPermissions.",
+            "Allow passing --full-auto when OpenRice permissionMode is bypassPermissions.",
         },
         skipGitRepoCheck: {
           type: "boolean",

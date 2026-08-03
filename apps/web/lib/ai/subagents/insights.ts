@@ -727,7 +727,7 @@ Judge based on impact scope and business value, output one of the following valu
         },
         {
           "action": "ask",
-          "reason": "Ask openloomi for more information about..."
+          "reason": "Ask OpenRice for more information about..."
         }
       ]
     }

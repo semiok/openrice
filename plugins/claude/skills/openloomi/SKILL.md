@@ -1,14 +1,14 @@
 ---
 name: openloomi
-description: "OpenLoomi runtime integration for Claude Code. Use when the user mentions OpenLoomi, wants to install/configure it, query their local memory via the Loomi runtime, change the Loomi Pet state, view LLM usage, run a one-shot task through the local runtime, or install the optional hooks that mirror Claude Code's lifecycle onto the Loomi Pet and auto-archive every Stop into OpenLoomi memory. Triggers: openloomi, loomi, /openloomi:*, local memory, RAG search, insights, loop, pet state, openloomi tour, guided tour, walk me through openloomi, show me everything, 一条龙, 体验一下, 带我看一下."
+description: "OpenRice runtime integration for Claude Code. Use when the user mentions OpenRice, wants to install/configure it, query their local memory via the Loomi runtime, change the Loomi Pet state, view LLM usage, run a one-shot task through the local runtime, or install the optional hooks that mirror Claude Code's lifecycle onto the Loomi Pet and auto-archive every Stop into OpenRice memory. Triggers: openloomi, loomi, /openloomi:*, local memory, RAG search, insights, loop, pet state, openloomi tour, guided tour, walk me through openloomi, show me everything, 一条龙, 体验一下, 带我看一下."
 allowed-tools: Bash(node ${CLAUDE_PLUGIN_ROOT}/scripts/loomi-bridge.mjs *)
 ---
 
-# OpenLoomi Claude Plugin Skill
+# OpenRice Claude Plugin Skill
 
-This skill is the **single entry point** for the OpenLoomi ↔ Claude Code
+This skill is the **single entry point** for the OpenRice ↔ Claude Code
 integration. It is intentionally thin: it delegates to
-`loomi-bridge.mjs` for every side effect and **never duplicates** OpenLoomi
+`loomi-bridge.mjs` for every side effect and **never duplicates** OpenRice
 business logic, connector implementations, or memory storage.
 
 ## When to call `loomi-bridge`
@@ -17,7 +17,7 @@ Call `loomi-bridge.mjs` whenever ANY of the following is true:
 
 - User says `openloomi`, `loomi`, `pet`, `/openloomi:*`, or asks about
   "the local AI assistant".
-- User wants to install, configure, verify, or update OpenLoomi.
+- User wants to install, configure, verify, or update OpenRice.
 - User asks Claude Code to query their memory, look up a previous
   conversation, or "search my notes".
 - User wants to set the Loomi Pet to a specific state.
@@ -25,7 +25,7 @@ Call `loomi-bridge.mjs` whenever ANY of the following is true:
 - User asks about hooking Claude Code up to "the pet" or "loop".
 
 When the user just wants something Claude can do natively (write a file,
-answer a question, etc.) and OpenLoomi is **not** mentioned, **do not**
+answer a question, etc.) and OpenRice is **not** mentioned, **do not**
 invoke the bridge.
 
 ## Bridge subcommands (quick reference)
@@ -35,7 +35,7 @@ invoke the bridge.
 | `setup` | `/openloomi:setup` | First-run install + status |
 | `setup-status [--json]` | `/openloomi:status` | Stable JSON status |
 | `install [--yes]` | (internal) | User-approved install |
-| `login` | (internal) | Open OpenLoomi login surface, report status |
+| `login` | (internal) | Open OpenRice login surface, report status |
 | `pet <state>` | `/openloomi:pet` | Set Pet state (9 universal states; theme-agnostic) |
 | `state <name>` | (internal/hook) | Fire-and-forget Pet state from hook |
 | `archive` | (internal/hook) | Archive last transcript on Stop |
@@ -58,7 +58,7 @@ Claude Code must never receive or print:
   handles its own AI provider configuration);
 - OAuth access tokens or refresh tokens;
 - connector app secrets;
-- OpenLoomi auth tokens;
+- OpenRice auth tokens;
 - local secure-storage contents (e.g. `~/.openloomi/token` contents).
 
 Allowed status-only checks:
@@ -73,22 +73,22 @@ local API reachable/unreachable
 ```
 
 The bridge may report key **names and presence**. It must not print
-values. AI provider readiness comes entirely from the OpenLoomi
+values. AI provider readiness comes entirely from the OpenRice
 runtime's `/api/preferences/ai` response (`nativeRuntime` /
 `aiProviderConfigured`).
 
 ## Discovery chain
 
-The bridge resolves your local OpenLoomi runtime in this order:
+The bridge resolves your local OpenRice runtime in this order:
 
 1. `OPENLOOMI_BIN`
 2. `OPENLOOMI_HOME` / `OPENLOOMI_INSTALL_DIR`
 3. `OPENLOOMI_REPO_DIR`
 4. `PATH` lookup
 5. Platform defaults — the desktop app's main binary:
-   - macOS: `~/Applications/OpenLoomi.app/Contents/MacOS/openloomi`
+   - macOS: `~/Applications/OpenRice.app/Contents/MacOS/openloomi`
    - Linux: `/opt/openloomi/openloomi` (or `~/.local/bin/openloomi`, `/usr/local/bin/openloomi`)
-   - Windows: `%LOCALAPPDATA%\OpenLoomi\openloomi.exe`
+   - Windows: `%LOCALAPPDATA%\OpenRice\openloomi.exe`
 6. `${CLAUDE_PLUGIN_DATA}/config.json` (non-secret cached install path)
 7. `--bin-path <p>` explicit flag
 8. Otherwise: emit `nextAction: install_openloomi`
@@ -112,10 +112,10 @@ watcher and are **not** set by hooks.
 ## Reminders for Claude
 
 - **Never handle AI provider keys in this plugin.** AI provider
-  configuration lives in the OpenLoomi runtime; the runtime detects
+  configuration lives in the OpenRice runtime; the runtime detects
   the user's local `claude` CLI auth on its own. If the user reports
   missing Claude CLI auth, point them at `claude auth login` or at
-  OpenLoomi Desktop → API Settings for a custom endpoint.
+  OpenRice Desktop → API Settings for a custom endpoint.
 - **Never auto-install hooks.** Always require an explicit
   `/openloomi:hooks install`.
 - **Always exit 0 on Stop.** Archive failures are reported via stdout JSON

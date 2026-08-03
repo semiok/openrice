@@ -1,10 +1,10 @@
 ---
 name: openloomi-hooks
-description: "OpenLoomi × Claude Code hooks installer. Use when the user wants Claude Code's lifecycle (SessionStart, UserPromptSubmit, PreToolUse, PostToolUse, Stop, SubagentStart, SubagentStop, Notification) to mirror onto the Loomi Pet, or wants to auto-archive every Stop into OpenLoomi memory. Triggers: install hooks, /openloomi:hooks, hooks install, hooks uninstall, hooks status, mirror claude on pet, auto-archive stop."
+description: "OpenRice × Claude Code hooks installer. Use when the user wants Claude Code's lifecycle (SessionStart, UserPromptSubmit, PreToolUse, PostToolUse, Stop, SubagentStart, SubagentStop, Notification) to mirror onto the Loomi Pet, or wants to auto-archive every Stop into OpenRice memory. Triggers: install hooks, /openloomi:hooks, hooks install, hooks uninstall, hooks status, mirror claude on pet, auto-archive stop."
 allowed-tools: Bash(node ${CLAUDE_PLUGIN_ROOT}/scripts/loomi-bridge.mjs *)
 ---
 
-# OpenLoomi Hooks Sub-skill
+# OpenRice Hooks Sub-skill
 
 The plugin ships a hook bundle in `hooks/hooks.json` but **never installs it
 automatically**. Users must explicitly run one of:

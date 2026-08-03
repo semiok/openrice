@@ -1,7 +1,7 @@
 {
   "name": "openloomi",
   "interface": {
-    "displayName": "OpenLoomi"
+    "displayName": "OpenRice"
   },
   "plugins": [
     {

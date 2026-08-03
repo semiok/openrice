@@ -1,15 +1,15 @@
 ---
 name: openloomi-api
-description: "openloomi HTTP API reference (local-first, served from the OpenLoomi Desktop app at http://localhost:3414). Use when working with openloomi backend routes — auth, AI, files, integrations, RAG, memory, Loop, pet, workspace, platform callbacks. Triggers: API endpoints, backend routes, /api/*, local API, port 3414, integrations REST, OAuth start, RAG search, loop state, memory search, pet state, audit logs"
+description: "OpenRice HTTP API reference (local-first, served from the OpenRice Desktop app at http://localhost:3414). Use when working with openloomi backend routes — auth, AI, files, integrations, RAG, memory, Loop, pet, workspace, platform callbacks. Triggers: API endpoints, backend routes, /api/*, local API, port 3414, integrations REST, OAuth start, RAG search, loop state, memory search, pet state, audit logs"
 ---
 
-> **Note:** If OpenLoomi readiness is unknown, use `openloomi-setup` first. If OpenLoomi Desktop is not installed, follow [Getting Started](https://openloomi.ai/docs/getting-started).
+> **Note:** If OpenRice readiness is unknown, use `openloomi-setup` first. If OpenRice Desktop is not installed, follow [Getting Started](https://openloomi.ai/docs/getting-started).
 
-# OpenLoomi API Documentation
+# OpenRice API Documentation
 
 ## API Modules
 
-OpenLoomi ships a **local-first** HTTP API served from the desktop app (port `3414`, fallback `3515`). All auth, Memory, AI, RAG, Loop, and Audit data live in a local SQLite database — your data stays on your machine and the OpenLoomi app is the source of truth. The only externally-routed auth path is the **Composio OAuth broker** that backs the Slack, GitHub, Google, Notion, Linear, HubSpot, LinkedIn, Jira, and Asana Connectors (see `openloomi-connectors`).
+OpenRice ships a **local-first** HTTP API served from the desktop app (port `3414`, fallback `3515`). All auth, Memory, AI, RAG, Loop, and Audit data live in a local SQLite database — your data stays on your machine and the OpenRice app is the source of truth. The only externally-routed auth path is the **Composio OAuth broker** that backs the Slack, GitHub, Google, Notion, Linear, HubSpot, LinkedIn, Jira, and Asana Connectors (see `openloomi-connectors`).
 
 The `remote-auth` prefix is historical — those routes once proxied to a cloud server; today they are the canonical local endpoints, and the Claude/Codex plugin bridge uses `/api/remote-auth/user` as a port-discovery + auth-handshake probe.
 

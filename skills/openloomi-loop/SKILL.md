@@ -1,14 +1,14 @@
 ---
 name: openloomi-loop
-description: "openloomi's Loop — the proactive execution brain that runs inside the OpenLoomi desktop app. Use this skill to inspect state, run a tick, schedule / cancel decision actions, tune preferences, and extend Loop with user-defined decision types, Composio-backed signal channels, or deterministic classifier rules. Triggers: 'openloomi loop', 'loop tick', 'loop schedule', 'loop inbox', 'loop run', 'proactive decisions', 'signal → decision → execute', 'pull signals', 'decision queue', 'register loop type', 'add loop decision type', 'register custom channel', 'add composio channel', 'add loop rule', 'register classifier rule', 'force loop type', 'dry-run loop rule', 'list my loop extensions', 'remove loop type', 'delete loop channel'"
+description: "OpenRice's Loop — the proactive execution brain that runs inside the OpenRice desktop app. Use this skill to inspect state, run a tick, schedule / cancel decision actions, tune preferences, and extend Loop with user-defined decision types, Composio-backed signal channels, or deterministic classifier rules. Triggers: 'openloomi loop', 'loop tick', 'loop schedule', 'loop inbox', 'loop run', 'proactive decisions', 'signal → decision → execute', 'pull signals', 'decision queue', 'register loop type', 'add loop decision type', 'register custom channel', 'add composio channel', 'add loop rule', 'register classifier rule', 'force loop type', 'dry-run loop rule', 'list my loop extensions', 'remove loop type', 'delete loop channel'"
 allowed-tools: Bash(curl *), Bash(jq *), Bash(cat ~/.openloomi/token *), Bash(base64 -d *), Bash(ls ~/.openloomi/loop/*), Read(~/.openloomi/loop/custom-types.json), Read(~/.openloomi/loop/custom-channels.json), Read(~/.openloomi/loop/classifier-rules.json)
 metadata:
   version: 0.8.8
 ---
 
-> **Note:** If OpenLoomi readiness is unknown, use `openloomi-setup` first. If OpenLoomi Desktop is not installed, follow [Getting Started](https://openloomi.ai/docs/getting-started).
+> **Note:** If OpenRice readiness is unknown, use `openloomi-setup` first. If OpenRice Desktop is not installed, follow [Getting Started](https://openloomi.ai/docs/getting-started).
 
-# OpenLoomi Loop — The Proactive Execution Brain
+# OpenRice Loop — The Proactive Execution Brain
 
 Loop pulls signals from connected integrations, classifies them into
 typed decisions, and lets the user approve execution from the pet or

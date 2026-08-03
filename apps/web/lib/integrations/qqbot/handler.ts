@@ -67,7 +67,7 @@ export async function handleQQInboundMessage(
 
   try {
     const prompt = [
-      "You are the openloomi assistant. Help the user based on the following cross-platform message summaries.",
+      "You are the OpenRice assistant. Help the user based on the following cross-platform message summaries.",
       "When information is insufficient, say so instead of making up content.",
       "",
       "=== User's question (this single message to the bot) ===",

@@ -40,7 +40,7 @@ export async function completeWeixinIntegrationAfterQr(params: {
     status: "active",
   });
 
-  const botDescription = "Chat with openloomi via Weixin (iLink)";
+  const botDescription = "Chat with OpenRice via Weixin (iLink)";
 
   const existingAccounts = await getIntegrationAccountsByUserId({
     userId: params.userId,

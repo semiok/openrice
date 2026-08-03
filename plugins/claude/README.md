@@ -1,19 +1,19 @@
-# Claude Code OpenLoomi Plugin
+# Claude Code OpenRice Plugin
 
-Talk to a local OpenLoomi runtime from inside Claude Code.
+Talk to a local OpenRice runtime from inside Claude Code.
 
-[OpenLoomi](https://github.com/melandlabs/openloomi) is a local-first desktop
+[OpenRice](https://github.com/melandlabs/openloomi) is a local-first desktop
 app that holds your memory, runs background tasks, and talks to your connected
 apps (Gmail, Slack, GitHub, Calendar, Linear, …). This plugin turns Claude
 Code into a front-end for that local runtime — Claude Code stays your coding
-surface, OpenLoomi does the long-running and cross-app work in the background.
+surface, OpenRice does the long-running and cross-app work in the background.
 
-You keep using Claude Code the way you already do. OpenLoomi runs next to it,
+You keep using Claude Code the way you already do. OpenRice runs next to it,
 on your machine.
 
 The plugin installs as an `/openloomi:*` slash-command namespace. It never
-duplicates OpenLoomi's business logic — every side effect hits your local
-OpenLoomi runtime (the desktop app's HTTP API on `127.0.0.1:3414`, fallback
+duplicates OpenRice's business logic — every side effect hits your local
+OpenRice runtime (the desktop app's HTTP API on `127.0.0.1:3414`, fallback
 `127.0.0.1:3515`, or its bundled helper CLI).
 
 ---
@@ -21,7 +21,7 @@ OpenLoomi runtime (the desktop app's HTTP API on `127.0.0.1:3414`, fallback
 ## What you can do with it
 
 - **Run first-use setup in one command.** `/openloomi:setup` discovers your
-  OpenLoomi install, downloads it if missing, launches the desktop app, waits
+  OpenRice install, downloads it if missing, launches the desktop app, waits
   for the local API, and mints a guest session token. Nothing GUI is required
   from you.
 - **Drive the Loomi Pet.** `/openloomi:pet happy` flips the pet sprite from
@@ -29,13 +29,13 @@ OpenLoomi runtime (the desktop app's HTTP API on `127.0.0.1:3414`, fallback
   on a long task.
 - **See today's LLM cost.** `/openloomi:usage` summarizes token usage and
   spend without leaving the session.
-- **Mirror Claude Code's lifecycle onto OpenLoomi (opt-in).** With hooks
-  installed, every Claude Code turn gets archived into OpenLoomi's memory,
+- **Mirror Claude Code's lifecycle onto OpenRice (opt-in).** With hooks
+  installed, every Claude Code turn gets archived into OpenRice's memory,
   and every lifecycle event flips the pet sprite accordingly. You keep full
   control — install/uninstall with one command, no `~/.claude/settings.json`
   is ever modified unless you ask.
 
-OpenLoomi still owns the heavy lifting: local memory storage, connector
+OpenRice still owns the heavy lifting: local memory storage, connector
 credentials, scheduled tasks, the desktop UI, secrets. Claude Code just
 gets a doorway into all of it.
 
@@ -53,7 +53,7 @@ Pick the channel that matches your situation.
 ```
 
 Run each line separately in a Claude Code session — slash commands can't be
-chained with `&&`. The first line adds the slim OpenLoomi marketplace
+chained with `&&`. The first line adds the slim OpenRice marketplace
 ([`melandlabs/plugins`](https://github.com/melandlabs/plugins), which only
 contains the plugin payloads); the second installs the `openloomi` plugin
 from it. Then **restart Claude Code** and run `/openloomi:setup` in a fresh
@@ -75,13 +75,13 @@ edits are picked up live — useful when hacking on the plugin itself.
 
 - Claude Code with slash-command and plugin marketplace support.
 - For the GitHub install: network access to `github.com`.
-- For the local install: a writable clone of the OpenLoomi repo.
-- **OpenLoomi Desktop installed** — the wizard will install it for you if
+- For the local install: a writable clone of the OpenRice repo.
+- **OpenRice Desktop installed** — the wizard will install it for you if
   it's missing, but you'll need a working browser session to download the
   official release if it can't be reached automatically.
 - Claude Code's host `claude` CLI authenticated (`claude auth login`) — the
-  OpenLoomi runtime auto-detects this and uses it as its default provider,
-  with no API key sharing between Claude Code and OpenLoomi.
+  OpenRice runtime auto-detects this and uses it as its default provider,
+  with no API key sharing between Claude Code and OpenRice.
 
 Inside any session, `/openloomi:help` lists all 8 commands.
 
@@ -96,7 +96,7 @@ Inside any session, `/openloomi:help` lists all 8 commands.
 A fully automated wizard: **install → launch → wait API → guest login →
 ready**. Nothing GUI is required. The bridge:
 
-- downloads & installs OpenLoomi Desktop if missing,
+- downloads & installs OpenRice Desktop if missing,
 - launches the desktop app via `open -a`,
 - polls the local HTTP API until it answers,
 - calls `POST /api/remote-auth/guest` to register a guest user in the
@@ -128,10 +128,10 @@ pet left-click falls back to standalone behaviour) so the step carries
 The only thing it ever prompts for is the install y/N — and only if the
 shell has a TTY. From Claude Code's Bash tool you pass `--yes`.
 
-This plugin does **not** touch AI provider configuration. The OpenLoomi
+This plugin does **not** touch AI provider configuration. The OpenRice
 runtime self-closes that loop itself — it detects your local `claude` CLI
 auth and uses it as the default provider, with no key-sharing between
-Claude Code and OpenLoomi.
+Claude Code and OpenRice.
 
 A successful run prints `{setup: "ready", steps: [...]}` — you're done.
 
@@ -148,7 +148,7 @@ Code session → see the Loomi Pet pop on the desktop (fox theme) → flip the
 theme to capybara via the right-click menu → call `/openloomi:status` for
 the canonical JSON → opt into the Pet-mirror + Stop-archive hooks via
 `/openloomi:hooks` → connect external apps via `/openloomi:connect` → and
-finally watch OpenLoomi's Loop surface decision cards in the desktop app**,
+finally watch OpenRice's Loop surface decision cards in the desktop app**,
 all driven by slash commands you typed in Claude Code.
 
 The screenshots in the Tour guide are the canonical reference for the
@@ -195,7 +195,7 @@ After install, 8 lifecycle events map to Pet states:
 | shows a permission prompt                         | `needsinput`      |
 | completes the turn                                | archive → `happy` |
 
-The bridge is theme-agnostic — it sends state names; the OpenLoomi
+The bridge is theme-agnostic — it sends state names; the OpenRice
 `map_state_to_pet` watcher picks the matching sprite from whichever set is
 active (the plugin ships fox; capybara is also supported and falls back
 `greet → presenting`).
@@ -242,14 +242,14 @@ loop watcher owns those.
 
 When `/openloomi:status` says `ready: false`, look at `reason`:
 
-| `reason`                     | What it means                                                                                                             | Fix                                                                                                                                                                  |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `OPENLOOMI_NOT_INSTALLED`    | OpenLoomi Desktop isn't detected anywhere on this machine.                                                                | `/openloomi:install` — the desktop bundle will land and finalize on first launch.                                                                                    |
-| `OPENLOOMI_NOT_FINALIZED`    | OpenLoomi Desktop is installed, but the local helper binary isn't on disk yet (the first launch of the app lays it down). | `/openloomi:setup` auto-launches the app and waits for the API — no manual launch needed. **Don't re-run the installer** — it will just fail again at the same step. |
-| `SOURCE_FOUND_CLI_NOT_BUILT` | `OPENLOOMI_REPO_DIR` is set but the Rust crate isn't built yet.                                                           | `cd $OPENLOOMI_REPO_DIR/apps/web/src-tauri && cargo build --release`                                                                                                 |
-| `LOGIN_REQUIRED`             | OpenLoomi is installed but you haven't signed in.                                                                         | `/openloomi:setup` auto-mints a guest bearer. For a real account, sign in via the desktop app and re-run setup.                                                      |
-| `AI_PROVIDER_REQUIRED`       | Signed in, but no provider set.                                                                                           | Run `claude auth login` on the host (or configure a custom Anthropic-compatible endpoint in OpenLoomi Desktop → API Settings).                                       |
-| `READY`                      | All good.                                                                                                                 | Use any other command                                                                                                                                                |
+| `reason`                     | What it means                                                                                                            | Fix                                                                                                                                                                  |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `OPENLOOMI_NOT_INSTALLED`    | OpenRice Desktop isn't detected anywhere on this machine.                                                                | `/openloomi:install` — the desktop bundle will land and finalize on first launch.                                                                                    |
+| `OPENLOOMI_NOT_FINALIZED`    | OpenRice Desktop is installed, but the local helper binary isn't on disk yet (the first launch of the app lays it down). | `/openloomi:setup` auto-launches the app and waits for the API — no manual launch needed. **Don't re-run the installer** — it will just fail again at the same step. |
+| `SOURCE_FOUND_CLI_NOT_BUILT` | `OPENLOOMI_REPO_DIR` is set but the Rust crate isn't built yet.                                                          | `cd $OPENLOOMI_REPO_DIR/apps/web/src-tauri && cargo build --release`                                                                                                 |
+| `LOGIN_REQUIRED`             | OpenRice is installed but you haven't signed in.                                                                         | `/openloomi:setup` auto-mints a guest bearer. For a real account, sign in via the desktop app and re-run setup.                                                      |
+| `AI_PROVIDER_REQUIRED`       | Signed in, but no provider set.                                                                                          | Run `claude auth login` on the host (or configure a custom Anthropic-compatible endpoint in OpenRice Desktop → API Settings).                                        |
+| `READY`                      | All good.                                                                                                                | Use any other command                                                                                                                                                |
 
 ### Pet not switching?
 
@@ -260,13 +260,13 @@ When `/openloomi:status` says `ready: false`, look at `reason`:
 
 ### Status says `unconfigured`
 
-The plugin needs the OpenLoomi helper CLI only for `:ask`. Pet / usage /
+The plugin needs the OpenRice helper CLI only for `:ask`. Pet / usage /
 hooks still work without it. If discovery is failing, point `OPENLOOMI_BIN`
 at the helper binary directly (advanced override).
 
 ### Stop-hook archives
 
-In OpenLoomi Desktop → **Memory → Insights**, in the `claude-code` group.
+In OpenRice Desktop → **Memory → Insights**, in the `claude-code` group.
 One note per session, ~6 KB tail-of-conversation summary, deduplicated by
 `sessionId`.
 
@@ -311,7 +311,7 @@ Claude Code
                  ├── archive (Stop hook; always exit 0)
                  └── install-hooks (merge-no-overwrite into settings.json)
                        ↓
-            OpenLoomi Desktop runtime (helper CLI + 127.0.0.1:3414 / fallback 3515)
+            OpenRice Desktop runtime (helper CLI + 127.0.0.1:3414 / fallback 3515)
 ```
 
 ### Plugin layout
@@ -340,8 +340,8 @@ business logic is duplicated.
 | Skill                     | Path                                      | Trigger words                                                              | What it does                                                                                                                                                                                                                                               |
 | ------------------------- | ----------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `openloomi`               | `skills/openloomi/SKILL.md`               | `/openloomi:*`, `openloomi`, `loomi`                                       | Main entrypoint. Dispatches to the right sub-skill or slash command.                                                                                                                                                                                       |
-| `openloomi-api`           | `skills/openloomi-api/SKILL.md`           | API endpoints, backend routes, auth, local API, integrations               | Reference for the 131 OpenLoomi HTTP routes (auth, AI, RAG, Loop, Pet, workspace, integrations). Triggered on API/backend questions.                                                                                                                       |
-| `openloomi-connectors`    | `skills/openloomi-connectors/SKILL.md`    | connect platform, integration status, list accounts, disconnect            | Manage the 7 native OpenLoomi integrations (Telegram, WhatsApp, iMessage, Feishu, DingTalk, QQ, WeChat) — OAuth, list accounts, status, disconnect, send messages. Pair with `composio` for non-native accounts.                                           |
+| `openloomi-api`           | `skills/openloomi-api/SKILL.md`           | API endpoints, backend routes, auth, local API, integrations               | Reference for the 131 OpenRice HTTP routes (auth, AI, RAG, Loop, Pet, workspace, integrations). Triggered on API/backend questions.                                                                                                                        |
+| `openloomi-connectors`    | `skills/openloomi-connectors/SKILL.md`    | connect platform, integration status, list accounts, disconnect            | Manage the 7 native OpenRice integrations (Telegram, WhatsApp, iMessage, Feishu, DingTalk, QQ, WeChat) — OAuth, list accounts, status, disconnect, send messages. Pair with `composio` for non-native accounts.                                            |
 | `openloomi-feature-guide` | `skills/openloomi-feature-guide/SKILL.md` | "what can openloomi do", "怎么用", "how does openloomi work"               | Product overview, capability tour, and how-tos for non-developer questions.                                                                                                                                                                                |
 | `openloomi-hooks`         | `skills/openloomi-hooks/SKILL.md`         | install hooks, `/openloomi:hooks`, mirror claude on pet, auto-archive stop | Lifecycle hooks installer — merges `hooks/hooks.json` into `~/.claude/settings.json` (merge-no-overwrite, atomic). Owns the opt-in Pet mirror and Stop-archive flow.                                                                                       |
 | `openloomi-install`       | `skills/openloomi-install/SKILL.md`       | install openloomi, 配置 openloomi, OPENLOOMI_NOT_INSTALLED                 | First-use install helper. Translates `setup-status` `reason` codes into concrete next actions; never downloads anything outside the plugin's own scripts.                                                                                                  |
@@ -352,7 +352,7 @@ business logic is duplicated.
 
 **Pairing notes:**
 
-- `openloomi-connectors` covers OpenLoomi's **native 7** platforms. For
+- `openloomi-connectors` covers OpenRice's **native 7** platforms. For
   accounts connected through **Composio** (Slack, Discord, X, LinkedIn,
   Notion, HubSpot, Gmail via OAuth, etc.), invoke the `composio` skill in
   parallel and present the union when the user asks "what am I connected

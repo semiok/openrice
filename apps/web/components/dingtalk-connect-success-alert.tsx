@@ -42,7 +42,7 @@ export function DingTalkConnectSuccessAlert({
             {isTauri()
               ? t(
                   "auth.dingtalkConnectRestartDescTauri",
-                  "To ensure stable DingTalk message listening, please fully quit and restart the openloomi desktop client",
+                  "To ensure stable DingTalk message listening, please fully quit and restart the OpenRice desktop client",
                 )
               : t(
                   "auth.dingtalkConnectRestartDescWeb",
