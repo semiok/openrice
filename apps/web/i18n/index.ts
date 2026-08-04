@@ -26,6 +26,59 @@ const languageMap: Record<string, string> = {
 const LS_KEY_LANGUAGE = "langbot_language";
 const LS_KEY_LANGUAGE_USER_SELECTED = "langbot_language_user_selected";
 
+/**
+ * Accessing the localStorage property itself can throw a SecurityError in
+ * sandboxed or otherwise storage-restricted documents. Treat persistence as an
+ * optional enhancement so language detection can never block application boot.
+ */
+const getLanguageStorage = (): Storage | null => {
+  if (typeof window === "undefined") return null;
+
+  try {
+    return window.localStorage;
+  } catch {
+    return null;
+  }
+};
+
+const readStoredLanguageValue = (
+  storage: Storage | null,
+  key: string,
+): string | null => {
+  try {
+    return storage?.getItem(key) ?? null;
+  } catch {
+    return null;
+  }
+};
+
+const writeStoredLanguageValue = (
+  storage: Storage | null,
+  key: string,
+  value: string,
+) => {
+  try {
+    storage?.setItem(key, value);
+  } catch {
+    // Persistence is unavailable; the in-memory i18n state still works.
+  }
+};
+
+const removeStoredLanguageValue = (storage: Storage | null, key: string) => {
+  try {
+    storage?.removeItem(key);
+  } catch {
+    // Persistence is unavailable; the in-memory i18n state still works.
+  }
+};
+
+export const isLanguageUserSelected = (): boolean => {
+  const storage = getLanguageStorage();
+  return (
+    readStoredLanguageValue(storage, LS_KEY_LANGUAGE_USER_SELECTED) === "true"
+  );
+};
+
 // Convert detected language code to supported language code
 const convertLanguage = (lng: string): string => {
   // Try exact match first
@@ -70,10 +123,12 @@ i18n
 
 // Manually detect and set language (called after client mount)
 export const detectAndSetLanguage = async () => {
+  const storage = getLanguageStorage();
+
   // If user has actively selected a language, prioritize their choice.
   const hasUserSelected =
-    localStorage.getItem(LS_KEY_LANGUAGE_USER_SELECTED) === "true";
-  const savedLanguage = localStorage.getItem(LS_KEY_LANGUAGE);
+    readStoredLanguageValue(storage, LS_KEY_LANGUAGE_USER_SELECTED) === "true";
+  const savedLanguage = readStoredLanguageValue(storage, LS_KEY_LANGUAGE);
   if (hasUserSelected && savedLanguage && languageMap[savedLanguage]) {
     await i18n.changeLanguage(languageMap[savedLanguage]);
     return;
@@ -86,7 +141,7 @@ export const detectAndSetLanguage = async () => {
   const detectedSource = osLocale ?? navigator.language;
   const detectedLanguage = convertLanguage(detectedSource);
 
-  localStorage.setItem(LS_KEY_LANGUAGE, detectedLanguage);
+  writeStoredLanguageValue(storage, LS_KEY_LANGUAGE, detectedLanguage);
   await i18n.changeLanguage(detectedLanguage);
 };
 
@@ -105,13 +160,15 @@ export const getSystemLanguage = (): string => {
  */
 export const saveLanguage = (languageCode: string) => {
   if (typeof window !== "undefined") {
+    const storage = getLanguageStorage();
+
     if (languageCode === "system") {
-      localStorage.removeItem(LS_KEY_LANGUAGE);
-      localStorage.setItem(LS_KEY_LANGUAGE_USER_SELECTED, "false");
+      removeStoredLanguageValue(storage, LS_KEY_LANGUAGE);
+      writeStoredLanguageValue(storage, LS_KEY_LANGUAGE_USER_SELECTED, "false");
       return;
     }
-    localStorage.setItem(LS_KEY_LANGUAGE, languageCode);
-    localStorage.setItem(LS_KEY_LANGUAGE_USER_SELECTED, "true");
+    writeStoredLanguageValue(storage, LS_KEY_LANGUAGE, languageCode);
+    writeStoredLanguageValue(storage, LS_KEY_LANGUAGE_USER_SELECTED, "true");
   }
 };
 
