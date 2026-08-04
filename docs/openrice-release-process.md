@@ -140,6 +140,27 @@ After the sync PR is reviewed and merged, run the `Release CI` workflow manually
 with `workflow_dispatch` and `commit_sha` set to the exact OpenRice `main` commit.
 This path builds downloadable artifacts but intentionally skips `create-release`.
 
+Select one `target` per run to keep RC feedback fast, or select `all` for the
+full matrix. `unsigned_macos: true` creates an ad hoc-signed internal packaging
+artifact when Apple credentials are not available; it is useful for checking the
+DMG layout, bundle identity, executable, and bundled CLI, but it is not an
+accepted release candidate. Set `unsigned_macos: false` for Gate 3 acceptance.
+
+Signed macOS builds require these repository Actions secrets:
+
+```text
+ED_APPLE_CERTIFICATE
+ED_APPLE_CERTIFICATE_PASSWORD
+ED_APPLE_SIGNING_IDENTITY
+ED_APPLE_ID
+ED_APPLE_PASSWORD
+ED_APPLE_TEAM_ID
+```
+
+The workflow verifies that every application version source agrees. A published
+`v*` tag must match that application version and always requires the Apple
+credentials; the unsigned option is intentionally unavailable for tag releases.
+
 Download the artifacts from that workflow run and verify at minimum:
 
 - macOS Apple Silicon and Intel DMG names and architectures

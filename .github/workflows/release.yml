@@ -10,17 +10,70 @@ on:
         description: "Specific commit SHA to build (optional)"
         required: false
         type: string
+      target:
+        description: "Release-candidate platform to build"
+        required: true
+        default: "macos-arm64"
+        type: choice
+        options:
+          - macos-arm64
+          - macos-intel
+          - linux-amd64
+          - linux-arm64
+          - windows
+          - all
+      unsigned_macos:
+        description: "Use an ad hoc signature for an internal macOS RC"
+        required: true
+        default: true
+        type: boolean
 
 env:
   NODE_VERSION: "22.14"
   RUST_VERSION: "1.93"
 
 jobs:
+  release-preflight:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout openrice source code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout specific commit if provided
+        if: github.event.inputs.commit_sha != ''
+        run: git checkout ${{ github.event.inputs.commit_sha }}
+
+      - name: Verify release version sources
+        run: node scripts/verify-release-version.mjs
+
+      - name: Require Apple credentials for signed macOS builds
+        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && !inputs.unsigned_macos && (inputs.target == 'all' || startsWith(inputs.target, 'macos-')))
+        env:
+          APPLE_CERTIFICATE: "${{ secrets.ED_APPLE_CERTIFICATE }}"
+          APPLE_CERTIFICATE_PASSWORD: "${{ secrets.ED_APPLE_CERTIFICATE_PASSWORD }}"
+          APPLE_SIGNING_IDENTITY: "${{ secrets.ED_APPLE_SIGNING_IDENTITY }}"
+          APPLE_ID: "${{ secrets.ED_APPLE_ID }}"
+          APPLE_PASSWORD: "${{ secrets.ED_APPLE_PASSWORD }}"
+          APPLE_TEAM_ID: "${{ secrets.ED_APPLE_TEAM_ID }}"
+        run: |
+          missing=0
+          for name in APPLE_CERTIFICATE APPLE_CERTIFICATE_PASSWORD APPLE_SIGNING_IDENTITY APPLE_ID APPLE_PASSWORD APPLE_TEAM_ID; do
+            if [ -z "${!name}" ]; then
+              echo "::error::Missing required release secret: $name"
+              missing=1
+            fi
+          done
+          test "$missing" -eq 0
+
   # ─── macOS ARM64 CI ─────────────────────────────────────────────────────────
   release-macos-arm64:
+    needs: release-preflight
+    if: github.event_name != 'workflow_dispatch' || inputs.target == 'all' || inputs.target == 'macos-arm64'
     runs-on: macos-14
     env:
-      SKIP_SIGNING: "false"
+      SKIP_SIGNING: ${{ github.event_name == 'workflow_dispatch' && inputs.unsigned_macos && 'true' || 'false' }}
     steps:
       - name: Checkout openrice source code
         uses: actions/checkout@v4
@@ -135,25 +188,24 @@ jobs:
           APPLE_CERTIFICATE_PASSWORD: "${{ secrets.ED_APPLE_CERTIFICATE_PASSWORD }}"
           APPLE_SIGNING_IDENTITY: "${{ secrets.ED_APPLE_SIGNING_IDENTITY }}"
           SIGNING_IDENTITY: "${{ secrets.ED_APPLE_SIGNING_IDENTITY }}"
-          SKIP_SIGNING: "false"
 
       - name: Verify bundled CLI (macOS ARM64)
         working-directory: ./apps/web
         run: node scripts/check-cli-bundled.js src-tauri/target/release/bundle/macos/openrice.app --platform macos
 
-      - name: Sign app bundle with Developer ID
-        if: env.SKIP_SIGNING != 'true'
-        env:
-          APPLE_SIGNING_IDENTITY: "${{ secrets.ED_APPLE_SIGNING_IDENTITY }}"
+      - name: Apply ad hoc signature for unsigned RC
+        if: env.SKIP_SIGNING == 'true'
         run: |
           set -e
           APP_BUNDLE="./apps/web/src-tauri/target/release/bundle/macos/openrice.app"
-          echo "Signing app bundle: $APP_BUNDLE"
+          codesign --force --deep --sign - --identifier "ai.traditionow.openrice" "$APP_BUNDLE"
 
-          codesign --force --sign "$APPLE_SIGNING_IDENTITY" --options runtime --timestamp "$APP_BUNDLE"
-          codesign --force --sign "$APPLE_SIGNING_IDENTITY" --options runtime --timestamp "$APP_BUNDLE/Contents/MacOS/openloomi"
-
-          echo "✅ App bundle signed"
+      - name: Verify app signature
+        run: |
+          APP_BUNDLE="./apps/web/src-tauri/target/release/bundle/macos/openrice.app"
+          test -x "$APP_BUNDLE/Contents/MacOS/openrice"
+          codesign --verify --deep --strict --verbose=2 "$APP_BUNDLE"
+          codesign -dv --verbose=4 "$APP_BUNDLE" 2>&1 | head -20
 
       - name: Create DMG
         run: |
@@ -212,7 +264,6 @@ jobs:
 
       - name: Staple DMG
         if: env.SKIP_SIGNING != 'true'
-        continue-on-error: true
         run: |
           DMG_PATH=$(ls ./apps/web/src-tauri/target/release/bundle/dmg/openrice*.dmg)
           echo "Stapling: $DMG_PATH"
@@ -238,7 +289,8 @@ jobs:
               exit 1
             fi
           else
-            echo "⚠️  Failed to staple DMG after 20 attempts"
+            echo "❌ Failed to staple DMG after 20 attempts"
+            exit 1
           fi
 
       - name: Upload ARM64 DMG
@@ -249,9 +301,11 @@ jobs:
 
   # ─── macOS Intel CI ─────────────────────────────────────────────────────────
   release-macos-intel:
+    needs: release-preflight
+    if: github.event_name != 'workflow_dispatch' || inputs.target == 'all' || inputs.target == 'macos-intel'
     runs-on: macos-15-intel
     env:
-      SKIP_SIGNING: "false"
+      SKIP_SIGNING: ${{ github.event_name == 'workflow_dispatch' && inputs.unsigned_macos && 'true' || 'false' }}
     steps:
       - name: Checkout openrice source code
         uses: actions/checkout@v4
@@ -375,7 +429,6 @@ jobs:
           APPLE_CERTIFICATE_PASSWORD: "${{ secrets.ED_APPLE_CERTIFICATE_PASSWORD }}"
           APPLE_SIGNING_IDENTITY: "${{ secrets.ED_APPLE_SIGNING_IDENTITY }}"
           SIGNING_IDENTITY: "${{ secrets.ED_APPLE_SIGNING_IDENTITY }}"
-          SKIP_SIGNING: "false"
           # macos-15-intel runner hits the 10s preflight timeout on the
           # Mine77 release URL. Skip in CI; real download happens elsewhere.
           SKIP_RENDER_ENGINE_PREFLIGHT: "true"
@@ -384,19 +437,19 @@ jobs:
         working-directory: ./apps/web
         run: node scripts/check-cli-bundled.js src-tauri/target/release/bundle/macos/openrice.app --platform macos
 
-      - name: Sign app bundle with Developer ID
-        if: env.SKIP_SIGNING != 'true'
-        env:
-          APPLE_SIGNING_IDENTITY: "${{ secrets.ED_APPLE_SIGNING_IDENTITY }}"
+      - name: Apply ad hoc signature for unsigned RC
+        if: env.SKIP_SIGNING == 'true'
         run: |
           set -e
           APP_BUNDLE="./apps/web/src-tauri/target/release/bundle/macos/openrice.app"
-          echo "Signing app bundle: $APP_BUNDLE"
+          codesign --force --deep --sign - --identifier "ai.traditionow.openrice" "$APP_BUNDLE"
 
-          codesign --force --sign "$APPLE_SIGNING_IDENTITY" --options runtime --timestamp "$APP_BUNDLE"
-          codesign --force --sign "$APPLE_SIGNING_IDENTITY" --options runtime --timestamp "$APP_BUNDLE/Contents/MacOS/openloomi"
-
-          echo "✅ App bundle signed"
+      - name: Verify app signature
+        run: |
+          APP_BUNDLE="./apps/web/src-tauri/target/release/bundle/macos/openrice.app"
+          test -x "$APP_BUNDLE/Contents/MacOS/openrice"
+          codesign --verify --deep --strict --verbose=2 "$APP_BUNDLE"
+          codesign -dv --verbose=4 "$APP_BUNDLE" 2>&1 | head -20
 
       - name: Create DMG
         run: |
@@ -455,7 +508,6 @@ jobs:
 
       - name: Staple DMG
         if: env.SKIP_SIGNING != 'true'
-        continue-on-error: true
         run: |
           DMG_PATH=$(ls ./apps/web/src-tauri/target/release/bundle/dmg/openrice*.dmg)
           echo "Stapling: $DMG_PATH"
@@ -481,7 +533,8 @@ jobs:
               exit 1
             fi
           else
-            echo "⚠️  Failed to staple DMG after 20 attempts"
+            echo "❌ Failed to staple DMG after 20 attempts"
+            exit 1
           fi
 
       - name: Upload Intel DMG
@@ -492,6 +545,8 @@ jobs:
 
   # ─── Linux AMD64 CI ──────────────────────────────────────────────────────────
   release-linux-amd64:
+    needs: release-preflight
+    if: github.event_name != 'workflow_dispatch' || inputs.target == 'all' || inputs.target == 'linux-amd64'
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout openrice source code
@@ -618,6 +673,8 @@ jobs:
 
   # ─── Windows CI ──────────────────────────────────────────────────────────────
   release-windows:
+    needs: release-preflight
+    if: github.event_name != 'workflow_dispatch' || inputs.target == 'all' || inputs.target == 'windows'
     runs-on: windows-2022
     steps:
       - name: Checkout openrice source code
@@ -774,6 +831,8 @@ jobs:
 
   # ─── Linux ARM64 CI ──────────────────────────────────────────────────────────
   release-linux-arm64:
+    needs: release-preflight
+    if: github.event_name != 'workflow_dispatch' || inputs.target == 'all' || inputs.target == 'linux-arm64'
     runs-on: ubuntu-22.04-arm
     steps:
       - name: Checkout openrice source code
