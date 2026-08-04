@@ -136,11 +136,59 @@ upstream, or existing user state is lost or silently reset.
 
 ## Gate 3: build and accept a release candidate
 
-After the sync PR is reviewed and merged, run the `Release CI` workflow manually
-with `workflow_dispatch` and `commit_sha` set to the exact OpenRice `main` commit.
-This path builds downloadable artifacts but intentionally skips `create-release`.
+After the sync PR is reviewed and merged, build each supported architecture on
+its designated release host. OpenRice does not use a public-repository
+self-hosted runner on the maintainer's personal Mac.
 
-Download the artifacts from that workflow run and verify at minimum:
+| Target                    | Release host                      | Entry point                               |
+| ------------------------- | --------------------------------- | ----------------------------------------- |
+| macOS Apple Silicon ARM64 | Designated local M5 Apple Silicon | `pnpm release:macos:m5`                   |
+| macOS Intel x64           | GitHub hosted `macos-15-intel`    | Manual `Release RC CI` workflow           |
+| Linux AMD64/ARM64         | GitHub hosted Linux runner        | Manual `Release RC CI` workflow           |
+| Windows                   | Unsupported                       | No installer, CI target, or Release asset |
+
+The local M5 command reuses the machine's pnpm, Next.js, and Rust caches. For an
+internal ad hoc-signed packaging check, run:
+
+```bash
+pnpm release:macos:m5 -- --unsigned --allow-non-main
+```
+
+For a signed RC, store notarization credentials in the macOS Keychain first,
+then build from a clean, current `main` checkout:
+
+```bash
+xcrun notarytool store-credentials openrice-notary
+pnpm release:macos:m5 -- \
+  --notary-profile openrice-notary \
+  --create-draft \
+  --dispatch-intel
+```
+
+`--create-draft` uploads the signed ARM64 DMG to an unpublished GitHub draft
+Release. `--dispatch-intel` then asks the GitHub hosted Intel runner to build the
+same commit and attach the signed Intel DMG to that draft. Neither command
+publishes the Release.
+
+For standalone Intel or Linux RC checks, run `Release RC CI` manually with
+`commit_sha` set to the exact OpenRice commit. `unsigned_macos: true` is only for
+internal Intel packaging checks. Set it to `false` for an accepted Intel RC.
+
+Signed Intel builds require these repository Actions secrets:
+
+```text
+ED_APPLE_CERTIFICATE
+ED_APPLE_CERTIFICATE_PASSWORD
+ED_APPLE_SIGNING_IDENTITY
+ED_APPLE_ID
+ED_APPLE_PASSWORD
+ED_APPLE_TEAM_ID
+```
+
+The workflow verifies that every application version source agrees. The local
+M5 command applies the same version check before it builds or creates a draft.
+
+Download or inspect the local/GitHub artifacts and verify at minimum:
 
 - macOS Apple Silicon and Intel DMG names and architectures
 - Developer ID signature and Apple notarization/stapling
@@ -160,7 +208,6 @@ openrice_<VERSION>_linux_amd64.deb
 openrice_<VERSION>_linux_amd64.rpm
 openrice_<VERSION>_linux_aarch64.deb
 openrice_<VERSION>_linux_aarch64.rpm
-openrice_<VERSION>_windows_amd64.exe
 ```
 
 Record SHA-256 values for accepted RC assets. A checksum published in release
@@ -196,30 +243,25 @@ real user data.
 
 ## Gate 5: publish the OpenRice release
 
-Pushing a `v*` tag triggers `.github/workflows/release.yml`, builds all platforms,
-and publishes a non-draft GitHub Release. Treat the tag push as the final release
-approval, not as an RC experiment.
+The local M5 command and GitHub Intel runner only populate an unpublished draft
+Release. Publishing that draft is the final release approval. It creates the
+public Release/tag and makes the assets visible to the desktop updater.
 
-Before pushing the tag:
+Before publishing the draft:
 
 - confirm the tagged commit is the accepted `main` commit
 - confirm all version files equal `<VERSION>`
 - prepare release notes from the template below
 - obtain reviewer and release-owner approval in the Linear issue
-- confirm Apple signing/notarization secrets and GitHub Actions are available
+- confirm the local M5 ARM64 asset and hosted Intel asset were built from the
+  same accepted commit
+- confirm local Keychain notarization and GitHub Intel signing credentials are
+  available
 - confirm no open P0/P1 regression is deferred without written approval
 
-```bash
-git switch main
-git pull --ff-only origin main
-test "$(git rev-parse HEAD)" = "<ACCEPTED_COMMIT_SHA>"
-git tag -s v<VERSION> -m "OpenRice v<VERSION>"
-git push origin v<VERSION>
-```
-
-If signed tags are not yet supported by the maintainer environment, stop and
-record an explicit waiver before using an annotated tag. Never move or overwrite
-a published release tag.
+Open the GitHub draft, verify the ARM64 and Intel checksums recorded in the
+release issue, and use **Publish release** only after Gate 4 passes. Never move or
+overwrite a published release tag.
 
 ### Release notes template
 
@@ -282,8 +324,8 @@ These gaps must remain visible until follow-up issues close them:
 
 1. The desktop updater downloads assets over HTTPS but does not yet validate a
    published SHA-256 or cryptographic signature before installation.
-2. The tag workflow publishes a non-draft Release immediately after successful
-   builds; it has no separate environment approval between build and publication.
+2. Draft publication is a manual M5 approval; GitHub environment protection is
+   not yet an additional independent approval layer.
 3. Generated GitHub release notes do not enforce the provenance and rollback
    template in this document.
 4. The updater backup covers the application bundle, not the user-data directory.

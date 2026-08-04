@@ -13,7 +13,7 @@
 OpenRice 分支。为兼容既有安装，内部仍保留上游 OpenLoomi 的数据目录、
 插件 ID 和命令协议。
 
-[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-4B4B4B?logo=linux&logoColor=white)](https://openloomi.ai)
+[![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Linux-4B4B4B?logo=linux&logoColor=white)](https://openloomi.ai)
 [![License](https://img.shields.io/badge/License-Apache%202.0-F8D52A?logo=apache)](https://www.apache.org/licenses/LICENSE-2.0)
 [![Discord](https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white)](https://discord.com/invite/xkJaJyWcsv)
 [![X](https://img.shields.io/badge/X-Follow-000000?logo=x&logoColor=white)](https://x.com/AlloomiAI)
@@ -59,7 +59,7 @@ OpenRice 分支。为兼容既有安装，内部仍保留上游 OpenLoomi 的数
 | 🧠  | **[全域上下文](https://openloomi.ai/docs/memory)**                        | 短→中→长期记忆，记忆会自己"长出来"——完全可见、可审计，始终记住你数月前的人、项目、决策                                                                                                                                                                                                                                   |
 | 🔌  | **[平台连接器](https://openloomi.ai/docs/connectors)**                    | **[自动获取](https://openloomi.ai/docs/what-is-openloomi#a-complete-intelligence-loop-from-perception-to-action)** 后台同步循环主动拉取代码提交、工单、邮件和文档并存入图谱。**[消息应用](https://openloomi.ai/docs/messaging-apps)** — Telegram、WhatsApp、iMessage、QQ、飞书/Feishu — 让您直接在现有对话中与 AI 聊天。 |
 | ⏰  | **[主动任务](https://openloomi.ai/docs/automation)**                      | 定时自动执行重复工作——每日摘要、每周报告、提醒——在桌面端按计划运行。                                                                                                                                                                                                                                                     |
-| 🖥️  | **[安全便捷](https://openloomi.ai/docs/privacy-security)**                | Windows、macOS、Linux 原生桌面应用 — **开箱即用**，安装几分钟就能开始工作，不需要折腾配置；本地优先存储，AES-256 加密，数据不离开你的设备，访问日志可审计                                                                                                                                                                |
+| 🖥️  | **[安全便捷](https://openloomi.ai/docs/privacy-security)**                | macOS、Linux 原生桌面应用 — **开箱即用**，安装几分钟就能开始工作，不需要折腾配置；本地优先存储，AES-256 加密，数据不离开你的设备，访问日志可审计                                                                                                                                                                         |
 | 🧩  | **[任意 Agent 集成](https://openloomi.ai/docs/reference/agent-runtimes)** | OpenRice 的上下文、记忆、连接器、注意力代理与 Loop 工作引擎都以开源 [技能](https://openloomi.ai/docs/skills) 和[插件](https://openloomi.ai/docs/plugins) 形式交付。可以直接用 OpenRice Desktop, 也可以接入现有 Agent — Claude、Codex、OpenCode、Hermes 或 OpenClaw                                                       |
 
 ## 快速开始
@@ -67,16 +67,15 @@ OpenRice 分支。为兼容既有安装，内部仍保留上游 OpenLoomi 的数
 **直接下载**（面向终端用户）：
 
 <p align="center">
-  <a href="https://github.com/melandlabs/openloomi/releases/download/v0.8.8/openloomi_0.8.8_macOS_aarch64.dmg"><img src="https://img.shields.io/badge/macOS_Apple_Silicon-000000?style=for-the-badge&logo=apple&logoColor=white" alt="macOS Apple Silicon"></a>
-  <a href="https://github.com/melandlabs/openloomi/releases/download/v0.8.8/openloomi_0.8.8_macOS_amd64.dmg"><img src="https://img.shields.io/badge/macOS_Intel-000000?style=for-the-badge&logo=apple&logoColor=white" alt="macOS Intel"></a>
-  <a href="https://github.com/melandlabs/openloomi/releases/download/v0.8.8/openloomi_0.8.8_windows_amd64.exe"><img src="https://img.shields.io/badge/Windows_x64-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows x64"></a>
+  <a href="https://github.com/semiok/openrice/releases/download/v0.8.9/openrice_0.8.9_macOS_aarch64.dmg"><img src="https://img.shields.io/badge/macOS_Apple_Silicon-000000?style=for-the-badge&logo=apple&logoColor=white" alt="macOS Apple Silicon"></a>
+  <a href="https://github.com/semiok/openrice/releases/download/v0.8.9/openrice_0.8.9_macOS_amd64.dmg"><img src="https://img.shields.io/badge/macOS_Intel-000000?style=for-the-badge&logo=apple&logoColor=white" alt="macOS Intel"></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/melandlabs/openloomi/releases/download/v0.8.8/openloomi_0.8.8_linux_amd64.deb"><img src="https://img.shields.io/badge/Linux_AMD64_(.deb)-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux AMD64 .deb"></a>
-  <a href="https://github.com/melandlabs/openloomi/releases/download/v0.8.8/openloomi_0.8.8_linux_amd64.rpm"><img src="https://img.shields.io/badge/Linux_AMD64_(.rpm)-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux AMD64 .rpm"></a>
-  <a href="https://github.com/melandlabs/openloomi/releases/download/v0.8.8/openloomi_0.8.8_linux_aarch64.deb"><img src="https://img.shields.io/badge/Linux_ARM64_(.deb)-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux ARM64 .deb"></a>
-  <a href="https://github.com/melandlabs/openloomi/releases/download/v0.8.8/openloomi_0.8.8_linux_aarch64.rpm"><img src="https://img.shields.io/badge/Linux_ARM64_(.rpm)-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux ARM64 .rpm"></a>
+  <a href="https://github.com/semiok/openrice/releases/download/v0.8.9/openrice_0.8.9_linux_amd64.deb"><img src="https://img.shields.io/badge/Linux_AMD64_(.deb)-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux AMD64 .deb"></a>
+  <a href="https://github.com/semiok/openrice/releases/download/v0.8.9/openrice_0.8.9_linux_amd64.rpm"><img src="https://img.shields.io/badge/Linux_AMD64_(.rpm)-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux AMD64 .rpm"></a>
+  <a href="https://github.com/semiok/openrice/releases/download/v0.8.9/openrice_0.8.9_linux_aarch64.deb"><img src="https://img.shields.io/badge/Linux_ARM64_(.deb)-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux ARM64 .deb"></a>
+  <a href="https://github.com/semiok/openrice/releases/download/v0.8.9/openrice_0.8.9_linux_aarch64.rpm"><img src="https://img.shields.io/badge/Linux_ARM64_(.rpm)-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux ARM64 .rpm"></a>
 </p>
 
 完整文档请访问 [openloomi.ai/docs](https://openloomi.ai/docs)。
@@ -102,7 +101,7 @@ pnpm install
 pnpm tauri:dev
 ```
 
-需要 Node.js 22+、pnpm 9+ 和 Rust 1.75+，Windows 还需要 Visual Studio Build Tools with C++ workload。更多平台特定设置要求请参见 [CONTRIBUTING.md](./CONTRIBUTING.md)。
+需要 Node.js 22+、pnpm 9+ 和 Rust 1.75+。OpenRice 不发布或支持 Windows 安装包。更多平台特定设置要求请参见 [CONTRIBUTING.md](./CONTRIBUTING.md)。
 
 ## 它有何不同
 

@@ -1,6 +1,6 @@
 [package]
 name = "openloomi"
-version = "0.8.8"
+version = "0.8.9"
 description = "OpenRice AI Assistant - Your Personal Productivity Tool"
 authors = ["OpenRice Team"]
 edition = "2021"

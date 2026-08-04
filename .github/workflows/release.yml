@@ -1,13 +1,29 @@
-name: Release CI
+name: Release RC CI
 
 on:
-  push:
-    tags:
-      - "v*"
   workflow_dispatch:
     inputs:
       commit_sha:
         description: "Specific commit SHA to build (optional)"
+        required: false
+        type: string
+      target:
+        description: "Release-candidate platform to build"
+        required: true
+        default: "macos-intel"
+        type: choice
+        options:
+          - macos-intel
+          - linux-amd64
+          - linux-arm64
+          - all
+      unsigned_macos:
+        description: "Use an ad hoc signature for an internal macOS RC"
+        required: true
+        default: true
+        type: boolean
+      draft_tag:
+        description: "Existing draft release tag to receive the Intel DMG (optional)"
         required: false
         type: string
 
@@ -16,11 +32,8 @@ env:
   RUST_VERSION: "1.93"
 
 jobs:
-  # ─── macOS ARM64 CI ─────────────────────────────────────────────────────────
-  release-macos-arm64:
-    runs-on: macos-14
-    env:
-      SKIP_SIGNING: "false"
+  release-preflight:
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout openrice source code
         uses: actions/checkout@v4
@@ -31,227 +44,47 @@ jobs:
         if: github.event.inputs.commit_sha != ''
         run: git checkout ${{ github.event.inputs.commit_sha }}
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
+      - name: Verify release version sources
+        run: node scripts/verify-release-version.mjs
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 9
-
-      - name: Add pnpm to PATH
-        run: |
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
-          echo "PNPM_HOME=$HOME/.local" >> $GITHUB_ENV
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Setup Rust
-        uses: dtolnay/rust-toolchain@stable
-        with:
-          toolchain: ${{ env.RUST_VERSION }}
-
-      - name: Install Rust targets
-        run: |
-          rustup target add aarch64-apple-darwin
-          rustup target add x86_64-apple-darwin
-
-      - name: Get pnpm store directory
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - name: Setup pnpm cache
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile --ignore-scripts
-
-      - name: Rebuild native modules for Tauri
-        run: |
-          pnpm rebuild better-sqlite3
-          mkdir -p node_modules/@photon-ai/imessage-kit/node_modules/better-sqlite3/build
-          cp node_modules/better-sqlite3/build/Release/better_sqlite3.node \
-             node_modules/@photon-ai/imessage-kit/node_modules/better-sqlite3/build/better_sqlite3.node
-
-      - name: Verify native modules are built
-        run: |
-          echo "=== Checking top-level better-sqlite3 ==="
-          ls -la node_modules/better-sqlite3/build/Release/better_sqlite3.node || exit 1
-          echo "=== Checking nested better-sqlite3 in imessage-kit ==="
-          ls -la node_modules/@photon-ai/imessage-kit/node_modules/better-sqlite3/build/better_sqlite3.node || exit 1
-          echo "✅ All native modules built successfully"
-
-      - name: Create .env file
-        working-directory: ./apps/web
-        run: |
-          cat > .env << 'EOF'
-
-          API_TIMEOUT_MS=3000000
-          IS_TAURI=true
-
-          EOF
-
-      - name: Import Apple Certificate and Intermediate Certificates
-        if: env.SKIP_SIGNING != 'true'
+      - name: Verify optional draft release target
+        if: inputs.draft_tag != ''
         env:
-          APPLE_CERTIFICATE: "${{ secrets.ED_APPLE_CERTIFICATE }}"
-          APPLE_CERTIFICATE_PASSWORD: "${{ secrets.ED_APPLE_CERTIFICATE_PASSWORD }}"
+          GH_TOKEN: ${{ github.token }}
+          DRAFT_TAG: ${{ inputs.draft_tag }}
         run: |
-          # Create a new keychain
-          KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
-          security create-keychain -p "" $KEYCHAIN_PATH
-          security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
-          security unlock-keychain -p "" $KEYCHAIN_PATH
+          VERSION=$(node -p "require('./package.json').version")
+          test "$DRAFT_TAG" = "v$VERSION"
+          test "$(gh release view "$DRAFT_TAG" --json isDraft --jq .isDraft)" = "true"
 
-          # Import Apple certificate
-          echo "$APPLE_CERTIFICATE" | base64 --decode > cert.p12
-          security import cert.p12 -P "$APPLE_CERTIFICATE_PASSWORD" -A -k $KEYCHAIN_PATH
-          rm cert.p12
-
-          # Download and import Apple intermediate certificates (not available in CI)
-          curl -s -o /tmp/AppleWWDRCAG3.cer https://www.apple.com/certificateauthority/AppleWWDRCAG3.cer
-          curl -s -o /tmp/DeveloperIDG2CA.cer https://www.apple.com/certificateauthority/DeveloperIDG2CA.cer
-          security import /tmp/AppleWWDRCAG3.cer -A -k $KEYCHAIN_PATH
-          security import /tmp/DeveloperIDG2CA.cer -A -k $KEYCHAIN_PATH
-
-          # List keychains to ensure system can access certificates
-          security list-keychain -d user -s $KEYCHAIN_PATH
-
-      - name: Build Tauri app (Apple Silicon)
-        working-directory: ./apps/web
-        run: pnpm tauri:build
+      - name: Require Apple credentials for signed macOS builds
+        if: ${{ !inputs.unsigned_macos && (inputs.target == 'all' || inputs.target == 'macos-intel') }}
         env:
           APPLE_CERTIFICATE: "${{ secrets.ED_APPLE_CERTIFICATE }}"
           APPLE_CERTIFICATE_PASSWORD: "${{ secrets.ED_APPLE_CERTIFICATE_PASSWORD }}"
           APPLE_SIGNING_IDENTITY: "${{ secrets.ED_APPLE_SIGNING_IDENTITY }}"
-          SIGNING_IDENTITY: "${{ secrets.ED_APPLE_SIGNING_IDENTITY }}"
-          SKIP_SIGNING: "false"
-
-      - name: Verify bundled CLI (macOS ARM64)
-        working-directory: ./apps/web
-        run: node scripts/check-cli-bundled.js src-tauri/target/release/bundle/macos/openrice.app --platform macos
-
-      - name: Sign app bundle with Developer ID
-        if: env.SKIP_SIGNING != 'true'
-        env:
-          APPLE_SIGNING_IDENTITY: "${{ secrets.ED_APPLE_SIGNING_IDENTITY }}"
+          APPLE_ID: "${{ secrets.ED_APPLE_ID }}"
+          APPLE_PASSWORD: "${{ secrets.ED_APPLE_PASSWORD }}"
+          APPLE_TEAM_ID: "${{ secrets.ED_APPLE_TEAM_ID }}"
         run: |
-          set -e
-          APP_BUNDLE="./apps/web/src-tauri/target/release/bundle/macos/openrice.app"
-          echo "Signing app bundle: $APP_BUNDLE"
-
-          codesign --force --sign "$APPLE_SIGNING_IDENTITY" --options runtime --timestamp "$APP_BUNDLE"
-          codesign --force --sign "$APPLE_SIGNING_IDENTITY" --options runtime --timestamp "$APP_BUNDLE/Contents/MacOS/openloomi"
-
-          echo "✅ App bundle signed"
-
-      - name: Create DMG
-        run: |
-          mkdir -p ./apps/web/src-tauri/target/release/bundle/dmg
-          rm -f ./apps/web/src-tauri/target/release/bundle/dmg/openrice*.dmg
-
-          APP_BUNDLE="./apps/web/src-tauri/target/release/bundle/macos/openrice.app"
-          COMMIT_SHA=$(git rev-parse --short HEAD)
-          DMG_PATH="./apps/web/src-tauri/target/release/bundle/dmg/openrice_${COMMIT_SHA}_aarch64.dmg"
-
-          node apps/web/src-tauri/scripts/beautify-dmg.js \
-            "$APP_BUNDLE" \
-            "$DMG_PATH" \
-            --app-name openrice \
-            --bg ./apps/web/src-tauri/icons/dmg-background@2x.png
-
-          echo "✅ Styled DMG created from signed app bundle"
-
-      - name: Notarize DMG
-        if: env.SKIP_SIGNING != 'true'
-        timeout-minutes: 360
-        run: |
-          DMG_PATH=$(ls ./apps/web/src-tauri/target/release/bundle/dmg/openrice*.dmg)
-          echo "Notarizing: $DMG_PATH"
-
-          codesign -dv "$DMG_PATH" 2>&1 | head -5
-
-          OUTPUT=$(xcrun notarytool submit "$DMG_PATH" \
-            --apple-id "${{ secrets.ED_APPLE_ID }}" \
-            --password "${{ secrets.ED_APPLE_PASSWORD }}" \
-            --team-id "${{ secrets.ED_APPLE_TEAM_ID }}" 2>&1)
-
-          echo "$OUTPUT"
-
-          SUBMISSION_ID=$(echo "$OUTPUT" | grep "id:" | head -1 | awk '{print $2}')
-          if [ -z "$SUBMISSION_ID" ]; then
-            echo "❌ Failed to get submission ID"
-            exit 1
-          fi
-
-          echo "Submission ID: $SUBMISSION_ID"
-
-          echo "Waiting for notarization to complete..."
-          if xcrun notarytool wait "$SUBMISSION_ID" \
-            --apple-id "${{ secrets.ED_APPLE_ID }}" \
-            --password "${{ secrets.ED_APPLE_PASSWORD }}" \
-            --team-id "${{ secrets.ED_APPLE_TEAM_ID }}" 2>&1; then
-            echo "✅ Notarization accepted!"
-          else
-            echo "❌ Notarization failed"
-            exit 1
-          fi
-
-          echo "Waiting for ticket propagation..."
-          sleep 300
-
-      - name: Staple DMG
-        if: env.SKIP_SIGNING != 'true'
-        continue-on-error: true
-        run: |
-          DMG_PATH=$(ls ./apps/web/src-tauri/target/release/bundle/dmg/openrice*.dmg)
-          echo "Stapling: $DMG_PATH"
-
-          STAPLED=false
-          for i in $(seq 1 20); do
-            echo "Staple attempt $i..."
-            if xcrun stapler staple "$DMG_PATH" 2>&1; then
-              echo "✅ Staple succeeded on attempt $i"
-              STAPLED=true
-              break
-            else
-              echo "Staple failed, waiting 60 seconds before retry..."
-              sleep 60
+          missing=0
+          for name in APPLE_CERTIFICATE APPLE_CERTIFICATE_PASSWORD APPLE_SIGNING_IDENTITY APPLE_ID APPLE_PASSWORD APPLE_TEAM_ID; do
+            if [ -z "${!name}" ]; then
+              echo "::error::Missing required release secret: $name"
+              missing=1
             fi
           done
-
-          if [ "$STAPLED" = "true" ]; then
-            if xcrun stapler validate "$DMG_PATH" 2>&1; then
-              echo "✅ DMG stapled and validated successfully"
-            else
-              echo "❌ DMG stapled but validation failed"
-              exit 1
-            fi
-          else
-            echo "⚠️  Failed to staple DMG after 20 attempts"
-          fi
-
-      - name: Upload ARM64 DMG
-        uses: actions/upload-artifact@v4
-        with:
-          name: openrice-dmg-aarch64
-          path: ${{ github.workspace }}/apps/web/src-tauri/target/release/bundle/dmg/openrice*.dmg
+          test "$missing" -eq 0
 
   # ─── macOS Intel CI ─────────────────────────────────────────────────────────
   release-macos-intel:
+    needs: release-preflight
+    if: github.event_name != 'workflow_dispatch' || inputs.target == 'all' || inputs.target == 'macos-intel'
     runs-on: macos-15-intel
+    permissions:
+      contents: write
     env:
-      SKIP_SIGNING: "false"
+      SKIP_SIGNING: ${{ github.event_name == 'workflow_dispatch' && inputs.unsigned_macos && 'true' || 'false' }}
     steps:
       - name: Checkout openrice source code
         uses: actions/checkout@v4
@@ -367,7 +200,17 @@ jobs:
             console.log('Patched targets to app');
           "
 
-      - name: Build Tauri app (Intel)
+      - name: Build unsigned Tauri app (Intel RC)
+        if: env.SKIP_SIGNING == 'true'
+        working-directory: ./apps/web
+        run: pnpm tauri:build
+        env:
+          # macos-15-intel runner hits the 10s preflight timeout on the
+          # Mine77 release URL. Skip in CI; real download happens elsewhere.
+          SKIP_RENDER_ENGINE_PREFLIGHT: "true"
+
+      - name: Build signed Tauri app (Intel)
+        if: env.SKIP_SIGNING != 'true'
         working-directory: ./apps/web
         run: pnpm tauri:build
         env:
@@ -375,7 +218,6 @@ jobs:
           APPLE_CERTIFICATE_PASSWORD: "${{ secrets.ED_APPLE_CERTIFICATE_PASSWORD }}"
           APPLE_SIGNING_IDENTITY: "${{ secrets.ED_APPLE_SIGNING_IDENTITY }}"
           SIGNING_IDENTITY: "${{ secrets.ED_APPLE_SIGNING_IDENTITY }}"
-          SKIP_SIGNING: "false"
           # macos-15-intel runner hits the 10s preflight timeout on the
           # Mine77 release URL. Skip in CI; real download happens elsewhere.
           SKIP_RENDER_ENGINE_PREFLIGHT: "true"
@@ -384,19 +226,19 @@ jobs:
         working-directory: ./apps/web
         run: node scripts/check-cli-bundled.js src-tauri/target/release/bundle/macos/openrice.app --platform macos
 
-      - name: Sign app bundle with Developer ID
-        if: env.SKIP_SIGNING != 'true'
-        env:
-          APPLE_SIGNING_IDENTITY: "${{ secrets.ED_APPLE_SIGNING_IDENTITY }}"
+      - name: Apply ad hoc signature for unsigned RC
+        if: env.SKIP_SIGNING == 'true'
         run: |
           set -e
           APP_BUNDLE="./apps/web/src-tauri/target/release/bundle/macos/openrice.app"
-          echo "Signing app bundle: $APP_BUNDLE"
+          codesign --force --deep --sign - --identifier "ai.traditionow.openrice" "$APP_BUNDLE"
 
-          codesign --force --sign "$APPLE_SIGNING_IDENTITY" --options runtime --timestamp "$APP_BUNDLE"
-          codesign --force --sign "$APPLE_SIGNING_IDENTITY" --options runtime --timestamp "$APP_BUNDLE/Contents/MacOS/openloomi"
-
-          echo "✅ App bundle signed"
+      - name: Verify app signature
+        run: |
+          APP_BUNDLE="./apps/web/src-tauri/target/release/bundle/macos/openrice.app"
+          test -x "$APP_BUNDLE/Contents/MacOS/openrice"
+          codesign --verify --deep --strict --verbose=2 "$APP_BUNDLE"
+          codesign -dv --verbose=4 "$APP_BUNDLE" 2>&1 | head -20
 
       - name: Create DMG
         run: |
@@ -455,7 +297,6 @@ jobs:
 
       - name: Staple DMG
         if: env.SKIP_SIGNING != 'true'
-        continue-on-error: true
         run: |
           DMG_PATH=$(ls ./apps/web/src-tauri/target/release/bundle/dmg/openrice*.dmg)
           echo "Stapling: $DMG_PATH"
@@ -481,7 +322,8 @@ jobs:
               exit 1
             fi
           else
-            echo "⚠️  Failed to staple DMG after 20 attempts"
+            echo "❌ Failed to staple DMG after 20 attempts"
+            exit 1
           fi
 
       - name: Upload Intel DMG
@@ -490,8 +332,22 @@ jobs:
           name: openrice-dmg-x64
           path: ${{ github.workspace }}/apps/web/src-tauri/target/release/bundle/dmg/openrice*.dmg
 
+      - name: Upload Intel DMG to existing draft release
+        if: inputs.draft_tag != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DRAFT_TAG: ${{ inputs.draft_tag }}
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          SOURCE_DMG=$(ls ./apps/web/src-tauri/target/release/bundle/dmg/openrice*.dmg | head -1)
+          RELEASE_DMG="./apps/web/src-tauri/target/release/bundle/dmg/openrice_${VERSION}_macOS_amd64.dmg"
+          cp "$SOURCE_DMG" "$RELEASE_DMG"
+          gh release upload "$DRAFT_TAG" "$RELEASE_DMG" --clobber
+
   # ─── Linux AMD64 CI ──────────────────────────────────────────────────────────
   release-linux-amd64:
+    needs: release-preflight
+    if: github.event_name != 'workflow_dispatch' || inputs.target == 'all' || inputs.target == 'linux-amd64'
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout openrice source code
@@ -616,164 +472,10 @@ jobs:
             ${{ github.workspace }}/apps/web/src-tauri/target/release/bundle/deb/*.deb
             ${{ github.workspace }}/apps/web/src-tauri/target/release/bundle/rpm/*.rpm
 
-  # ─── Windows CI ──────────────────────────────────────────────────────────────
-  release-windows:
-    runs-on: windows-2022
-    steps:
-      - name: Checkout openrice source code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Checkout specific commit if provided
-        if: github.event.inputs.commit_sha != ''
-        run: git checkout ${{ github.event.inputs.commit_sha }}
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 9
-
-      - name: Add pnpm to PATH
-        shell: bash
-        run: |
-          echo "$HOME/AppData/Local/pnpm" >> $GITHUB_PATH
-          echo "PNPM_HOME=$HOME/AppData/Local/pnpm" >> $GITHUB_ENV
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Setup Rust
-        uses: dtolnay/rust-toolchain@stable
-        with:
-          toolchain: ${{ env.RUST_VERSION }}
-
-      - name: Install Rust targets
-        shell: bash
-        run: |
-          rustup target add aarch64-pc-windows-msvc
-          rustup target add x86_64-pc-windows-msvc
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - name: Setup pnpm cache
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Install dependencies
-        working-directory: .
-        shell: bash
-        run: pnpm install --frozen-lockfile --ignore-scripts
-
-      - name: Rebuild native modules for Tauri
-        working-directory: .
-        shell: bash
-        run: |
-          pnpm rebuild better-sqlite3
-          mkdir -p node_modules/@photon-ai/imessage-kit/node_modules/better-sqlite3/build
-          cp node_modules/better-sqlite3/build/Release/better_sqlite3.node \
-             node_modules/@photon-ai/imessage-kit/node_modules/better-sqlite3/build/better_sqlite3.node
-
-      - name: Verify native modules are built
-        working-directory: .
-        shell: bash
-        run: |
-          echo "=== Checking top-level better-sqlite3 ==="
-          ls -la node_modules/better-sqlite3/build/Release/better_sqlite3.node || exit 1
-          echo "=== Checking nested better-sqlite3 in imessage-kit ==="
-          ls -la node_modules/@photon-ai/imessage-kit/node_modules/better-sqlite3/build/better_sqlite3.node || exit 1
-          echo "All native modules built successfully"
-
-      - name: Create .env file
-        working-directory: ./apps/web
-        shell: bash
-        run: |
-          cat > .env << 'EOF'
-
-          API_TIMEOUT_MS=3000000
-          IS_TAURI=true
-
-          EOF
-
-      - name: Patch tauri.conf.json to skip MSI on Windows
-        working-directory: ./apps/web
-        shell: pwsh
-        run: |
-          $content = Get-Content src-tauri\tauri.conf.json -Raw
-          $content = $content -replace '"targets"\s*:\s*"all"', '"targets": ["nsis"]'
-          $content = $content -replace '"targets"\s*:\s*\[.*?\]', '"targets": ["nsis"]'
-          $content = $content -replace '"wix"\s*:\s*\{[^}]*\}', '"wix": null'
-          Set-Content -Path src-tauri\tauri.conf.json -Value $content -NoNewline
-          Get-Content src-tauri\tauri.conf.json | Select-String 'targets'
-          Get-Content src-tauri\tauri.conf.json | Select-String 'wix'
-
-      - name: Build Tauri app (Windows)
-        working-directory: ./apps/web
-        shell: bash
-        run: pnpm tauri:build
-        env:
-          RUSTUP_WINDOWS_PATH: 1
-          TAURI_BUNDLE_TARGET: nsis
-
-      - name: Verify bundled CLI in Windows installer
-        working-directory: ./apps/web
-        shell: pwsh
-        run: |
-          $installer = Get-ChildItem src-tauri\target\release\bundle\nsis\*.exe | Select-Object -First 1
-          if (-not $installer) {
-            throw "NSIS installer not found"
-          }
-
-          $extract = Join-Path $env:RUNNER_TEMP "openrice-nsis"
-          Remove-Item -Recurse -Force $extract -ErrorAction SilentlyContinue
-          New-Item -ItemType Directory -Force $extract | Out-Null
-
-          $sevenZipCandidates = @()
-          if ($env:ProgramFiles) {
-            $sevenZipCandidates += Join-Path $env:ProgramFiles "7-Zip\7z.exe"
-          }
-          if (${env:ProgramFiles(x86)}) {
-            $sevenZipCandidates += Join-Path ${env:ProgramFiles(x86)} "7-Zip\7z.exe"
-          }
-          $pathSevenZip = Get-Command 7z -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source -First 1
-          if ($pathSevenZip) {
-            $sevenZipCandidates += $pathSevenZip
-          }
-          $sevenZip = $sevenZipCandidates | Where-Object { Test-Path $_ } | Select-Object -First 1
-          $sevenZip = $sevenZipCandidates | Select-Object -First 1
-          if (-not $sevenZip) {
-            throw "7-Zip is required to verify NSIS installer contents"
-          }
-
-          & $sevenZip x $installer.FullName "-o$extract" -y
-          if ($LASTEXITCODE -ne 0) {
-            throw "Failed to extract NSIS installer with 7-Zip"
-          }
-
-          node scripts/check-cli-bundled.js $extract --platform windows
-
-      - name: Upload Windows NSIS installer
-        uses: actions/upload-artifact@v4
-        with:
-          name: openrice-windows-nsis
-          path: ${{ github.workspace }}/apps/web/src-tauri/target/release/bundle/nsis/*.exe
-
   # ─── Linux ARM64 CI ──────────────────────────────────────────────────────────
   release-linux-arm64:
+    needs: release-preflight
+    if: github.event_name != 'workflow_dispatch' || inputs.target == 'all' || inputs.target == 'linux-arm64'
     runs-on: ubuntu-22.04-arm
     steps:
       - name: Checkout openrice source code
@@ -892,144 +594,3 @@ jobs:
           path: |
             ${{ github.workspace }}/apps/web/src-tauri/target/release/bundle/deb/*.deb
             ${{ github.workspace }}/apps/web/src-tauri/target/release/bundle/rpm/*.rpm
-
-  # ─── Create Release ─────────────────────────────────────────────────────────
-  create-release:
-    if: github.event_name != 'workflow_dispatch'
-    needs:
-      [
-        release-macos-arm64,
-        release-macos-intel,
-        release-linux-amd64,
-        release-windows,
-        release-linux-arm64,
-      ]
-    runs-on: ubuntu-22.04
-    permissions:
-      contents: write
-    steps:
-      - name: Extract version from tag
-        id: version
-        run: |
-          VERSION="${GITHUB_REF#refs/tags/}"
-          VERSION="${VERSION#v}"
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
-          echo "Version: $VERSION"
-
-      - name: Download all artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: artifacts
-
-      - name: List artifacts
-        run: ls -la artifacts/
-
-      - name: Rename artifacts
-        run: |
-          cd artifacts
-          mv openrice-dmg-aarch64/*.dmg "openrice_${VERSION}_macOS_aarch64.dmg"
-          mv openrice-dmg-x64/*.dmg "openrice_${VERSION}_macOS_amd64.dmg"
-          mv openrice-linux-amd64/deb/*.deb "openrice_${VERSION}_linux_amd64.deb"
-          mv openrice-linux-amd64/rpm/*.rpm "openrice_${VERSION}_linux_amd64.rpm"
-          mv openrice-linux-arm64/deb/*.deb "openrice_${VERSION}_linux_aarch64.deb"
-          mv openrice-linux-arm64/rpm/*.rpm "openrice_${VERSION}_linux_aarch64.rpm"
-          mv openrice-windows-nsis/*.exe "openrice_${VERSION}_windows_amd64.exe"
-          rm -rf openrice-dmg-aarch64 openrice-dmg-x64 openrice-linux-amd64 openrice-linux-arm64 openrice-windows-nsis
-          ls -la
-
-      - name: Create Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v${{ steps.version.outputs.version }}
-          draft: false
-          prerelease: false
-          overwrite_files: true
-          generate_release_notes: true
-          files: |
-            artifacts/openrice_${{ steps.version.outputs.version }}_macOS_aarch64.dmg
-            artifacts/openrice_${{ steps.version.outputs.version }}_macOS_amd64.dmg
-            artifacts/openrice_${{ steps.version.outputs.version }}_linux_amd64.deb
-            artifacts/openrice_${{ steps.version.outputs.version }}_linux_amd64.rpm
-            artifacts/openrice_${{ steps.version.outputs.version }}_linux_aarch64.deb
-            artifacts/openrice_${{ steps.version.outputs.version }}_linux_aarch64.rpm
-            artifacts/openrice_${{ steps.version.outputs.version }}_windows_amd64.exe
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  # ─── Update Homebrew Cask ────────────────────────────────────────────────────
-  update-homebrew-cask:
-    if: github.event_name != 'workflow_dispatch'
-    needs: [create-release]
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
-
-      - name: Get version
-        id: version
-        run: |
-          VERSION="${GITHUB_REF#refs/tags/}"
-          VERSION="${VERSION#v}"
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
-          echo "Version: $VERSION"
-
-      - name: Calculate SHA256 for ARM64 DMG
-        id: sha_arm
-        run: |
-          URL="https://github.com/semiok/openrice/releases/download/v${{ env.VERSION }}/openrice_${{ env.VERSION }}_macOS_aarch64.dmg"
-          echo "Downloading from: $URL"
-          SHA=$(curl -sfL "$URL" | shasum -a 256 | cut -d ' ' -f 1)
-          if [ -z "$SHA" ]; then
-            echo "Error: Failed to download ARM64 DMG"
-            exit 1
-          fi
-          echo "sha=$SHA" >> $GITHUB_OUTPUT
-          echo "ARM64 SHA256: $SHA"
-
-      - name: Calculate SHA256 for Intel DMG
-        id: sha_intel
-        run: |
-          URL="https://github.com/semiok/openrice/releases/download/v${{ env.VERSION }}/openrice_${{ env.VERSION }}_macOS_amd64.dmg"
-          echo "Downloading from: $URL"
-          SHA=$(curl -sfL "$URL" | shasum -a 256 | cut -d ' ' -f 1)
-          if [ -z "$SHA" ]; then
-            echo "Error: Failed to download Intel DMG"
-            exit 1
-          fi
-          echo "sha=$SHA" >> $GITHUB_OUTPUT
-          echo "Intel SHA256: $SHA"
-
-      - name: Update Cask file
-        run: |
-          CASK_FILE="Casks/openrice.rb"
-          VERSION="${{ env.VERSION }}"
-          ARM_SHA="${{ steps.sha_arm.outputs.sha }}"
-          INTEL_SHA="${{ steps.sha_intel.outputs.sha }}"
-
-          echo "Updating $CASK_FILE"
-          echo "  Version: $VERSION"
-          echo "  ARM64 SHA: $ARM_SHA"
-          echo "  Intel SHA: $INTEL_SHA"
-
-          sed -i "s/version \"[^\"]*\"/version \"$VERSION\"/" "$CASK_FILE"
-          sed -i "s|sha256 arm:   \"[^\"]*\"|sha256 arm:   \"$ARM_SHA\"|" "$CASK_FILE"
-          sed -i "s|intel: \"[^\"]*\"|intel: \"$INTEL_SHA\"|" "$CASK_FILE"
-          sed -i "s|openrice/releases/download/v[0-9.]*/openrice_[0-9.]*_macOS|openrice/releases/download/v$VERSION/openrice_${VERSION}_macOS|g" "$CASK_FILE"
-
-          echo "Updated content:"
-          head -15 "$CASK_FILE"
-
-      - name: Commit and push
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add Casks/openrice.rb
-          git commit -m "chore: update homebrew cask openrice to v${{ env.VERSION }}"
-          git push
