@@ -24,20 +24,28 @@ function isPathUnderBase(childPath: string, basePath: string): boolean {
   return normalized !== base && normalized.startsWith(base + sep);
 }
 
-function readSkillMetadata(): Record<string, { avatar?: string }> {
+function readSkillMetadata(): Record<
+  string,
+  { avatar?: string; favorite?: boolean }
+> {
   const path = getSkillMetadataPath();
   if (!existsSync(path)) return {};
   try {
     const raw = readFileSync(path, "utf-8");
     const data = JSON.parse(raw);
     if (typeof data !== "object" || data === null) return {};
-    return data as Record<string, { avatar?: string }>;
+    return data as Record<
+      string,
+      { avatar?: string; favorite?: boolean }
+    >;
   } catch {
     return {};
   }
 }
 
-function writeSkillMetadata(data: Record<string, { avatar?: string }>): void {
+function writeSkillMetadata(
+  data: Record<string, { avatar?: string; favorite?: boolean }>,
+): void {
   const dir = join(homedir(), APP_DIR_NAME);
   if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
   writeFileSync(getSkillMetadataPath(), JSON.stringify(data, null, 2), "utf-8");

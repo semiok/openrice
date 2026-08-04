@@ -936,6 +936,75 @@ export function AppSidebar() {
                         </Tooltip>
                       )}
 
+                      {/* Favorite Skills — fixed between Tasks and Connectors. */}
+                      {isNavVisible("workspace") && (
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button
+                              variant="ghost"
+                              className={cn(
+                                "w-full gap-2 px-3 py-2 h-auto rounded-md transition-colors",
+                                pathname === "/favorite-skills"
+                                  ? "text-primary bg-sidebar-hover"
+                                  : "text-sidebar-foreground hover:bg-sidebar-hover hover:text-sidebar-hover-foreground",
+                                isCollapsed
+                                  ? "justify-center"
+                                  : "justify-start",
+                              )}
+                              aria-current={
+                                pathname === "/favorite-skills"
+                                  ? "page"
+                                  : undefined
+                              }
+                              asChild
+                            >
+                              <Link
+                                href="/favorite-skills"
+                                onClick={() => {
+                                  if (isMobile) {
+                                    setIsCollapsed(true);
+                                    window.dispatchEvent(
+                                      new CustomEvent(
+                                        "openloomi:close-sidebar",
+                                      ),
+                                    );
+                                  }
+                                }}
+                                className={cn(
+                                  "flex items-center w-full min-h-0",
+                                  isCollapsed
+                                    ? "justify-center"
+                                    : "gap-2 justify-start",
+                                )}
+                              >
+                                <RemixIcon
+                                  name="star"
+                                  size={SIDEBAR_NAV_ICON_SIZE}
+                                  filled={pathname === "/favorite-skills"}
+                                  className={
+                                    pathname === "/favorite-skills"
+                                      ? "text-primary"
+                                      : ""
+                                  }
+                                />
+                                {!isCollapsed && (
+                                  <span
+                                    className={cn(
+                                      "truncate font-normal",
+                                      pathname === "/favorite-skills"
+                                        ? "text-primary"
+                                        : "text-sidebar-foreground",
+                                    )}
+                                  >
+                                    {t("nav.favoriteSkills", "Favorite Skills")}
+                                  </span>
+                                )}
+                              </Link>
+                            </Button>
+                          </TooltipTrigger>
+                        </Tooltip>
+                      )}
+
                       {/* Connectors (linked accounts / integrations) — same unlock as Library */}
                       {isNavVisible("workspace") && (
                         <Tooltip>

@@ -114,7 +114,7 @@ const zh = {
         activated: "Loop 已就绪",
         working: "完成首张决策卡的设置",
       },
-      subtitle: "接入一个数据源,让 Loomi 帮你留意需要决策的事项。",
+      subtitle: "接入一个数据源,让 OpenRice 帮你留意需要决策的事项。",
       step: {
         setup: "初始化",
         runtime: "接入数据源",
@@ -251,7 +251,7 @@ const zh = {
     // 才能塞进 168×168 的宠物窗口而不挡住狐狸;详细文案放在
     // loop.compactCard.* 下,展示在紧凑卡片中。
     idlePill: {
-      short: "Loomi 在守候 · 当前没有需要你处理的事",
+      short: "OpenRice 在守候 · 当前没有需要你处理的事",
       cta: "查看状态",
       paused: "监控已暂停",
       working: "正在检查已接入的来源…",
@@ -266,10 +266,10 @@ const zh = {
       },
       subtitle: {
         healthy:
-          "当前没有需要你处理的事。一旦有决策需要你拍板,Loomi 会自动弹出卡片。",
-        checking: "Loomi 正在检查你的来源。",
+          "当前没有需要你处理的事。一旦有决策需要你拍板,OpenRice 会自动弹出卡片。",
+        checking: "OpenRice 正在检查你的来源。",
         paused: "Loop 已暂停 —— 恢复前不会再有新动态浮出。",
-        failure: "Loomi 最近没能更新 {{source}}。请先回到原始信号再继续。",
+        failure: "OpenRice 最近没能更新 {{source}}。请先回到原始信号再继续。",
       },
       lastChecked: "上次检查:{{rel}}",
       lastCheckedNever: "上次检查:暂无记录",
@@ -293,7 +293,7 @@ const zh = {
     loopSaveError: "Loop 设置保存失败。",
     loopSaveOk: "Loop 设置已保存。",
     loopNoticeDescription:
-      "Loop 已开启 —— Loomi 在后台通过连接器读取你的邮件、日历、代码与聊天等来源，并结合屏幕记忆来填你的早安简报。如果你不希望这样，可以在这里关掉。",
+      "Loop 已开启 —— OpenRice 在后台通过连接器读取你的邮件、日历、代码与聊天等来源，并结合屏幕记忆来填你的早安简报。如果你不希望这样，可以在这里关掉。",
     aiSettingsDescription:
       "为当前用户配置兼容的 AI 服务商接口，保存后会优先使用用户配置。",
     conversationModelsTitle: "对话模型",

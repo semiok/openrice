@@ -1,6 +1,6 @@
 /**
  * Skills Metadata API Route
- * PATCH: Update single skill metadata (e.g. avatar)
+ * PATCH: Update single skill metadata (e.g. avatar or favorite state)
  * Read/write ~/.openloomi/skill-metadata.json, only allows .openloomi path under homedir
  */
 
@@ -19,8 +19,13 @@ function getSkillMetadataPath(): string {
 }
 
 /** Ensure metadata file directory exists and write JSON */
+type SkillMetadata = {
+  avatar?: string;
+  favorite?: boolean;
+};
+
 function writeSkillMetadata(
-  data: Record<string, { avatar?: string }>,
+  data: Record<string, SkillMetadata>,
 ): { success: boolean; error?: string } {
   try {
     const dir = getopenloomiDir();
@@ -39,14 +44,14 @@ function writeSkillMetadata(
   }
 }
 
-function readSkillMetadata(): Record<string, { avatar?: string }> {
+function readSkillMetadata(): Record<string, SkillMetadata> {
   const path = getSkillMetadataPath();
   if (!existsSync(path)) return {};
   try {
     const raw = readFileSync(path, "utf-8");
     const data = JSON.parse(raw);
     if (typeof data !== "object" || data === null) return {};
-    return data as Record<string, { avatar?: string }>;
+    return data as Record<string, SkillMetadata>;
   } catch {
     return {};
   }
@@ -54,12 +59,12 @@ function readSkillMetadata(): Record<string, { avatar?: string }> {
 
 /**
  * PATCH /api/workspace/skills/metadata
- * Body: { skillId: string, avatar?: string }
+ * Body: { skillId: string, avatar?: string, favorite?: boolean }
  */
 export async function PATCH(request: NextRequest) {
   try {
     const body = await request.json();
-    const { skillId, avatar } = body;
+    const { skillId, avatar, favorite } = body;
 
     if (typeof skillId !== "string" || !skillId.trim()) {
       return NextResponse.json(
@@ -68,17 +73,43 @@ export async function PATCH(request: NextRequest) {
       );
     }
 
+    if (avatar === undefined && favorite === undefined) {
+      return NextResponse.json(
+        { success: false, error: "No metadata fields provided" },
+        { status: 400 },
+      );
+    }
+
+    if (favorite !== undefined && typeof favorite !== "boolean") {
+      return NextResponse.json(
+        { success: false, error: "Invalid favorite value" },
+        { status: 400 },
+      );
+    }
+
     const metadata = readSkillMetadata();
-    if (avatar === undefined || avatar === null || avatar === "") {
+    if (avatar !== undefined && (avatar === null || avatar === "")) {
       if (metadata[skillId]) {
         metadata[skillId].avatar = undefined;
-        const entry = metadata[skillId];
-        if ((Object.keys(entry) as (keyof typeof entry)[]).every((k) => entry[k] === undefined)) {
-          delete metadata[skillId];
-        }
       }
-    } else {
+    } else if (avatar !== undefined) {
       metadata[skillId] = { ...metadata[skillId], avatar: String(avatar) };
+    }
+
+    if (favorite === true) {
+      metadata[skillId] = { ...metadata[skillId], favorite: true };
+    } else if (favorite === false && metadata[skillId]) {
+      metadata[skillId].favorite = undefined;
+    }
+
+    const entry = metadata[skillId];
+    if (
+      entry &&
+      (Object.keys(entry) as (keyof SkillMetadata)[]).every(
+        (key) => entry[key] === undefined,
+      )
+    ) {
+      delete metadata[skillId];
     }
 
     const result = writeSkillMetadata(metadata);
@@ -89,6 +120,7 @@ export async function PATCH(request: NextRequest) {
     return NextResponse.json({
       success: true,
       avatar: metadata[skillId]?.avatar,
+      favorite: metadata[skillId]?.favorite ?? false,
     });
   } catch (e) {
     console.error("[SkillsMetadata] PATCH error:", e);

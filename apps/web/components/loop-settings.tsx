@@ -141,7 +141,7 @@ export function LoopSettings() {
           type: "info",
           description: t(
             "settings.loopNoticeDescription",
-            "Loop is on — Loomi is reading Gmail / Calendar / GitHub / Slack in the background to fill your morning brief. Toggle off here if you'd rather not.",
+            "Loop is on — OpenRice is reading Gmail / Calendar / GitHub / Slack in the background to fill your morning brief. Toggle off here if you'd rather not.",
           ),
         });
       }

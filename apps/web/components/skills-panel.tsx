@@ -109,7 +109,7 @@ export function AddSkillDropdown({
   );
 }
 
-interface Skill {
+export interface Skill {
   id: string;
   name: string;
   description: string;
@@ -120,6 +120,7 @@ interface Skill {
   source?: string;
   avatar?: string;
   enabled?: boolean;
+  favorite?: boolean;
 }
 
 interface SkillsPanelProps {
@@ -134,6 +135,9 @@ interface SkillsPanelProps {
   openingFolder?: boolean;
   /** When true, empty state doesn't show "Add Skill" button (used when moved to page header second line) */
   hideEmptyStateAddSkill?: boolean;
+  /** Optional copy for filtered views such as Favorite Skills. */
+  emptyTitle?: string;
+  emptyDescription?: string;
 }
 
 /**
@@ -150,6 +154,8 @@ export function SkillsPanel({
   onCreateSkill,
   openingFolder: controlledOpeningFolder = false,
   hideEmptyStateAddSkill = false,
+  emptyTitle,
+  emptyDescription,
 }: SkillsPanelProps) {
   const { t } = useTranslation();
   const router = useRouter();
@@ -259,6 +265,13 @@ export function SkillsPanel({
     />
   );
 
+  const handleUseSkill = (skill: Skill) => {
+    const newChatId = generateUUID();
+    router.push(
+      `/?page=chat&chatId=${encodeURIComponent(newChatId)}&input=${encodeURIComponent(`/${skill.id}`)}`,
+    );
+  };
+
   return (
     <div className={cn("flex flex-col h-[100%] min-h-0", className)}>
       <ScrollArea className="flex-1 min-h-0">
@@ -288,17 +301,21 @@ export function SkillsPanel({
                 className="text-muted-foreground/50 mb-2"
               />
               <p className="text-sm text-muted-foreground">
-                {t(
-                  "agent.panels.workspacePanel.noSkills",
-                  "No skills installed",
-                )}
+                {emptyTitle ??
+                  t(
+                    "agent.panels.workspacePanel.noSkills",
+                    "No skills installed",
+                  )}
               </p>
-              <p className="text-xs text-muted-foreground mt-1">
-                {t(
-                  "agent.panels.workspacePanel.skillsHint",
-                  "Add skills to ~/.openloomi/skills/",
-                )}
-              </p>
+              {(emptyDescription !== "" || !emptyTitle) && (
+                <p className="text-xs text-muted-foreground mt-1">
+                  {emptyDescription ??
+                    t(
+                      "agent.panels.workspacePanel.skillsHint",
+                      "Add skills to ~/.openloomi/skills/",
+                    )}
+                </p>
+              )}
               {!hideEmptyStateAddSkill && (
                 <div className="mt-4 flex flex-wrap justify-center gap-2">
                   {addSkillDropdown()}
@@ -320,6 +337,8 @@ export function SkillsPanel({
                   onAvatarChange={loadSkills}
                   onDeleted={loadSkills}
                   onToggle={loadSkills}
+                  onFavoriteChange={loadSkills}
+                  onUse={() => handleUseSkill(skill)}
                 />
               ))}
             </div>
@@ -337,6 +356,8 @@ interface SkillCardProps {
   onAvatarChange?: () => void;
   onDeleted?: () => void;
   onToggle?: () => void;
+  onFavoriteChange?: () => void;
+  onUse?: () => void;
 }
 
 /**
@@ -349,12 +370,15 @@ function SkillCard({
   onAvatarChange,
   onDeleted,
   onToggle,
+  onFavoriteChange,
+  onUse,
 }: SkillCardProps) {
   const { t } = useTranslation();
   const [updating, setUpdating] = useState(false);
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [toggling, setToggling] = useState(false);
+  const [favoriting, setFavoriting] = useState(false);
 
   const updateAvatar = async (avatar: string | null) => {
     setUpdating(true);
@@ -414,6 +438,26 @@ function SkillCard({
     }
   };
 
+  const handleFavoriteToggle = async () => {
+    setFavoriting(true);
+    try {
+      const res = await fetch("/api/workspace/skills/metadata", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          skillId: skill.id,
+          favorite: !(skill.favorite ?? false),
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        onFavoriteChange?.();
+      }
+    } finally {
+      setFavoriting(false);
+    }
+  };
+
   const isopenloomiSkill = canDelete || canToggle;
 
   return (
@@ -423,8 +467,19 @@ function SkillCard({
         skill.enabled === false && "opacity-60",
       )}
     >
+      {onUse && (
+        <button
+          type="button"
+          className="absolute inset-0 z-0 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          onClick={onUse}
+          aria-label={t("personalization.skillsSettings.useSkill", {
+            name: skill.name,
+            defaultValue: `Use ${skill.name}`,
+          })}
+        />
+      )}
       {/* ... button: shows on hover, contains Switch and Delete */}
-      {isopenloomiSkill && (
+      {(isopenloomiSkill || onFavoriteChange) && (
         <div className="absolute top-2 right-2 opacity-100 transition-opacity z-[1]">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -437,6 +492,23 @@ function SkillCard({
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-48">
+              {/* Favorite option is available for every discovered skill. */}
+              {onFavoriteChange && (
+                <div className="flex items-center justify-between px-2 py-1.5">
+                  <span className="text-sm">
+                    {t(
+                      "personalization.skillsSettings.favoriteSkill",
+                      "Favorite Skill",
+                    )}
+                  </span>
+                  <Switch
+                    checked={skill.favorite ?? false}
+                    onCheckedChange={handleFavoriteToggle}
+                    disabled={favoriting}
+                    className="scale-75"
+                  />
+                </div>
+              )}
               {/* Switch option */}
               {canToggle && (
                 <div className="flex items-center justify-between px-2 py-1.5">
@@ -473,12 +545,12 @@ function SkillCard({
         </div>
       )}
       {/* Avatar on top */}
-      <div className="pr-6 mb-2">
+      <div className="relative z-[1] pr-6 mb-2 pointer-events-none">
         <Popover>
           <PopoverTrigger asChild>
             <button
               type="button"
-              className="bg-primary/10 flex size-10 shrink-0 items-center justify-center rounded-full text-xl hover:ring-2 hover:ring-primary/30 focus:outline-none focus:ring-2 focus:ring-primary/50 disabled:opacity-50"
+              className="pointer-events-auto bg-primary/10 flex size-10 shrink-0 items-center justify-center rounded-full text-xl hover:ring-2 hover:ring-primary/30 focus:outline-none focus:ring-2 focus:ring-primary/50 disabled:opacity-50"
               disabled={updating}
               aria-label={t(
                 "personalization.skillsSettings.changeAvatar",
@@ -528,13 +600,13 @@ function SkillCard({
       </div>
 
       {/* Skill name: next line after avatar, single line truncation */}
-      <h3 className="text-sm font-semibold font-serif text-foreground truncate mb-2">
+      <h3 className="relative z-[1] pointer-events-none text-sm font-semibold font-serif text-foreground truncate mb-2">
         {skill.name}
       </h3>
 
       {/* Description: fixed line count ellipsis */}
       {skill.description && (
-        <p className="text-muted-foreground text-xs leading-relaxed line-clamp-3 flex-1 min-h-[2.25rem]">
+        <p className="relative z-[1] pointer-events-none text-muted-foreground text-xs leading-relaxed line-clamp-3 flex-1 min-h-[2.25rem]">
           {skill.description}
         </p>
       )}

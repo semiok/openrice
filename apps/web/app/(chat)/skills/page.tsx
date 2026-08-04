@@ -4,6 +4,7 @@ import { PageSectionHeader } from "@openloomi/ui";
 import {
   SkillsPanel,
   AddSkillDropdown,
+  type Skill,
 } from "@/components/skills-panel";
 import { useTranslation } from "react-i18next";
 import { isTauri } from "@/lib/tauri";
@@ -12,19 +13,6 @@ import { useRouter } from "next/navigation";
 import { generateUUID } from "@/lib/utils";
 import { toast } from "@/components/toast";
 import "../../../i18n";
-
-interface Skill {
-  id: string;
-  name: string;
-  description: string;
-  version?: string;
-  author?: string;
-  argumentHint?: string;
-  path: string;
-  source?: string;
-  avatar?: string;
-  enabled?: boolean;
-}
 
 /**
  * Skills standalone page
