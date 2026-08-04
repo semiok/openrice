@@ -14,7 +14,7 @@ const isLinux = platform === "linux";
 const APP_BUNDLE = process.argv[2] || null;
 const SKIP_SIGNING = process.env.SKIP_SIGNING === "true";
 const SIGNING_IDENTITY =
-  process.env.SIGNING_IDENTITY || (isDarwin ? "-sign -" : null);
+  process.env.SIGNING_IDENTITY || (isDarwin ? "-" : null);
 
 const webDir = path.resolve(__dirname, "..");
 
@@ -308,7 +308,7 @@ if (fs.existsSync(infoPlist)) {
   } catch {}
 
   if (!SKIP_SIGNING) {
-    const mainBinary = path.join(appBundle, "Contents/MacOS/openloomi");
+    const mainBinary = path.join(appBundle, "Contents/MacOS/openrice");
     const mainEntitlements = path.join(webDir, "src-tauri/entitlements.plist");
     if (fs.existsSync(mainBinary) && fs.existsSync(mainEntitlements)) {
       console.log("Signing main binary with entitlements...");
@@ -370,6 +370,15 @@ if (fs.existsSync(infoPlist)) {
       signFile(p);
 
     console.log("  Nested binaries signed");
+    console.log("Signing final app bundle...");
+    execSync(`xattr -cr "${appBundle}" 2>/dev/null || true`, {
+      shell: true,
+    });
+    execSync(
+      `codesign --deep --force --sign "${SIGNING_IDENTITY}" --options runtime --identifier "ai.traditionow.openrice" --entitlements "${mainEntitlements}" "${appBundle}"`,
+      { stdio: "pipe" },
+    );
+    console.log("  App bundle signed");
   } else {
     console.log("Skipping signing (SKIP_SIGNING=true)");
   }

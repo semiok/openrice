@@ -22,9 +22,15 @@ export const metadata: Metadata = {
   description: "OpenRice AI collaboration workspace",
   applicationName: "OpenRice",
   icons: {
-    icon: [{ url: "/icon.png", type: "image/png" }],
-    shortcut: "/favicon.ico",
-    apple: "/icon.png",
+    icon: [
+      {
+        url: "/icon.png?v=openrice-20260804",
+        type: "image/png",
+        sizes: "1024x1024",
+      },
+    ],
+    shortcut: "/icon.png?v=openrice-20260804",
+    apple: "/icon.png?v=openrice-20260804",
   },
 };
 

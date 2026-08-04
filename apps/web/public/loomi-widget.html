@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Loomi · the pet widget
+  OpenRice · the pet widget
 
   Minimal frameless pet. No deck, no monologue panel, no tray — just a
   draggable fox on the desktop that:
@@ -555,7 +555,7 @@
         const pendingBadge = document.getElementById("pending-badge");
         // #365 — idle status pill refs. The pill shows when the pet
         // is genuinely idle (no pending work AND state === "idle")
-        // so the user can discover Loomi's status without clicking
+        // so the user can discover OpenRice's status without clicking
         // the fox. `idlePillLabel` is the inner span we re-fill with
         // i18n copy; the parent `.idle-pill` element carries the
         // `data-enabled` attribute that drives the dot colour.
@@ -1029,7 +1029,7 @@
           // is mid-click on a menu item, and the matching `pointerup`
           // would re-emit `pet:open-dashboard`, masking whatever
           // operation the menu actually requested. The menu owns its
-          // own click semantics (Open Loomi / Settings / theme picker
+          // own click semantics (OpenRice / Settings / theme picker
           // / Quit) so we bail before any bookkeeping happens.
           if (petMenu && petMenu.contains(e.target)) return;
           if (e.button !== 0) return; // primary button only
@@ -1138,7 +1138,7 @@
             } else if (isIdle() || launchMode === "plugin") {
               // #365 — idle pet click now opens the compact status
               // card instead of dumping the user onto the dashboard.
-              // The right-click menu still offers "Open Loomi" as the
+              // The right-click menu still offers "OpenRice" as the
               // escape hatch to the main app for users who want to
               // land on /loop directly.
               //

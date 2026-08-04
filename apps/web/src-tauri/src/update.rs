@@ -468,7 +468,7 @@ fn get_app_relaunch_path() -> Option<String> {
 
     #[cfg(target_os = "macos")]
     {
-        // exe path: .../openrice.app/Contents/MacOS/openloomi
+        // exe path: .../openrice.app/Contents/MacOS/openrice
         // Need to go up 3 levels to reach .app bundle itself, so open command can correctly launch the app
         return exe
             .parent()

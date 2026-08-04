@@ -253,7 +253,7 @@ export function ResponsiveToolbar({
             "flex flex-1 flex-col items-center justify-center gap-1 py-2 text-xs transition-colors",
             activePanel === "chat" ? "text-primary" : "text-muted-foreground",
           )}
-          aria-label={t("mobileInsightToolbar.openloomi", "openloomi")}
+          aria-label={t("mobileInsightToolbar.openloomi", "OpenRice")}
         >
           <RemixIcon
             name="chat"
@@ -266,7 +266,7 @@ export function ResponsiveToolbar({
               activePanel === "chat" && "font-semibold text-primary",
             )}
           >
-            {t("mobileInsightToolbar.openloomi", "openloomi")}
+            {t("mobileInsightToolbar.openloomi", "OpenRice")}
           </span>
         </button>
       </div>
