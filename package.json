@@ -20,7 +20,8 @@
     "clean": "pnpm -r clean && rm -rf node_modules",
     "tauri:dev": "cd apps/web && cross-env IS_TAURI=true PORT=3515 node ../../node_modules/@tauri-apps/cli/tauri.js dev --config src-tauri/tauri.conf.dev.json",
     "tauri:build": "pnpm --filter web tauri:build",
-    "tauri:build:debug": "pnpm --filter web tauri:build:debug"
+    "tauri:build:debug": "pnpm --filter web tauri:build:debug",
+    "release:macos:m5": "node scripts/release-macos-m5.mjs"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",

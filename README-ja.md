@@ -13,7 +13,7 @@
 <a href="./README.md">English</a> | <a href="./README-zh.md">简体中文</a> | <a href="./README-ja.md">日本語</a>
 </p>
 
-[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-4B4B4B?logo=linux&logoColor=white)](https://openloomi.ai)
+[![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Linux-4B4B4B?logo=linux&logoColor=white)](https://openloomi.ai)
 [![License](https://img.shields.io/badge/License-Apache%202.0-F8D52A?logo=apache)](https://www.apache.org/licenses/LICENSE-2.0)
 [![Discord](https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white)](https://discord.com/invite/xkJaJyWcsv)
 [![X](https://img.shields.io/badge/X-Follow-000000?logo=x&logoColor=white)](https://x.com/AlloomiAI)
@@ -58,7 +58,7 @@ OpenRiceは、オープンソースのAIパートナーです。デスクトッ�
 | 🧠  | **[ホリスティック・コンテキスト](https://openloomi.ai/docs/memory)**             | 短期 → 中期 → 長期の記憶が自律的に成長します。可視化・監査が可能で、何カ月にもわたってあなたの人間関係、プロジェクト、意思決定を常に記憶し続けます                                                                                                                                                                                                                               |
 | 🔌  | **[プラットフォームコネクタ](https://openloomi.ai/docs/connectors)**             | **[自動フェッチ](https://openloomi.ai/docs/what-is-openloomi#a-complete-intelligence-loop-from-perception-to-action)** バックグラウンド同期ループがコミット、課題、メール、ドキュメントを能動的に取得しグラフに保存。**[メッセージングアプリ](https://openloomi.ai/docs/messaging-apps)** — Telegram、WhatsApp、iMessage、QQ、Feishu/拉翅 — 既存の会話内で直接AIとチャット可能。 |
 | ⏰  | **[プロアクティブタスク](https://openloomi.ai/docs/automation)**                 | 繰り返しの作業——日次ダイジェスト、週次レポート、リマインダー——をデスクトップで自動実行。                                                                                                                                                                                                                                                                                         |
-| 🖥️  | **[セキュリティと使いやすさ](https://openloomi.ai/docs/privacy-security)**       | Windows、macOS、Linux向けのネイティブデスクトップアプリ。**すぐに使えて**、セットアップは数分、設定で苦労することはありません。ローカルファースト保存、AES-256暗号化、データが端末外に出ることはなく、監査可能なアクセスログを備えています                                                                                                                                       |
+| 🖥️  | **[セキュリティと使いやすさ](https://openloomi.ai/docs/privacy-security)**       | macOS、Linux向けのネイティブデスクトップアプリ。**すぐに使えて**、セットアップは数分、設定で苦労することはありません。ローカルファースト保存、AES-256暗号化、データが端末外に出ることはなく、監査可能なアクセスログを備えています                                                                                                                                                |
 | 🧩  | **[任意のエージェント統合](https://openloomi.ai/docs/reference/agent-runtimes)** | OpenRice のコンテキスト、メモリ、コネクタ、注意エージェント、Loop エンジンはいずれもオープンソースの[スキル](https://openloomi.ai/docs/skills)および[プラグイン](https://openloomi.ai/docs/plugins)として提供されています。OpenRice Desktop をそのまま使うことも、既存のエージェント — Claude、Codex、OpenCode、Hermes、OpenClaw — に組み込むこともできます。                    |
 
 ## クイックスタート
@@ -68,7 +68,6 @@ OpenRiceは、オープンソースのAIパートナーです。デスクトッ�
 <p align="center">
   <a href="https://github.com/semiok/openrice/releases/download/v0.8.9/openrice_0.8.9_macOS_aarch64.dmg"><img src="https://img.shields.io/badge/macOS_Apple_Silicon-000000?style=for-the-badge&logo=apple&logoColor=white" alt="macOS Apple Silicon"></a>
   <a href="https://github.com/semiok/openrice/releases/download/v0.8.9/openrice_0.8.9_macOS_amd64.dmg"><img src="https://img.shields.io/badge/macOS_Intel-000000?style=for-the-badge&logo=apple&logoColor=white" alt="macOS Intel"></a>
-  <a href="https://github.com/semiok/openrice/releases/download/v0.8.9/openrice_0.8.9_windows_amd64.exe"><img src="https://img.shields.io/badge/Windows_x64-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows x64"></a>
 </p>
 
 <p align="center">
@@ -101,7 +100,7 @@ pnpm install
 pnpm tauri:dev
 ```
 
-Node.js 22以上、pnpm 9以上、Rust 1.75以上が必要です。Windows では Visual Studio Build Tools と C++ ワークロードが必要です。プラットフォーム固有のセットアップ要件の詳細については、[CONTRIBUTING.md](./CONTRIBUTING.md) を参照してください。
+Node.js 22以上、pnpm 9以上、Rust 1.75以上が必要です。OpenRice は Windows インストーラーを公開・サポートしません。プラットフォーム固有のセットアップ要件の詳細については、[CONTRIBUTING.md](./CONTRIBUTING.md) を参照してください。
 
 ## 他のとは違う点
 

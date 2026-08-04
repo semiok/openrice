@@ -13,7 +13,7 @@ upstream OpenLoomi data paths and plugin protocol for migration compatibility.
 <a href="./README.md">English</a> | <a href="./README-zh.md">简体中文</a> | <a href="./README-ja.md">日本語</a>
 </p>
 
-[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-4B4B4B?logo=linux&logoColor=white)](https://openloomi.ai)
+[![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Linux-4B4B4B?logo=linux&logoColor=white)](https://openloomi.ai)
 [![License](https://img.shields.io/badge/License-Apache%202.0-F8D52A?logo=apache)](https://www.apache.org/licenses/LICENSE-2.0)
 [![Discord](https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white)](https://discord.com/invite/xkJaJyWcsv)
 [![X](https://img.shields.io/badge/X-Follow-000000?logo=x&logoColor=white)](https://x.com/AlloomiAI)
@@ -60,7 +60,7 @@ An always-on desktop **attention agent** — the friendly desk companion Loomi �
 | 🧠  | **[Holistic Context](https://openloomi.ai/docs/memory)**                        | Short → mid → long-term memory that grows on its own — visible, auditable, and always remembering your people, projects, and decisions across months                                                                                                                                                                                                                                                      |
 | 🔌  | **[Platform Connectors](https://openloomi.ai/docs/connectors)**                 | **[Auto-fetch](https://openloomi.ai/docs/what-is-openloomi#a-complete-intelligence-loop-from-perception-to-action)** background sync loop pulls commits, issues, emails, and docs proactively into your context graph. **[Messaging apps](https://openloomi.ai/docs/messaging-apps)** — Telegram, WhatsApp, iMessage, QQ, Lark/Feishu — let you chat with AI directly inside your existing conversations. |
 | ⏰  | **[Proactive Tasks](https://openloomi.ai/docs/automation)**                     | Schedule recurring work — daily digests, weekly reports, reminders — that run automatically on your desktop.                                                                                                                                                                                                                                                                                              |
-| 🖥️  | **[Security & Ease of Use](https://openloomi.ai/docs/privacy-security)**        | Native app for Windows, macOS, Linux Desktop Apps — **works out of the box**, minutes to set up, no configuration wrestling; local-first storage, AES-256 encryption, no data leaves your machine, auditable access logs                                                                                                                                                                                  |
+| 🖥️  | **[Security & Ease of Use](https://openloomi.ai/docs/privacy-security)**        | Native app for macOS and Linux — **works out of the box**, minutes to set up, no configuration wrestling; local-first storage, AES-256 encryption, no data leaves your machine, auditable access logs                                                                                                                                                                                                     |
 | 🧩  | **[Any Agent Integration](https://openloomi.ai/docs/reference/agent-runtimes)** | OpenRice's context, memory, connectors, attention agent, and Loop engine are all delivered as open-source [Skills](https://openloomi.ai/docs/skills) and [Plugins](https://openloomi.ai/docs/plugins). Use OpenRice Desktop directly, or plug into your existing Agent — Claude, Codex, OpenCode, Hermes, or OpenClaw.                                                                                    |
 
 ## Quick Start
@@ -70,7 +70,6 @@ An always-on desktop **attention agent** — the friendly desk companion Loomi �
 <p align="center">
   <a href="https://github.com/semiok/openrice/releases/download/v0.8.9/openrice_0.8.9_macOS_aarch64.dmg"><img src="https://img.shields.io/badge/macOS_Apple_Silicon-000000?style=for-the-badge&logo=apple&logoColor=white" alt="macOS Apple Silicon"></a>
   <a href="https://github.com/semiok/openrice/releases/download/v0.8.9/openrice_0.8.9_macOS_amd64.dmg"><img src="https://img.shields.io/badge/macOS_Intel-000000?style=for-the-badge&logo=apple&logoColor=white" alt="macOS Intel"></a>
-  <a href="https://github.com/semiok/openrice/releases/download/v0.8.9/openrice_0.8.9_windows_amd64.exe"><img src="https://img.shields.io/badge/Windows_x64-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows x64"></a>
 </p>
 
 <p align="center">
@@ -119,7 +118,7 @@ pnpm install
 pnpm tauri:dev
 ```
 
-Requires Node.js 22+, pnpm 9+, Rust 1.75+, and on Windows: Visual Studio Build Tools with C++ workload. For more platform-specific setup requirements, see [CONTRIBUTING.md](./CONTRIBUTING.md).
+Requires Node.js 22+, pnpm 9+, and Rust 1.75+. OpenRice does not publish or support Windows installers. For more platform-specific setup requirements, see [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## Why It Is Different
 
