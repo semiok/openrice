@@ -180,7 +180,13 @@ jobs:
           # List keychains to ensure system can access certificates
           security list-keychain -d user -s $KEYCHAIN_PATH
 
-      - name: Build Tauri app (Apple Silicon)
+      - name: Build unsigned Tauri app (Apple Silicon RC)
+        if: env.SKIP_SIGNING == 'true'
+        working-directory: ./apps/web
+        run: pnpm tauri:build
+
+      - name: Build signed Tauri app (Apple Silicon)
+        if: env.SKIP_SIGNING != 'true'
         working-directory: ./apps/web
         run: pnpm tauri:build
         env:
@@ -421,7 +427,17 @@ jobs:
             console.log('Patched targets to app');
           "
 
-      - name: Build Tauri app (Intel)
+      - name: Build unsigned Tauri app (Intel RC)
+        if: env.SKIP_SIGNING == 'true'
+        working-directory: ./apps/web
+        run: pnpm tauri:build
+        env:
+          # macos-15-intel runner hits the 10s preflight timeout on the
+          # Mine77 release URL. Skip in CI; real download happens elsewhere.
+          SKIP_RENDER_ENGINE_PREFLIGHT: "true"
+
+      - name: Build signed Tauri app (Intel)
+        if: env.SKIP_SIGNING != 'true'
         working-directory: ./apps/web
         run: pnpm tauri:build
         env:
