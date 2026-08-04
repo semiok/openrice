@@ -161,6 +161,10 @@ This is early-stage software. We're looking for people who'll actually install i
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md). Look for [`good first issue`](https://github.com/melandlabs/openloomi/labels/good%20first%20issue) labels.
 
+Maintainers must follow the **P0**
+[OpenRice upstream and desktop release process](./docs/openrice-release-process.md)
+before importing an OpenLoomi release or publishing an OpenRice desktop update.
+
 ## License
 
 [Apache 2.0](./LICENSE)
