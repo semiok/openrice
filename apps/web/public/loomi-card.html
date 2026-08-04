@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Loomi · decision card (router)
+  OpenRice · decision card (router)
 
   Switches between 6 layouts based on pet state + top pending decision.
   Each layout mirrors a card from
@@ -153,7 +153,7 @@
          the old connection view ("All endpoints reachable", "Pipeline
          ready", "Fetching from /api/loop/connectors"). The verbose
          copy lives in `loop.compactCard.*`; the title + subtitle
-         here are the answer to "what is Loomi doing right now?" and
+         here are the answer to "what is OpenRice doing right now?" and
          "do I need to do anything?". */
       .card[data-active-mode="compact"] {
         padding: 16px 14px 14px;
@@ -2020,7 +2020,7 @@
          Reads /api/llm/usage/summary on init, on ai-settings-changed, and
          (debounced) on every loop:decision terminal event.
 
-         Visibility: only the idle Loomi Online (connection) layout shows
+         Visibility: only the idle OpenRice Online (connection) layout shows
          the chip. The card's `data-active-layout` is set by apply() so
          every non-connection layout hides it via the default rule
          below — that way the chip never flashes during a layout swap
@@ -2149,7 +2149,7 @@
            LAYOUT: COMPACT  (#365 — idle status card)
            The compact layout replaces the old "force the connection
            view on idle" path. It answers the user's two questions
-           ("what is Loomi doing?" / "do I need to do anything?") in
+           ("what is OpenRice doing?" / "do I need to do anything?") in
            plain language, surfaces the watcher poll timestamp as
            "Last checked", and offers explicit Collapse + Open Loop
            buttons. No implementation terms in the primary path;
@@ -2752,7 +2752,7 @@
            Anchored to the bottom of the card flex column, right-aligned.
            This keeps it out of the way of the layout's own header (×)
            and the layout's footer action buttons — both common in the
-           pipeline / decision / brief / wrap forms. On the idle Loomi
+           pipeline / decision / brief / wrap forms. On the idle OpenRice
            Online (connection) layout, where the card has plenty of empty
            room below the pending queue, the chip docks at the very
            bottom edge as a quiet status line, much like the status bar
@@ -2761,7 +2761,7 @@
            full breakdown so we avoid shipping a tooltip library.
 
            Visibility: CSS only shows this when the card has
-           `data-active-layout="connection"` (idle Loomi Online). Other
+           `data-active-layout="connection"` (idle OpenRice Online). Other
            layouts (pipeline / decision / brief / wrap / no-api-key)
            hide it via the default rule so it never competes with
            their own footer actions.
@@ -3360,7 +3360,7 @@
             el.classList.toggle("active", el.dataset.layout === layout),
           );
           card.classList.toggle("dark", layout === "wrap");
-          // The usage chip is only meaningful on the idle Loomi Online
+          // The usage chip is only meaningful on the idle OpenRice Online
           // (connection) screen. Action / reading layouts (pipeline,
           // decision, brief, wrap) compete with footer buttons and
           // body content for visual attention, and no-api-key already
@@ -4670,7 +4670,7 @@
             // Save) if present, else seed the subject from the
             // decision's action.params and leave the body empty so the
             // user starts from scratch. action.params.subject is the
-            // subject Loomi's first pass chose.
+            // subject OpenRice's first pass chose.
             const saved = decision?.context?.draft;
             const seedSubject =
               saved &&
@@ -6094,7 +6094,7 @@
         // delegation so the listeners survive any future re-render
         // that swaps the section's innerHTML. The actual close +
         // open-dashboard paths are unchanged from the legacy × and
-        // "Open Loomi" actions — only the surface that surfaces them
+        // "OpenRice" actions — only the surface that surfaces them
         // is new.
         (function wireCompactActions() {
           const root = document.querySelector('[data-layout="compact"]');

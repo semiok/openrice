@@ -1002,7 +1002,7 @@ pub fn get_bundled_skills_dir(app_handle: tauri::AppHandle) -> Result<String, St
             .unwrap_or_else(|| PathBuf::from("."));
 
         let skills_dir = if cfg!(target_os = "macos") {
-            // macOS: exe is at Contents/MacOS/openloomi, resources at Contents/Resources/
+            // macOS: exe is at Contents/MacOS/openrice, resources at Contents/Resources/
             exe_dir
                 .join("..")
                 .join("Resources")
