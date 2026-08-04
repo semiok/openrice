@@ -651,13 +651,13 @@ fn main() {
                 );
             }
 
-            // Build the Loomi desktop pet window. The pet is the
+            // Build the Rice desktop pet window. The pet is the
             // always-resident entry point — it shows on first launch
             // (visible: true in tauri.conf.json). A failure here is
             // non-fatal: the rest of the app is still useful without
             // the pet.
             if let Err(e) = pet::build_pet_window(&app_handle) {
-                eprintln!("⚠️  Warning: Failed to build Loomi pet window: {}", e);
+                eprintln!("⚠️  Warning: Failed to build Rice pet window: {}", e);
             }
 
             // B2: build the bubble + card aux windows eagerly so the
@@ -668,13 +668,13 @@ fn main() {
             // (`card`).
             if let Err(e) = pet::build_bubble_window(&app_handle) {
                 eprintln!(
-                    "⚠️  Warning: Failed to build Loomi bubble window: {}",
+                    "⚠️  Warning: Failed to build Rice bubble window: {}",
                     e
                 );
             }
             if let Err(e) = pet::build_card_window(&app_handle) {
                 eprintln!(
-                    "⚠️  Warning: Failed to build Loomi card window: {}",
+                    "⚠️  Warning: Failed to build Rice card window: {}",
                     e
                 );
             }
@@ -695,7 +695,7 @@ fn main() {
                         // checked the env flag, but kept for symmetry.
                     }
                     Err(e) => eprintln!(
-                        "⚠️  Warning: Failed to build Loomi dev panel: {}",
+                        "⚠️  Warning: Failed to build Rice dev panel: {}",
                         e
                     ),
                 }
@@ -789,7 +789,7 @@ fn main() {
             // main dashboard, so a plugin-launched session doesn't
             // surface "two dialogs" of the same conversation. The user
             // can still reach the main window via the pet right-click
-            // menu ("Open Loomi") or the card's "Open in dashboard"
+            // menu ("Open Rice") or the card's "Open in dashboard"
             // CTA — those are unchanged.
             let launch_mode_value = launch_mode::as_wire_value(launch_mode::detect());
             let launch_mode_app = app_handle.clone();

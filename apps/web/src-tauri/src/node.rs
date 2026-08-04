@@ -1361,7 +1361,7 @@ pub fn start_nextjs_server() {
         let msg = format!(
             "Next.js server not found at: {:?}. \
             This may happen if the app was moved after installation. \
-            Please reinstall openloomi from openloomi.ai",
+            Please reinstall OpenRice from rice.traditionow.ai",
             server_script
         );
         eprintln!("❌ {}", msg);

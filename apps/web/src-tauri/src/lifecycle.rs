@@ -57,7 +57,7 @@ pub fn run_cleanup() {
         // don't want it racing a sidecar that's about to die. The pet
         // has no persistent state on the Tauri side (positions live
         // in its own localStorage), so a hard close is safe here.
-        println!("📴 Closing Loomi pet window...");
+        println!("📴 Closing Rice pet window...");
         pet::close_pet_for_exit_if_open();
 
         println!("📴 Stopping scheduler...");
