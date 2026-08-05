@@ -8,8 +8,9 @@ Thank you for your interest in contributing to OpenLoomi!
 
 - Node.js 22+
 - pnpm 9+
-- Rust (for Tauri desktop app development)
 - Git
+- Docker Desktop (for browser/Web development with the local PostgreSQL database)
+- Rust (only for Tauri desktop app development)
 
 ### Platform-Specific Prerequisites
 
@@ -48,22 +49,47 @@ Developing on Windows requires additional C++ build tools for native modules lik
 
 ```bash
 # Clone the repository
-git clone https://github.com/melandlabs/openloomi.git
-cd openloomi
+git clone https://github.com/semiok/openrice.git
+cd openrice
 
 # Install dependencies
 pnpm install
-
 ```
 
 ### Running the App
 
-```bash
-# Or start just the web app (desktop app)
-pnpm tauri:dev
+#### Browser/Web mode
 
-# Or start just the web app (browser mode)
+```bash
+# First run automatically starts an isolated pgvector PostgreSQL container,
+# writes its local connection URL to apps/web/.env, applies migrations,
+# verifies the schema, and starts Next.js on http://localhost:3515.
 pnpm dev
+```
+
+The local database listens only on `127.0.0.1:54329` and stores its data in a
+Docker volume. Stop the container without deleting its data with:
+
+```bash
+pnpm db:dev:down
+```
+
+To use an existing development database instead, set its connection string
+before running `pnpm dev`:
+
+```bash
+# apps/web/.env (never commit this file)
+POSTGRES_URL=postgres://user:password@host:5432/database
+```
+
+`DATABASE_URL` is also accepted. Never use a production database for local
+development.
+
+#### Desktop/Tauri mode
+
+```bash
+# Uses local SQLite; Docker and PostgreSQL are not required.
+pnpm tauri:dev
 ```
 
 ## Project Structure
@@ -142,14 +168,20 @@ pnpm tsc
 
 ## Database
 
-We use Drizzle ORM for database management.
+We use Drizzle ORM for database management. From the repository root:
 
 ```bash
+# Start/provision the Web database, apply migrations, and verify every table.
+pnpm db:setup
+
 # Generate migrations from schema changes
 pnpm --filter web db:generate
 
 # Apply migrations
 pnpm --filter web db:migrate
+
+# Verify the live database against schema.pg.ts
+pnpm --filter web db:verify
 
 # Push schema changes (development only)
 pnpm --filter web db:push

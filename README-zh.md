@@ -90,14 +90,19 @@ OpenRice 提供了官方 marketplace 插件，可以把现有的 agent 接入本
 **本地开发**（面向开发者）：
 
 ```bash
-git clone https://github.com/melandlabs/openloomi.git
-cd openloomi
+git clone https://github.com/semiok/openrice.git
+cd openrice
 
 pnpm install
-pnpm tauri:dev
+
+# 浏览器/Web 模式：自动准备隔离的 PostgreSQL 开发数据库
+pnpm dev
+
+# 桌面模式：改用本地 SQLite
+# pnpm tauri:dev
 ```
 
-需要 Node.js 22+、pnpm 9+ 和 Rust 1.75+。OpenRice 不发布或支持 Windows 安装包。更多平台特定设置要求请参见 [CONTRIBUTING.md](./CONTRIBUTING.md)。
+Web 模式需要 Node.js 22+、pnpm 9+ 和 Docker Desktop；桌面模式还需要 Rust 1.75+。OpenRice 不发布或支持 Windows 安装包。数据库覆盖配置和更多平台特定设置要求请参见 [CONTRIBUTING.md](./CONTRIBUTING.md)。
 
 ## 它有何不同
 

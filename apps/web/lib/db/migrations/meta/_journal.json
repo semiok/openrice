@@ -680,6 +680,13 @@
       "when": 1784236800000,
       "tag": "0108_llm_usage",
       "breakpoints": true
+    },
+    {
+      "idx": 97,
+      "version": "7",
+      "when": 1785891600000,
+      "tag": "0109_reconcile_postgres_schema",
+      "breakpoints": true
     }
   ]
 }

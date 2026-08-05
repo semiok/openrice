@@ -107,14 +107,22 @@ guide and release downloads before continuing.
 **Develop locally** (for developers):
 
 ```bash
-git clone https://github.com/melandlabs/openloomi.git
-cd openloomi
+git clone https://github.com/semiok/openrice.git
+cd openrice
 
 pnpm install
-pnpm tauri:dev
+
+# Browser/Web mode: automatically provisions an isolated PostgreSQL database.
+pnpm dev
+
+# Desktop mode: uses local SQLite instead.
+# pnpm tauri:dev
 ```
 
-Requires Node.js 22+, pnpm 9+, and Rust 1.75+. OpenRice does not publish or support Windows installers. For more platform-specific setup requirements, see [CONTRIBUTING.md](./CONTRIBUTING.md).
+Web mode requires Node.js 22+, pnpm 9+, and Docker Desktop. Desktop mode also
+requires Rust 1.75+. OpenRice does not publish or support Windows installers.
+For database overrides and platform-specific setup requirements, see
+[CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## Why It Is Different
 

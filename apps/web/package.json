@@ -25,6 +25,7 @@
 		"format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,md,mdx,html,css}\"",
 		"db:generate": "drizzle-kit generate",
 		"db:migrate": "npx tsx lib/db/migrate.ts",
+		"db:verify": "npx tsx lib/db/verify-schema.ts",
 		"db:dump": "npx tsx lib/db/dump.ts",
 		"db:migrate:cloud-to-local": "npx tsx lib/db/migrate-cloud-to-local.ts",
 		"db:studio": "drizzle-kit studio",

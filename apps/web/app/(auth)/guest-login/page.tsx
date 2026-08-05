@@ -12,12 +12,14 @@ import { invoke } from "@tauri-apps/api/core";
 export default function GuestLoginPage() {
   const router = useRouter();
   const [isCreating, setIsCreating] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [retryCount, setRetryCount] = useState(0);
 
   useEffect(() => {
     // Create guest account and sign in
     const createGuestAndLogin = async () => {
-      if (isCreating) return;
       setIsCreating(true);
+      setError(null);
 
       try {
         // Check if already authenticated (to avoid loops when middleware redirects back)
@@ -62,23 +64,49 @@ export default function GuestLoginPage() {
           // Successful login, go to home
           router.push("/");
         } else {
-          console.error("[GuestLogin] Failed to create guest account");
-          router.push("/");
+          const body = (await response.json().catch(() => null)) as {
+            message?: string;
+          } | null;
+          setError(
+            body?.message ??
+              "Guest login failed. Check the server database configuration.",
+          );
+          setIsCreating(false);
         }
       } catch (error) {
         console.error("[GuestLogin] Error:", error);
-        router.push("/");
+        setError("Guest login failed. Check the server and try again.");
+        setIsCreating(false);
       }
     };
 
     createGuestAndLogin();
-  }, [router, isCreating]);
+  }, [router, retryCount]);
 
   return (
     <div className="flex min-h-screen items-center justify-center">
       <div className="text-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary mx-auto mb-4" />
-        <p className="text-muted-foreground">Creating guest account...</p>
+        {error ? (
+          <>
+            <p className="font-medium mb-2">Unable to start OpenRice</p>
+            <p className="text-sm text-muted-foreground max-w-md mb-4">
+              {error}
+            </p>
+            <button
+              type="button"
+              className="rounded-md bg-primary px-4 py-2 text-primary-foreground"
+              disabled={isCreating}
+              onClick={() => setRetryCount((count) => count + 1)}
+            >
+              Try again
+            </button>
+          </>
+        ) : (
+          <>
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary mx-auto mb-4" />
+            <p className="text-muted-foreground">Creating guest account...</p>
+          </>
+        )}
       </div>
     </div>
   );
