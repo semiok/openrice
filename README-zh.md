@@ -36,10 +36,6 @@ OpenRice 分支。为兼容既有安装，内部仍保留上游 OpenLoomi 的数
 你的工作分散在不同应用里。OpenRice 连接这些工具，并在你授权后理解你屏幕上正在进行的工作。它把协作关系、项目进展和过往决策串联成持续更新的工作上下文，再从纷繁变化中挑出真正需要你判断或行动的事，让你能只专注于真正重要的事。
 这就是你的 Attention Agent（注意力代理）。
 
-<p align="center">
-  <img src="screenshots/app/main-with-loomi.gif" alt="OpenRice 主窗口与 Loomi" width="100%">
-</p>
-
 ## 它能做什么？
 
 桌面常驻的 **注意力代理** —— 友好的桌面伙伴 Loomi —— 帮你盯着门外，把一天里散落在各处的信号整理成可以一键批准的决策卡。可以单独使用，也支持把任意 Agent 框架接入同一个常驻桌面：Claude Code、Codex、OpenCode、Hermes、OpenClaw 都可以。
@@ -113,23 +109,6 @@ pnpm tauri:dev
 | Codex / Claude Code    | 超出仓库的工作空间上下文：人、产品决策、发布背景、问题和待跟进事项                 |
 | OpenClaw / Hermes      | 操作前后的上下文：该操作为什么重要、使用了哪些来源、发生了什么改变、还有什么待解决 |
 | RAG / 知识库           | 工作状态，而不仅仅是文档检索：发生了什么改变、什么仍然有效、下一步操作应该考虑什么 |
-
-## 应用截图
-
-<table>
-<tr>
-<td><img src="screenshots/app/loomi-pet.gif" alt="Loomi 宠物" width="100%"></td>
-<td><img src="screenshots/app/loomi-proactive-task.gif" alt="主动任务" width="100%"></td>
-</tr>
-<tr>
-<td><img src="screenshots/app/docx.gif" alt="文档预览" width="100%"></td>
-<td><img src="screenshots/app/excel.gif" alt="表格预览" width="100%"></td>
-</tr>
-<tr>
-<td><img src="screenshots/app/automation.gif" alt="自动化" width="100%"></td>
-<td><img src="screenshots/app/connectors.gif" alt="连接器" width="100%"></td>
-</tr>
-</table>
 
 ## 反馈
 

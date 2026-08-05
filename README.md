@@ -37,10 +37,6 @@ Your work is scattered across apps. OpenRice connects the tools you use and, wit
 
 **Focus on what matters. This is your Attention Agent.**
 
-<p align="center">
-  <img src="screenshots/app/main-with-loomi.gif" alt="OpenRice main window with Loomi" width="100%">
-</p>
-
 ## What is it for?
 
 An always-on desktop **attention agent** — the friendly desk companion Loomi — watches the door so you don't have to, and turns the day's scattered signals into decision cards you can approve in one tap. Use it standalone, or plug any Agent framework into the same resident desktop: Claude Code, Codex, OpenCode, Hermes, and OpenClaw all work.
@@ -130,23 +126,6 @@ Requires Node.js 22+, pnpm 9+, and Rust 1.75+. OpenRice does not publish or supp
 | Codex / Claude Code        | workspace context beyond the repo: people, product decisions, launch context, issues, and follow-ups              |
 | OpenClaw / Hermes          | context before and after the action: why it matters, what source was used, what changed, what remains open        |
 | RAG / knowledge bases      | work state, not just document retrieval: what changed, what is still true, and what should affect the next action |
-
-## App Screenshots
-
-<table>
-<tr>
-<td><img src="screenshots/app/loomi-pet.gif" alt="Loomi Pet" width="100%"></td>
-<td><img src="screenshots/app/loomi-proactive-task.gif" alt="Proactive Tasks" width="100%"></td>
-</tr>
-<tr>
-<td><img src="screenshots/app/docx.gif" alt="Document preview" width="100%"></td>
-<td><img src="screenshots/app/excel.gif" alt="Spreadsheet preview" width="100%"></td>
-</tr>
-<tr>
-<td><img src="screenshots/app/automation.gif" alt="Automation" width="100%"></td>
-<td><img src="screenshots/app/connectors.gif" alt="Connectors" width="100%"></td>
-</tr>
-</table>
 
 ## Feedback
 
