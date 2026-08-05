@@ -89,14 +89,19 @@ OpenRice は公式の marketplace プラグインを提供しており、既存�
 **ローカルで開発**（開発者向け）:
 
 ```bash
-git clone https://github.com/melandlabs/openloomi.git
-cd openloomi
+git clone https://github.com/semiok/openrice.git
+cd openrice
 
 pnpm install
-pnpm tauri:dev
+
+# Browser/Web mode: provisions an isolated PostgreSQL database automatically.
+pnpm dev
+
+# Desktop mode: uses local SQLite instead.
+# pnpm tauri:dev
 ```
 
-Node.js 22以上、pnpm 9以上、Rust 1.75以上が必要です。OpenRice は Windows インストーラーを公開・サポートしません。プラットフォーム固有のセットアップ要件の詳細については、[CONTRIBUTING.md](./CONTRIBUTING.md) を参照してください。
+Web モードには Node.js 22以上、pnpm 9以上、Docker Desktop が必要です。デスクトップモードでは Rust 1.75以上も必要です。OpenRice は Windows インストーラーを公開・サポートしません。データベースの上書き設定とプラットフォーム固有の要件については、[CONTRIBUTING.md](./CONTRIBUTING.md) を参照してください。
 
 ## 他のとは違う点
 

@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 22
-          cache: 'pnpm'
+          cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -55,7 +55,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
+          cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -63,3 +63,45 @@ jobs:
       - name: Run tests
         run: pnpm test
         working-directory: apps/web
+
+  postgres-migrations:
+    name: Fresh PostgreSQL migration
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_DB: openrice_test
+          POSTGRES_USER: openrice
+          POSTGRES_PASSWORD: openrice_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U openrice -d openrice_test"
+          --health-interval 2s
+          --health-timeout 3s
+          --health-retries 30
+    env:
+      POSTGRES_URL: postgres://openrice:openrice_test@127.0.0.1:5432/openrice_test
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.14.0
+
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Migrate a fresh database
+        run: pnpm --filter web db:migrate
+
+      - name: Verify PostgreSQL schema
+        run: pnpm --filter web db:verify

@@ -6,8 +6,12 @@
   "scripts": {
     "brand:apply": "node scripts/openrice-branding.mjs --apply",
     "brand:check": "node scripts/openrice-branding.mjs --check",
-    "dev": "pnpm --filter web dev",
+    "dev": "pnpm db:setup && pnpm --filter web dev",
+    "dev:web": "pnpm dev",
     "dev:all": "pnpm -r --parallel dev",
+    "db:setup": "node scripts/setup-web-db.mjs",
+    "db:dev:up": "docker compose -f compose.dev.yml up -d postgres",
+    "db:dev:down": "docker compose -f compose.dev.yml down",
     "test": "pnpm --filter web test",
     "tsc": "pnpm --filter web tsc",
     "build": "pnpm --filter web build",

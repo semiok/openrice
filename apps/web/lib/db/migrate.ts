@@ -8,14 +8,17 @@ config({
 });
 
 const runMigrate = async () => {
-  if (!process.env.POSTGRES_URL) {
+  const connectionString =
+    process.env.POSTGRES_URL || process.env.DATABASE_URL || "";
+
+  if (!connectionString) {
     console.warn(
-      "⚠️  Skipping database migrations because POSTGRES_URL is not set.",
+      "⚠️  Skipping database migrations because POSTGRES_URL or DATABASE_URL is not set.",
     );
     process.exit(0);
   }
 
-  const connection = postgres(process.env.POSTGRES_URL, { max: 1 });
+  const connection = postgres(connectionString, { max: 1 });
   const db = drizzle(connection);
 
   console.log("⏳ Running migrations...");
@@ -25,6 +28,7 @@ const runMigrate = async () => {
   const end = Date.now();
 
   console.log("✅ Migrations completed in", end - start, "ms");
+  await connection.end();
   process.exit(0);
 };
 

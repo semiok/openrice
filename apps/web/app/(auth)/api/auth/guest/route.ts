@@ -78,7 +78,13 @@ async function handleGuestAuth(request: Request) {
     return response;
   } catch (error) {
     console.error("[GuestAuth] Error:", error);
-    // On error, redirect to home
-    return NextResponse.redirect(new URL("/", request.url));
+    return NextResponse.json(
+      {
+        error: "GUEST_AUTH_UNAVAILABLE",
+        message:
+          "Guest login is unavailable because the server database is not ready.",
+      },
+      { status: 503 },
+    );
   }
 }

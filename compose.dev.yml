@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_DB: openrice
+      POSTGRES_USER: openrice
+      POSTGRES_PASSWORD: openrice_dev
+    ports:
+      - "127.0.0.1:54329:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U openrice -d openrice"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+    volumes:
+      - openrice_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  openrice_postgres_data:
