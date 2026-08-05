@@ -35,10 +35,6 @@
 
 OpenRiceは、オープンソースのAIパートナーです。デスクトップ常駐の**注意エージェント**を中心に、認可した業務ツールと画面コンテンツをつなぎ、あなたの人間関係、プロジェクト、意思決定の**ホリスティック・コンテキスト**を構築。何が起きたのか、なぜ重要なのか、次に何をすべきか、日々のサマリーまで教えてくれるので、本当に大切なことに注意を向けられます。
 
-<p align="center">
-  <img src="screenshots/app/main-with-loomi.gif" alt="OpenRice メインウィンドウと Loomi" width="100%">
-</p>
-
 ## 何に使える？
 
 デスクトップ常駐の **注意エージェント**——頼れるデスクパートナー Loomi——が代わりに入口を監視し、一日に散らばったシグナルを 1 タップで承認できる意思決定カードに変えます。単独利用も、任意のエージェントフレームワークを同じ常駐デスクトップに組み込むこともできます。Claude Code、Codex、OpenCode、Hermes、OpenClaw すべて対応。
@@ -112,23 +108,6 @@ Node.js 22以上、pnpm 9以上、Rust 1.75以上が必要です。OpenRice は 
 | Codex / Claude Code    | リポジトリを超えたワークスペースコンテキスト：人物、製品の意思決定、リリースコンテキスト、課題、フォローアップ     |
 | OpenClaw / Hermes      | アクションの前後：なぜ重要なのか、どのソースが使われたのか、何が変わったのか、何が残っているのか                   |
 | RAG / ナレッジベース   | ワーク状態であり単なるドキュメント検索ではない：何が変わったのか、何がまだ有効なのか、次のアクションに何影響するか |
-
-## アプリのスクリーンショット
-
-<table>
-<tr>
-<td><img src="screenshots/app/loomi-pet.gif" alt="Loomi ペット" width="100%"></td>
-<td><img src="screenshots/app/loomi-proactive-task.gif" alt="プロアクティブタスク" width="100%"></td>
-</tr>
-<tr>
-<td><img src="screenshots/app/docx.gif" alt="Document preview" width="100%"></td>
-<td><img src="screenshots/app/excel.gif" alt="Spreadsheet preview" width="100%"></td>
-</tr>
-<tr>
-<td><img src="screenshots/app/automation.gif" alt="Automation" width="100%"></td>
-<td><img src="screenshots/app/connectors.gif" alt="Connectors" width="100%"></td>
-</tr>
-</table>
 
 ## フィードバック
 
